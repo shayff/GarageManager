@@ -10,12 +10,15 @@ namespace Ex03.GarageLogic
         private float m_MaxPsiLevel;
         private float m_PSILevel;
 
-        public void inflatingWheel
+        public Wheel(string i_NameOfYAZRAN,float i_MaxPsiLevel,float i_PSILevel)
         {
-            get => default(int);
-            set
-            {
-            }
+            m_NameOfYAZRAN = i_NameOfYAZRAN;
+            m_MaxPsiLevel = i_MaxPsiLevel;
+            m_PSILevel = i_PSILevel;
+        }
+        public void inflatingWheel()
+        {
+
         }
     }
 }

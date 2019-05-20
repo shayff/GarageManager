@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    public enum eEnergySource { Fuel, Electricity };
-    public class EnergySource
+    public enum eEngineType { Fuel, Electricity };
+    public class Engine
     {
         public virtual void FillEnergy(float i_EnergyToAdd)
         {

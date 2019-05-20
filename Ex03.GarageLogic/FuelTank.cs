@@ -5,7 +5,7 @@ using System.Text;
 namespace Ex03.GarageLogic
 {
     public enum eFuelType { Octan98, Octan96, Octan95, Soler };
-    public class FuelTank : EnergySource
+    public class FuelTank : Engine
     {
         private float m_CurrentFuelCapacity;
         private float m_MaxFuelCapacity;
