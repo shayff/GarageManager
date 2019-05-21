@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Ex03.GarageLogic.Wheel">
-    <Position X="6.5" Y="1.75" Width="1.5" />
+    <Position X="6.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACACAAAAAAAAAAAAAAAAAAAAAEAAAAAg=</HashCode>
       <FileName>Wheel.cs</FileName>
@@ -71,7 +71,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.VehicleTicket">
-    <Position X="8" Y="1.5" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <NestedTypes>
       <Enum Name="Ex03.GarageLogic.VehicleTicket.eVehicleStatus" Collapsed="true">
         <TypeIdentifier>
