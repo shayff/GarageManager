@@ -10,12 +10,12 @@ namespace Ex03.GarageLogic
         private const float k_MaxAirPressure = 26f;
 
         bool m_IsDriveDangerousCargo;
-        float m_CargoCapcity;
+        float m_CargoCapacity;
 
-        public Truck(eEngineType i_EnergySource, bool i_IsDriveDangerousCargo, float i_CargoCapcity) :base(k_NumberOfWheels, k_MaxAirPressure, i_EnergySource)
+        public Truck(eEngineType i_EnergySource, bool i_IsDriveDangerousCargo, float i_CargoCapacity) :base(k_NumberOfWheels, k_MaxAirPressure, i_EnergySource)
         {
            m_IsDriveDangerousCargo = i_IsDriveDangerousCargo;
-           m_CargoCapcity = i_CargoCapcity;
+           m_CargoCapacity = i_CargoCapacity;
         }
     }
 }

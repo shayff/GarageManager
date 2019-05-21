@@ -6,9 +6,6 @@ namespace Ex03.GarageLogic
 {
     public class CreateVehicles
     {
-        public static Vehicle create()
-        {
-            
-        }
+        public static Vehicle Create;
     }
 }

@@ -6,19 +6,27 @@ namespace Ex03.GarageLogic
 {
     public class Wheel
     {
-        private string m_NameOfYAZRAN;
-        private float m_MaxPsiLevel;
+        private readonly string m_NameOfYAZRAN;
+        private readonly float m_MaxPsiLevel;
         private float m_PSILevel;
 
-        public Wheel(string i_NameOfYAZRAN,float i_MaxPsiLevel,float i_PSILevel)
+        public Wheel(string i_NameOfYAZRAN, float i_MaxPsiLevel, float i_PSILevel)
         {
             m_NameOfYAZRAN = i_NameOfYAZRAN;
             m_MaxPsiLevel = i_MaxPsiLevel;
             m_PSILevel = i_PSILevel;
         }
-        public void inflatingWheel()
+        public void InflatingWheel(float i_AirToAdd)
         {
-
+            if (i_AirToAdd + m_PSILevel <= m_MaxPsiLevel)
+            {
+                m_PSILevel += i_AirToAdd;
+            }
+            else
+            {
+                //Exceptions
+            }
         }
+    
     }
 }
