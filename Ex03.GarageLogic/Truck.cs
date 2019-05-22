@@ -23,12 +23,11 @@ namespace Ex03.GarageLogic
             set { m_CargoCapacity = value; }
             get { return m_CargoCapacity; }
         }
-  
-       //*ctor**/
-        public Truck(eEngineType i_EnergySource, bool i_IsDriveDangerousCargo, float i_CargoCapacity) :base(k_NumberOfWheels, k_MaxAirPressure, i_EnergySource)
+
+        //*ctor**/
+        // bool i_IsDriveDangerousCargo, float i_CargoCapacity
+        public Truck(eEngineType i_EnergySource) :base(k_NumberOfWheels, k_MaxAirPressure, i_EnergySource)
         {
-           m_IsDriveDangerousCargo = i_IsDriveDangerousCargo;
-           m_CargoCapacity = i_CargoCapacity;
         }
     }
 }

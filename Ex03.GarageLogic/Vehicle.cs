@@ -54,11 +54,11 @@ namespace Ex03.GarageLogic
             //NT need to init wheels with the psi level
             if(i_EnergySource == eEngineType.Fuel)
             {
-                m_EnergySource = new FuelTank();
+                //m_EnergySource = new FuelTank();
             }
             else if (i_EnergySource == eEngineType.Fuel)
             {
-                m_EnergySource = new Battery();
+                //m_EnergySource = new Battery();
             }
 
                
