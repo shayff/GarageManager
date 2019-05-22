@@ -80,11 +80,11 @@ namespace Ex03.ConsoleUI
         public void InsertVehicleToGarage()
         {
             Console.WriteLine("Insert a car type:/n" +
-                              "for A Fuel MotorCycle press 1\n" +
-                              "for A Electric motorcycle press 2\n " +
-                              "for A Fuel Car press 3\n" +
-                              "for A Electric car press 4\n" +
-                              "for A Fuel truck press 5\n");
+                              "for A Fuel MotorCycle press 0\n" +
+                              "for A Electric motorcycle press 1\n " +
+                              "for A Fuel Car press 2\n" +
+                              "for A Electric car press 3\n" +
+                              "for A Fuel truck press 4\n");
 
             string typeOfVehicle = Console.ReadLine();
 
@@ -102,39 +102,7 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    switch (choice)
-                    {
-                        case '1':
-                            {
-                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelMotorCycle, nameOfModel,
-                                    licenseNumber);
-                                break;
-                            }
-
-                        case '2':
-                            {
-                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricMotorCycle, nameOfModel, licenseNumber);
-                                break;
-                            }
-
-                        case '3':
-                            {
-                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelCar, nameOfModel, licenseNumber);
-                                break;
-                            }
-
-                        case '4':
-                            {
-                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricCar, nameOfModel, licenseNumber);
-                                break;
-                            }
-
-                        case '5':
-                            {
-                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelTruck, nameOfModel, licenseNumber);
-                                break;
-                            }
-                    }
+                    CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
                 }
             }
         }
@@ -142,60 +110,40 @@ namespace Ex03.ConsoleUI
         //Request 2
         public void ViewListOfVehicleLicenseNumbers()
         {
-            Console.WriteLine("For All Status - press 1\n" +
-                              "For only InRepair - press 2\n" +
-                              "For only Repaired - press 3\n" +
-                              "For only Paid - press 4\n");
+            Console.WriteLine("For only InRepair - press 0\n" +
+                              "For only Repaired - press 1\n" +
+                              "For only Paid - press 2\n" +
+                              "For All Status - press 3\n");
 
             string input = Console.ReadLine();
             if (Int32.TryParse(input, out int result))
             {
                 Console.Clear(); // Clear the screen
-
-                switch (result)
+                //public enum eVehicleStatus { InRepair, Repaired, Paid }
+                if (result == 3)
                 {
-                    case '1':
-                        {
-                            m_Garage.GetVehiclesInGarage();
-                            break;
-                        }
-
-                    case '2':
-                        {
-                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.InRepair);
-                            break;
-                        }
-
-                    case '3':
-                        {
-                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.Repaired);
-                            break;
-                        }
-
-                    case '4':
-                        {
-                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.Paid);
-                            break;
-                        }
+                    m_Garage.GetVehiclesInGarage();
                 }
+                else
+                {
+                    m_Garage.GetVehiclesInGarageByStatus((VehicleInGarage.eVehicleStatus)result);
 
+                }
             }
             else
             {
                 Console.WriteLine("Incorrect input");
-
             }
-
-
         }
+
 
         //Request 3
         public void ChangeVehicleStatus()
         {
             Console.WriteLine("Enter a Vehicle Status:\n" +
-                              "for Repaired - press 1\n" +
-                              "for InRepair - press 2\n" +
-                              "for Paid - press 3");
+                              "for Repaired - press 0\n" +
+                              "for InRepair - press 1\n" +
+                              "for Paid - press 2");
             string status = Console.ReadLine();
 
             Console.WriteLine("Enter a license number");
@@ -203,26 +151,7 @@ namespace Ex03.ConsoleUI
 
             if (Int32.TryParse(status, out int result))
             {
-                switch (result)
-                {
-                    case '1':
-                        {
-                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.Repaired);
-                            break;
-                        }
-
-                    case '2':
-                        {
-                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.InRepair);
-                            break;
-                        }
-
-                    case '3':
-                        {
-                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.Paid);
-                            break;
-                        }
-                }
+                m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
             }
             else
             {
@@ -247,10 +176,10 @@ namespace Ex03.ConsoleUI
             string licenseNumber = Console.ReadLine();
 
             Console.WriteLine("Enter a Fuel type:\n" +
-                              "for Octan98 - press 1\n" +
-                              "for Octan96 - press 2\n" +
-                              "for Octan95 - press 3\n" +
-                              "for Soler - press 4");
+                              "for Octan98 - press 0\n" +
+                              "for Octan96 - press 1\n" +
+                              "for Octan95 - press 2\n" +
+                              "for Soler - press 3");
             string status = Console.ReadLine();
             if (Int32.TryParse(status, out int result))
             {
@@ -258,32 +187,7 @@ namespace Ex03.ConsoleUI
                 string liters = Console.ReadLine();
                 if (float.TryParse(liters, out float literToAdd))
                 {
-                    switch (result)
-                    {
-                        case '1':
-                            {
-                                m_Garage.FillFuelToFuelVehicles(licenseNumber, eFuelType.Octan98, literToAdd);
-                                break;
-                            }
-
-                        case '2':
-                            {
-                                m_Garage.FillFuelToFuelVehicles(licenseNumber, eFuelType.Octan96, literToAdd);
-                                break;
-                            }
-
-                        case '3':
-                            {
-                                m_Garage.FillFuelToFuelVehicles(licenseNumber, eFuelType.Octan95, literToAdd);
-                                break;
-                            }
-
-                        case '4':
-                            {
-                                m_Garage.FillFuelToFuelVehicles(licenseNumber, eFuelType.Soler, literToAdd);
-                                break;
-                            }
-                    }
+                    m_Garage.FillFuelToFuelVehicles(licenseNumber, (eFuelType)result, literToAdd);
                 }
                 else
                 {
@@ -294,8 +198,8 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Incorrect input");
             }
-
         }
+
 
         //Request 6
         public void ChargingElectricVehicle()
