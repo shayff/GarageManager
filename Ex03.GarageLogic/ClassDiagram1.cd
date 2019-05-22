@@ -10,7 +10,7 @@
   <Class Name="Ex03.GarageLogic.Vehicle">
     <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAUAAABAAEAABAAAEAAEAAAIAQgABAUIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAUAAABAAEAABAAAEAAEAAAIAQgABgUIAAAAAAAAAA=</HashCode>
       <FileName>Vehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,7 +24,7 @@
   <Class Name="Ex03.GarageLogic.Truck">
     <Position X="9" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAIAAAAAAAgAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAIAIAAAAAAAgAAAAAAAAAAAAAAAAAQAEAA=</HashCode>
       <FileName>Truck.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,19 +36,14 @@
           <NewMemberFileName>Car.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
-      <Enum Name="Ex03.GarageLogic.Car.eNumOfDoors">
-        <TypeIdentifier>
-          <NewMemberFileName>Car.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAAAAAAggAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAAQAAAAAAggAAAAAAAAAAAAAAAAQIAAA=</HashCode>
       <FileName>Car.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.MotorCycle">
-    <Position X="6.5" Y="6.25" Width="1.5" />
+    <Position X="6.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAABQAAAA=</HashCode>
       <FileName>MotorCycle.cs</FileName>
@@ -99,7 +94,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAIAAAAAAAAAAA=</HashCode>
       <FileName>CreateVehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
