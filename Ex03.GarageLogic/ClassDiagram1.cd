@@ -43,7 +43,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.MotorCycle">
-    <Position X="6.5" Y="6.25" Width="1.5" />
+    <Position X="6.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAABQAAAA=</HashCode>
       <FileName>MotorCycle.cs</FileName>
