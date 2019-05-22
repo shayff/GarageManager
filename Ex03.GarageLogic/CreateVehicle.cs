@@ -24,7 +24,7 @@ namespace Ex03.GarageLogic
             Vehicle test_Truck = new Truck(eEngineType.Fuel);
         }
 
-        
+
         public static Vehicle Create(eVehicleTypes i_VehicleType)
         {
             Vehicle newVehicle = null;
@@ -54,10 +54,10 @@ namespace Ex03.GarageLogic
                     {
                         newVehicle = new Truck(eEngineType.Fuel);
                         break;
-                     }
+                    }
             }
             return newVehicle;
         }
-        
+
     }
 }
