@@ -26,7 +26,7 @@ namespace Ex03.GarageLogic
 
         //*ctor**/
         // bool i_IsDriveDangerousCargo, float i_CargoCapacity
-        public Truck(eEngineType i_EnergySource, string i_NameOfModel, string i_LicenseNumber) :base(i_EnergySource, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
+        public Truck(eEnergyType i_EnergySource, string i_NameOfModel, string i_LicenseNumber) :base(i_EnergySource, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
         }
     }

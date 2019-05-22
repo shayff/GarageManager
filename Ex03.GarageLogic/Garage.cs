@@ -17,9 +17,23 @@ namespace Ex03.GarageLogic
 
         }
 
-        //Request 2
-        public void ShowLicenseNumbers()
+        //Request 2 
+        public List<string> GetVehiclesInGarage()
         {
+            return new List<string>(m_VehiclesInGarage.Keys);
+        }
+
+        public List<string> GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus i_VehicleStatusToCompare)
+        {
+            List<string> ListOfVehiclesByStatus = new List<string>();
+            foreach (KeyValuePair<string, VehicleInGarage> vehicle in m_VehiclesInGarage)
+            {
+                if (vehicle.Value.VehicleStatus == i_VehicleStatusToCompare)
+                {
+                    ListOfVehiclesByStatus.Add(vehicle.Key);
+                }
+            }
+            return ListOfVehiclesByStatus;
         }
 
         //Request 3
@@ -51,8 +65,17 @@ namespace Ex03.GarageLogic
         }
 
         //Request 5
-        public void AddFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
-        { }
+        public void FillFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
+        {
+            if (IsLicenseNumberInGarage(i_LicenseNumber))
+            {
+                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.;
+            }
+            else
+            {
+                //NT throw exception Vehicle not exist
+            }
+        }
 
         //Request 6
         public void ChargingElectricVehicle(string i_LicenseNumber, float i_EnergyToAdd)
@@ -63,27 +86,12 @@ namespace Ex03.GarageLogic
         {
             
         }
+        
         public bool IsLicenseNumberInGarage(string i_LicenseNumberToCheck)
         {
             return m_VehiclesInGarage.ContainsKey(i_LicenseNumberToCheck);             
         }
 
-        public List<string> GetVehiclesInGarage()
-        {
-            return new List<string>(m_VehiclesInGarage.Keys);
-        }
-
-        public List<string> GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus i_VehicleStatusToCompare)
-        {
-            List<string> ListOfVehiclesByStatus = new List<string>();
-            foreach (KeyValuePair<string, VehicleInGarage> vehicle in m_VehiclesInGarage)
-            {
-                if(vehicle.Value.VehicleStatus == i_VehicleStatusToCompare)
-                {
-                    ListOfVehiclesByStatus.Add(vehicle.Key);
-                }
-            }
-            return ListOfVehiclesByStatus;
-        }
+       
     }
 }

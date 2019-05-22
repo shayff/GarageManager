@@ -11,8 +11,8 @@ namespace Ex03.GarageLogic
         private float m_CurrentFuelCapacity;
         private readonly float m_MaxFuelCapacity;
         private eFuelType m_FuelType;
-        
-        
+
+
         //*ctor*//
         public FuelTank(eFuelType i_FuelType, float i_MaxFuelCapacity)
         {
@@ -30,7 +30,11 @@ namespace Ex03.GarageLogic
             else
             {
                 //Exceptions
-            };
+            }
+        }
+        public override eEnergyType GetEnergyType()
+        {
+            return eEnergyType.Fuel;
         }
     }
 }
