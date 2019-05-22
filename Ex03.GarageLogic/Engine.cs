@@ -35,5 +35,9 @@ namespace Ex03.GarageLogic
                 throw new Exception(k_ErrorWrongTypeOfFuel);
             }
         }
+        public string EngineDetails()
+        {
+            return String.Format("Fuel type: {0}, Current Fuel Capacity {1}", m_FuelType, m_CurrentFuelCapacity);
+        }
     }
 }
