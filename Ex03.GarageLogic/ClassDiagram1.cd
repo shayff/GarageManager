@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Ex03.GarageLogic.Wheel">
-    <Position X="6.5" Y="2.5" Width="1.5" />
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACACAAAAAAAAAAAAAAAAAAAAAEAAAAAg=</HashCode>
+      <HashCode>ACAAAAAAAAAACACIAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Wheel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Vehicle">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAABAAEAAAAAAEAAAAAAAAQgAAAEIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAUAAABAAEAABAAAEAAEAAAIAQgABAUIAAAAAAAAAA=</HashCode>
       <FileName>Vehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Garage">
-    <Position X="6.5" Y="0.5" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAIAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAgAAAAAAIAAAAAAAAAAAAAAAIAAAAgAA=</HashCode>
       <FileName>Garage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Truck">
-    <Position X="6.75" Y="5" Width="1.5" />
+    <Position X="8" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAIAAAQAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAIAAAAAAAgAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
       <FileName>Truck.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Car">
-    <Position X="2" Y="5" Width="1.5" />
+    <Position X="4.5" Y="4.25" Width="1.5" />
     <NestedTypes>
       <Enum Name="Ex03.GarageLogic.Car.eColor">
         <TypeIdentifier>
@@ -43,21 +43,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.MotorCycle">
-    <Position X="4.5" Y="5" Width="1.5" />
+    <Position X="6.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAABQAAAA=</HashCode>
       <FileName>MotorCycle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.EnergySource">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="1.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>EnergySource.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Battery">
-    <Position X="2.75" Y="2" Width="1.5" />
+    <Position X="2.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAABAIAAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>Battery.cs</FileName>
@@ -71,7 +71,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.VehicleTicket">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Position X="10" Y="2.5" Width="1.5" />
     <NestedTypes>
       <Enum Name="Ex03.GarageLogic.VehicleTicket.eVehicleStatus" Collapsed="true">
         <TypeIdentifier>
@@ -80,14 +80,14 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAgAAQAAAAAAAAAAAAAIAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>VehicleTicket.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.CreateVehicles">
-    <Position X="10.5" Y="1.25" Width="1.5" />
+    <Position X="10.25" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>CreateVehicles.cs</FileName>
     </TypeIdentifier>
   </Class>

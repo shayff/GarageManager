@@ -7,7 +7,7 @@ namespace Ex03.GarageLogic
     public class Battery : EnergySource
     {
         private float m_BatteryTimeRemaining;
-        private float m_BatteryMaxCapacity;
+        private readonly float m_BatteryMaxCapacity;
 
         public Battery(float i_BatteryMaxCapacity)
         {
@@ -16,7 +16,15 @@ namespace Ex03.GarageLogic
 
         public override void FillEnergy(float i_HoursToAdd)
         {
+            if (m_BatteryTimeRemaining + i_HoursToAdd <= m_BatteryMaxCapacity)
+            {
+                m_BatteryTimeRemaining += i_HoursToAdd;
+            }
+            else
+            {
+                //Exceptions
 
+            }
         }
     }
 }

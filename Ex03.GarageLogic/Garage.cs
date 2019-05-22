@@ -6,16 +6,59 @@ namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        private LinkedList<Vehicle> Vehicles;
+        private static LinkedList<Vehicle> m_Vehicles;
 
+        /*Properties*/
+        public LinkedList<Vehicle> Vehicles
+        {
+            set { m_Vehicles=value; }
+            get { return m_Vehicles; }
+        }
+
+
+
+        //Request 1
         public void AddCarToGarage()
         {
-            throw new System.NotImplementedException();
         }
 
-        public void ShowLiecnceNumbers()
+        //Request 2
+        public void ShowLicenseNumbers()
         {
-            throw new System.NotImplementedException();
         }
+
+        //Request 3
+        public void ChangeConditionOfCar(string i_LicenseNumber, VehicleTicket.eVehicleStatus i_NewStatus)
+        {
+            //Need to find by license number
+
+            foreach (Vehicle vehicle in Vehicles)
+            {
+                if (vehicle.LicenseNumber == i_LicenseNumber)
+                {
+                    vehicle.VehicleTicket.VehicleStatus = i_NewStatus;
+                }
+            }
+        }
+
+        //Request 4
+        public void InflatingWheelToMax(string i_LicenseNumber)
+        {
+        }
+
+        //Request 5
+        public void AddFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
+        { }
+
+        //Request 6
+        public void ChargingElectricVehicle(string i_LicenseNumber, float i_EnergyToAdd)
+        { }
+
+        //Request 7
+        public void ShowAllDetails()
+        {
+            
+        }
+
     }
 }
