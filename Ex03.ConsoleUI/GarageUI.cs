@@ -11,16 +11,27 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Welcome to our garage!\n\n");
 
+            InsertVehicleToGarage();
+
+
+
+
+
+        }
+
+        //Request 1
+        public void InsertVehicleToGarage()
+        {
             Console.WriteLine("Insert a car type:/n" +
-                              "for A Fuel MotorCycle press 1\n" +
-                              "for A Electric motorcycle press 2\n " +
-                              "for A Fuel Car press 3\n" +
-                              "for A Electric car press 4\n" +
-                              "for A Fuel truck press 5\n");
+                          "for A Fuel MotorCycle press 1\n" +
+                          "for A Electric motorcycle press 2\n " +
+                          "for A Fuel Car press 3\n" +
+                          "for A Electric car press 4\n" +
+                          "for A Fuel truck press 5\n");
 
-            string TypeOfVehicle = Console.ReadLine();
+            string typeOfVehicle = Console.ReadLine();
 
-            if (Int32.TryParse(TypeOfVehicle, out int num))
+            if (Int32.TryParse(typeOfVehicle, out int num))
             {
                 Console.WriteLine("Enter a vehicle model");
                 string nameOfModel = Console.ReadLine();
@@ -57,10 +68,6 @@ namespace Ex03.ConsoleUI
                         }
                 }
             }
-
-
-
-
 
 
         }
