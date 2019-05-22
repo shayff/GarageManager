@@ -24,7 +24,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                //Exceptions
+   
 
             }
         }

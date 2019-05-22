@@ -3,21 +3,21 @@
   <Class Name="Ex03.GarageLogic.Wheel">
     <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACACIAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAAAAAAACIQAAABQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Wheel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Vehicle">
     <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAUAAABAAEAABAAgEAAEAAAIAQgAJgUIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAUAAABAAEAABAAgEAAEAAAIAQiAJgUIAAAAAAAAAA=</HashCode>
       <FileName>Vehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Garage">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACCgACAAAAAAgAAAAAQAAAAgAAAAAAAAAAAICAAAgAA=</HashCode>
+      <HashCode>ACKgAAAAAAAAAAAAAAQBAAAgAAAAAAAAAAAACAAAgAA=</HashCode>
       <FileName>Garage.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -96,6 +96,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAIAAAAAAAAAAA=</HashCode>
       <FileName>CreateVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.ValueOutOfRangeException">
+    <Position X="1.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ValueOutOfRangeException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
