@@ -48,9 +48,12 @@ namespace Ex03.GarageLogic
         }
 
         //*ctor*//
-        public Vehicle(int i_NumOfWheels, float i_PSILevel, eEngineType i_EnergySource)
+        public Vehicle(eEngineType i_EnergySource, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_PSILevel)
         {
-            m_Wheels = new Wheel[i_NumOfWheels];
+            string m_NameOfModel = i_NameOfModel;
+            string m_LicenseNumber = i_LicenseNumber;
+
+           m_Wheels = new Wheel[i_NumOfWheels];
             //NT need to init wheels with the psi level
             if(i_EnergySource == eEngineType.Fuel)
             {
