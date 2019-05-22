@@ -6,26 +6,26 @@ namespace Ex03.GarageLogic
 {
     public class Battery : EnergySource
     {
+        const string k_ErrorTooMuchEnergy = "You insert too much energy";
         private float m_BatteryTimeRemaining;
-        private readonly float m_BatteryMaxCapacity;
+        private readonly float r_BatteryMaxCapacity;
 
         //*ctor*//
         public Battery(float i_BatteryMaxCapacity)
         {
-            m_BatteryMaxCapacity = i_BatteryMaxCapacity;
+            r_BatteryMaxCapacity = i_BatteryMaxCapacity;
         }
 
         //*Methods*//
         public override void FillEnergy(float i_HoursToAdd)
         {
-            if (m_BatteryTimeRemaining + i_HoursToAdd <= m_BatteryMaxCapacity)
+            if (m_BatteryTimeRemaining + i_HoursToAdd <= r_BatteryMaxCapacity)
             {
                 m_BatteryTimeRemaining += i_HoursToAdd;
             }
             else
             {
-   
-
+                throw new ValueOutOfRangeException(0, r_BatteryMaxCapacity, k_ErrorTooMuchEnergy);
             }
         }
     }

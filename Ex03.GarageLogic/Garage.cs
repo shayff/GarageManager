@@ -41,7 +41,7 @@ namespace Ex03.GarageLogic
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.;
+                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.InflatingWheelsToMax();
             }
             else
             {
@@ -68,5 +68,22 @@ namespace Ex03.GarageLogic
             return m_VehiclesInGarage.ContainsKey(i_LicenseNumberToCheck);             
         }
 
+        public List<string> GetVehiclesInGarage()
+        {
+            return new List<string>(m_VehiclesInGarage.Keys);
+        }
+
+        public List<string> GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus i_VehicleStatusToCompare)
+        {
+            List<string> ListOfVehiclesByStatus = new List<string>();
+            foreach (KeyValuePair<string, VehicleInGarage> vehicle in m_VehiclesInGarage)
+            {
+                if(vehicle.Value.VehicleStatus == i_VehicleStatusToCompare)
+                {
+                    ListOfVehiclesByStatus.Add(vehicle.Key);
+                }
+            }
+            return ListOfVehiclesByStatus;
+        }
     }
 }
