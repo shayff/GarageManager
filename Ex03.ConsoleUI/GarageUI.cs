@@ -27,7 +27,7 @@ namespace Ex03.ConsoleUI
 
                 if (Int32.TryParse(input, out int result))
                 {
-                    Console.Clear();                    // Clear the screen
+                    Console.Clear(); // Clear the screen
 
                     switch (result)
                     {
@@ -50,11 +50,17 @@ namespace Ex03.ConsoleUI
                             }
 
                         case '4':
-                        {
-                            InflatingWheelToMax();
-                            break;
-                            
-                        }
+                            {
+                                InflatingWheelToMax();
+                                break;
+                            }
+
+                        case '5':
+                            {
+                                FillFuelToFuelVehicles();
+                                break;
+                            }
+
                         case '8':
                             {
                                 flag = false;
@@ -74,11 +80,11 @@ namespace Ex03.ConsoleUI
         public void InsertVehicleToGarage()
         {
             Console.WriteLine("Insert a car type:/n" +
-                          "for A Fuel MotorCycle press 1\n" +
-                          "for A Electric motorcycle press 2\n " +
-                          "for A Fuel Car press 3\n" +
-                          "for A Electric car press 4\n" +
-                          "for A Fuel truck press 5\n");
+                              "for A Fuel MotorCycle press 1\n" +
+                              "for A Electric motorcycle press 2\n " +
+                              "for A Fuel Car press 3\n" +
+                              "for A Electric car press 4\n" +
+                              "for A Fuel truck press 5\n");
 
             string typeOfVehicle = Console.ReadLine();
 
@@ -101,24 +107,30 @@ namespace Ex03.ConsoleUI
                     {
                         case '1':
                             {
-                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelMotorCycle, nameOfModel, licenseNumber);
+                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelMotorCycle, nameOfModel,
+                                    licenseNumber);
                                 break;
                             }
+
                         case '2':
                             {
-                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricMotorCycle, nameOfModel, licenseNumber);
+                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricMotorCycle, nameOfModel,
+                                    licenseNumber);
                                 break;
                             }
+
                         case '3':
                             {
                                 CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelCar, nameOfModel, licenseNumber);
                                 break;
                             }
+
                         case '4':
                             {
                                 CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricCar, nameOfModel, licenseNumber);
                                 break;
                             }
+
                         case '5':
                             {
                                 CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelTruck, nameOfModel, licenseNumber);
@@ -142,7 +154,7 @@ namespace Ex03.ConsoleUI
             string input = Console.ReadLine();
             if (Int32.TryParse(input, out int result))
             {
-                Console.Clear();                    // Clear the screen
+                Console.Clear(); // Clear the screen
 
                 switch (result)
                 {
@@ -229,6 +241,77 @@ namespace Ex03.ConsoleUI
             string licenseNumber = Console.ReadLine();
 
             m_Garage.InflatingWheelToMax(licenseNumber);
+
+        }
+
+        //Request 5
+        public void FillFuelToFuelVehicles()
+        {
+            //  public enum eFuelType { Octan98, Octan96, Octan95, Soler };
+            Console.WriteLine("Enter a license number");
+            string licenseNumber = Console.ReadLine();
+
+
+            Console.WriteLine("Enter a Fuel type:\n" +
+                              "for Octan98 - press 1\n" +
+                              "for Octan96 - press 2\n" +
+                              "for Octan95 - press 3\n" +
+                              "for Soler - press 4");
+            string status = Console.ReadLine();
+            if (Int32.TryParse(status, out int result))
+            {
+                Console.WriteLine("Enter How many liters to fill");
+                string liters = Console.ReadLine();
+                if (float.TryParse(liters, out float literToAdd))
+                {
+                    switch (result)
+                    {
+                        case '1':
+                            {
+                                m_Garage.FillFuelToFuelVehicles(licenseNumber, eFuelType.Octan98, literToAdd);
+                                break;
+                            }
+
+                        case '2':
+                            {
+                                m_Garage.FillFuelToFuelVehicles(licenseNumber, eFuelType.Octan96, literToAdd);
+                                break;
+                            }
+
+                        case '3':
+                            {
+                                m_Garage.FillFuelToFuelVehicles(licenseNumber, eFuelType.Octan95, literToAdd);
+                                break;
+                            }
+
+                        case '4':
+                            {
+                                m_Garage.FillFuelToFuelVehicles(licenseNumber, eFuelType.Soler, literToAdd);
+                                break;
+                            }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input");
+            }
+
+        }
+
+        //Request 6
+        public void ChargingElectricVehicle()
+        {
+
+        }
+
+        //Request 7
+        public void ShowAllDetails()
+        {
 
         }
     }
