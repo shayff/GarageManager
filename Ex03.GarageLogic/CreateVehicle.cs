@@ -26,14 +26,14 @@ namespace Ex03.GarageLogic
             */
         }
 
-        public static Vehicle Create(eVehicleTypes i_VehicleType, string i_NameOfModel,string i_LicenseNumber)
+        public static Vehicle Create(eVehicleTypes i_VehicleType, string i_NameOfModel, string i_LicenseNumber)
         {
             Vehicle newVehicle = null;
             switch (i_VehicleType)
             {
                 case eVehicleTypes.FuelMotorCycle:
                     {
-                        newVehicle = new MotorCycle(eEngineType.Fuel, i_NameOfModel , i_LicenseNumber);
+                        newVehicle = new MotorCycle(eEngineType.Fuel, i_NameOfModel, i_LicenseNumber);
                         break;
                     }
                 case eVehicleTypes.ElectricMotorCycle:
@@ -55,10 +55,10 @@ namespace Ex03.GarageLogic
                     {
                         newVehicle = new Truck(eEngineType.Fuel, i_NameOfModel, i_LicenseNumber);
                         break;
-                     }
+                    }
             }
             return newVehicle;
         }
-        
+
     }
 }
