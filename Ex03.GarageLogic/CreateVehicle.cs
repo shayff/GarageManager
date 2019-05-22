@@ -21,7 +21,7 @@ namespace Ex03.GarageLogic
             Vehicle test_FuelMotor = new MotorCycle(eEngineType.Fuel);
             Vehicle test_ElectricMotor = new MotorCycle(eEngineType.Electricity);
             Vehicle test_FuelCar = new Car(eEngineType.Fuel);
-            Vehicle test_ElectricyCar = new Car(eEngineType.Electricity);
+            Vehicle test_ElectricCar = new Car(eEngineType.Electricity);
             Vehicle test_Truck = new Truck(eEngineType.Fuel);
             */
         }
