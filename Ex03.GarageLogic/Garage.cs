@@ -59,6 +59,10 @@ namespace Ex03.GarageLogic
         {
             
         }
-
+        public static bool IsLicenseNumberInGarage(string i_LicenseNumberToCheck)
+        {
+            return m_Vehicles.Equals(new Vehicle(i_LicenseNumberToCheck));
+        }
+        
     }
 }

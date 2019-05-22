@@ -19,5 +19,10 @@ namespace Ex03.GarageLogic
             set { m_VehicleStatus = value; }
             get { return m_VehicleStatus; }
         }
+
+        public VehicleInGarage(string i_OwnerName, string i_PhoneNumber)
+        { }
+
+
     }
 }

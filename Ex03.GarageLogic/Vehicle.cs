@@ -17,7 +17,7 @@ namespace Ex03.GarageLogic
         //*Properties*//
         public EnergySource EnergySource
         {
-            set { m_EnergySource=value; }
+            set { m_EnergySource = value; }
             get { return m_EnergySource; }
         }
         public Wheel[] Wheels
@@ -48,14 +48,19 @@ namespace Ex03.GarageLogic
         }
 
         //*ctor*//
+
+        public Vehicle(string i_LicenseNumber)
+        {
+            string m_LicenseNumber = i_LicenseNumber;
+        }
         public Vehicle(eEngineType i_EnergySource, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_PSILevel)
         {
-            string m_NameOfModel = i_NameOfModel;
             string m_LicenseNumber = i_LicenseNumber;
-
-           m_Wheels = new Wheel[i_NumOfWheels];
+            string m_NameOfModel = i_NameOfModel;
+            
+            m_Wheels = new Wheel[i_NumOfWheels];
             //NT need to init wheels with the psi level
-            if(i_EnergySource == eEngineType.Fuel)
+            if (i_EnergySource == eEngineType.Fuel)
             {
                 //m_EnergySource = new FuelTank();
             }
@@ -64,7 +69,7 @@ namespace Ex03.GarageLogic
                 //m_EnergySource = new Battery();
             }
 
-               
+
         }
 
 
@@ -80,6 +85,22 @@ namespace Ex03.GarageLogic
         public void ShowVehicleDetails()
         {
 
+        }
+
+        public override bool Equals(object obj)
+        {
+            bool equals = false;
+            Vehicle vehicleToCompre = obj as Vehicle;
+            if(vehicleToCompre != null)
+            {
+                equals = m_LicenseNumber == vehicleToCompre.m_LicenseNumber;
+            }
+            return equals;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.m_LicenseNumber.GetHashCode();
         }
     }
 }
