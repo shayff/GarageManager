@@ -51,7 +51,7 @@ namespace Ex03.GarageLogic
         }
 
         //Request 4
-        public void InflatingWheelToMaxs(string i_LicenseNumber)
+        public void InflatingWheelToMax(string i_LicenseNumber)
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
@@ -67,10 +67,11 @@ namespace Ex03.GarageLogic
         //Request 5
         public void FillFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
         {
-            if (IsLicenseNumberInGarage(i_LicenseNumber))
+            if (IsLicenseNumberInGarage(i_LicenseNumber) && m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.IsFuelCar()) 
             {
-                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.;
+                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy();
             }
+
             else
             {
                 //NT throw exception Vehicle not exist
@@ -79,7 +80,18 @@ namespace Ex03.GarageLogic
 
         //Request 6
         public void ChargingElectricVehicle(string i_LicenseNumber, float i_EnergyToAdd)
-        { }
+        {
+            if (IsLicenseNumberInGarage(i_LicenseNumber) && m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.IsElectricCar())
+            {
+                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy();
+            }
+
+            else
+            {
+                //NT throw exception Vehicle not exist
+            }
+
+        }
 
         //Request 7
         public void ShowAllDetails()

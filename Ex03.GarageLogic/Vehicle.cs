@@ -50,18 +50,7 @@ namespace Ex03.GarageLogic
 
         public eEnergyType TypeOfEngine()
         {
-            return m_EnergySource.Get;
-
-            eEnergyType typeOfEngine;
-           if (m_EnergySource is Battery)
-            {
-                typeOfEngine = eEnergyType.Electricity;
-            }
-           else if(m_EnergySource is FuelTank)
-            {
-                typeOfEngine = eEnergyType.Fuel;
-            }
-            return typeOfEngine;
+            return m_EnergySource.GetEnergyType();
         }
 
 
@@ -96,10 +85,16 @@ namespace Ex03.GarageLogic
         {
 
         }
-        public void FillEnergy()
+        public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
         {
-
+            m_EnergySource.FillEnergy(i_FuelType, i_FuelToAdd);
         }
+
+        public void FillEnergy(float i_HoursToAdd)
+        {
+            m_EnergySource.FillEnergy(i_HoursToAdd);
+        }
+
         public void ShowVehicleDetails()
         {
 
@@ -129,5 +124,13 @@ namespace Ex03.GarageLogic
             return this.m_LicenseNumber.GetHashCode();
         }
  
+        public bool IsElectricCar()
+        {
+            return m_EnergySource.GetEnergyType() == eEnergyType.Electricity;
+        }
+        public bool IsFuelCar()
+        {
+            return m_EnergySource.GetEnergyType() == eEnergyType.Fuel;
+        }
     }
 }

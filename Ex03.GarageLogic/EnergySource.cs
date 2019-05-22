@@ -10,6 +10,6 @@ namespace Ex03.GarageLogic
     {
         public abstract eEnergyType GetEnergyType();
         public abstract void FillEnergy(float i_EnergyToAdd);
-
+        public abstract void FillEnergy(eEnergyType i_FuelType , float i_FuelToAdd);
     }
 }
