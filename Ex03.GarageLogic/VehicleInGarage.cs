@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
         private eVehicleStatus m_VehicleStatus = eVehicleStatus.InRepair;
         private string m_OwnerName;
         private string m_PhoneNumber;
-        private Vehicle m_Vehicle;
+        public Vehicle m_Vehicle;
 
         /*Properties*/
         public eVehicleStatus VehicleStatus

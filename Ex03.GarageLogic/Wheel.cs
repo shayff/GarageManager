@@ -19,6 +19,11 @@ namespace Ex03.GarageLogic
         }
 
         //*Methods*//
+        public void InflatingWheelToMax()
+        {
+            m_PSILevel = m_MaxPsiLevel;
+        }
+
         public void InflatingWheel(float i_AirToAdd)
         {
             if (i_AirToAdd + m_PSILevel <= m_MaxPsiLevel)

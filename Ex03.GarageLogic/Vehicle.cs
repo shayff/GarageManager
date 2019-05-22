@@ -87,6 +87,14 @@ namespace Ex03.GarageLogic
 
         }
 
+        public void InflatingWheelsToMax()
+        {
+            foreach (Wheel wheel in m_Wheels)
+            {
+                wheel.InflatingWheelToMax(); 
+            }
+        }
+
         public override bool Equals(object obj)
         {
             bool equals = false;
