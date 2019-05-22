@@ -9,12 +9,10 @@ namespace Ex03.ConsoleUI
     {
         public void PrintMenu()
         {
-            Console.WriteLine("Welcome to our garage!\n\n");
+            Console.WriteLine("Welcome to garage of Shay and Nelly!\n\n");
+
 
             InsertVehicleToGarage();
-
-
-
 
 
         }
@@ -31,15 +29,19 @@ namespace Ex03.ConsoleUI
 
             string typeOfVehicle = Console.ReadLine();
 
-            if (Int32.TryParse(typeOfVehicle, out int num))
+            if (Int32.TryParse(typeOfVehicle, out int choice))
             {
                 Console.WriteLine("Enter a vehicle model");
                 string nameOfModel = Console.ReadLine();
 
                 Console.WriteLine("Enter a license number");
                 string licenseNumber = Console.ReadLine();
+                if (Garage.IsLicenseNumberInGarage(licenseNumber))
+                {
 
-                switch (num)
+                }
+
+                switch (choice)
                 {
                     case '1':
                         {
