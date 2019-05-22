@@ -57,6 +57,8 @@ namespace Ex03.GarageLogic
                         break;
                     }
             }
+
+
             return newVehicle;
         }
 

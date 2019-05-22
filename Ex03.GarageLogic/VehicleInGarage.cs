@@ -20,8 +20,12 @@ namespace Ex03.GarageLogic
             get { return m_VehicleStatus; }
         }
 
-        public VehicleInGarage(string i_OwnerName, string i_PhoneNumber)
-        { }
+        public VehicleInGarage(string i_OwnerName, string i_PhoneNumber, Vehicle i_Vehicle)
+        {
+            m_OwnerName = i_OwnerName;
+            m_PhoneNumber = i_PhoneNumber;
+            m_Vehicle = i_Vehicle;
+        }
 
         public string VehicleInGarageDetails()
         {
