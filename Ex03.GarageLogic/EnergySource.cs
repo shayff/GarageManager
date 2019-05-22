@@ -8,6 +8,8 @@ namespace Ex03.GarageLogic
 
     public class EnergySource
     {
+
+        //*Methods*//
         public virtual void FillEnergy(float i_EnergyToAdd)
         {
 

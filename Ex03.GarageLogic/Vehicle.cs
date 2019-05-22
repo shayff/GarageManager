@@ -11,14 +11,18 @@ namespace Ex03.GarageLogic
         private string m_LicenseNumber;
         private float m_EnergyLevel;
         private Wheel[] m_Wheels;
-
         private EnergySource m_EnergySource;
 
 
         //*Properties*//
+        public EnergySource EnergySource
+        {
+            set { m_EnergySource=value; }
+            get { return m_EnergySource; }
+        }
         public Wheel[] Wheels
         {
-            set { ;}
+            set { m_Wheels = value; }
             get { return m_Wheels; }
         }
         public VehicleTicket VehicleTicket
@@ -43,23 +47,24 @@ namespace Ex03.GarageLogic
             get { return m_EnergyLevel; }
         }
 
-
+        //*ctor*//
         public Vehicle(int i_NumOfWheels, float i_PSILevel, eEngineType i_EnergySource)
         {
             m_Wheels = new Wheel[i_NumOfWheels];
             //NT need to init wheels with the psi level
 
         }
+
+
+        //*Methods*//
         public void ChangeStatus()
         {
 
         }
-
         public void FillEnergy()
         {
 
         }
-
         public void ShowVehicleDetails()
         {
 
