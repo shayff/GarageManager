@@ -108,10 +108,9 @@ namespace Ex03.ConsoleUI
                     {
                         CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
                     }
-                    catch (Exception e)
+                    catch
                     {
-                        Console.WriteLine(e);
-                        throw;
+                        Console.WriteLine("Error");
                     }
                 }
             }
@@ -126,18 +125,23 @@ namespace Ex03.ConsoleUI
                               "For All Status - press 3\n");
 
             string input = Console.ReadLine();
-            if (Int32.TryParse(input, out int result))
+            if (int.TryParse(input, out int result))
             {
-                Console.Clear(); // Clear the screen
-                //public enum eVehicleStatus { InRepair, Repaired, Paid }
-                if (result == 3)
+                try
                 {
-                    m_Garage.GetVehiclesInGarage();
-                }
-                else
-                {
-                    m_Garage.GetVehiclesInGarageByStatus((VehicleInGarage.eVehicleStatus)result);
+                    if (result == 3)
+                    {
+                        m_Garage.GetVehiclesInGarage();
+                    }
+                    else
+                    {
+                        m_Garage.GetVehiclesInGarageByStatus((VehicleInGarage.eVehicleStatus)result);
 
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Error");
                 }
             }
             else
@@ -203,9 +207,9 @@ namespace Ex03.ConsoleUI
                     {
                         Console.WriteLine("You tried to fill more capacity");
                     }
-                    catch (Exception)
+                    catch
                     {
-                        Console.WriteLine("An error occurred!\nReturn to the main menu");
+                        Console.WriteLine("Error");
                     }
 
                 }
@@ -239,9 +243,9 @@ namespace Ex03.ConsoleUI
                 {
                     Console.WriteLine("You tried to fill more capacity");
                 }
-                catch (Exception)
+                catch
                 {
-                    Console.WriteLine("An error occurred!\nReturn to the main menu");
+                    Console.WriteLine("Error");
                 }
             }
         }
@@ -249,7 +253,18 @@ namespace Ex03.ConsoleUI
         //Request 7
         public void ShowAllDetails()
         {
+            Console.WriteLine("Enter a license number");
+            string licenseNumber = Console.ReadLine();
 
+            try
+            {
+                string toPrintAllDetails = m_Garage.ShowAllDetails(licenseNumber);
+                Console.WriteLine(toPrintAllDetails);
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
         }
     }
 }
