@@ -11,14 +11,14 @@ namespace Ex03.GarageLogic
         private string m_LicenseNumber;
         private float m_EnergyLevel;
         private Wheel[] m_Wheels;
-        private EnergySource m_EnergySource;
+        private Engine m_Engine;
 
 
         //*Properties*//
-        public EnergySource EnergySource
+        public Engine EnergySource
         {
-            set { m_EnergySource = value; }
-            get { return m_EnergySource; }
+            set { m_Engine = value; }
+            get { return m_Engine; }
         }
         public Wheel[] Wheels
         {
@@ -48,11 +48,6 @@ namespace Ex03.GarageLogic
         }
 
 
-        public eEnergyType TypeOfEngine()
-        {
-            return m_EnergySource.GetEnergyType();
-        }
-
 
         //*ctor*//
 
@@ -67,14 +62,7 @@ namespace Ex03.GarageLogic
             
             m_Wheels = new Wheel[i_NumOfWheels];
             //NT need to init wheels with the psi level
-            if (i_EnergySource == eEnergyType.Fuel)
-            {
-                //m_EnergySource = new FuelTank();
-            }
-            else if (i_EnergySource == eEnergyType.Fuel)
-            {
-                //m_EnergySource = new Battery();
-            }
+
 
 
         }
@@ -87,12 +75,7 @@ namespace Ex03.GarageLogic
         }
         public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
         {
-            m_EnergySource.FillEnergy(i_FuelType, i_FuelToAdd);
-        }
-
-        public void FillEnergy(float i_HoursToAdd)
-        {
-            m_EnergySource.FillEnergy(i_HoursToAdd);
+            m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
         }
 
         public void ShowVehicleDetails()
@@ -124,13 +107,5 @@ namespace Ex03.GarageLogic
             return this.m_LicenseNumber.GetHashCode();
         }
  
-        public bool IsElectricCar()
-        {
-            return m_EnergySource.GetEnergyType() == eEnergyType.Electricity;
-        }
-        public bool IsFuelCar()
-        {
-            return m_EnergySource.GetEnergyType() == eEnergyType.Fuel;
-        }
     }
 }

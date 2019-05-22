@@ -67,9 +67,9 @@ namespace Ex03.GarageLogic
         //Request 5
         public void FillFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
         {
-            if (IsLicenseNumberInGarage(i_LicenseNumber) && m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.IsFuelCar()) 
+            if (IsLicenseNumberInGarage(i_LicenseNumber)) 
             {
-                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy();
+                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy(i_FuelType, i_FuelLiterToAdd);
             }
 
             else
@@ -81,9 +81,9 @@ namespace Ex03.GarageLogic
         //Request 6
         public void ChargingElectricVehicle(string i_LicenseNumber, float i_EnergyToAdd)
         {
-            if (IsLicenseNumberInGarage(i_LicenseNumber) && m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.IsElectricCar())
+            if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy();
+                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy(eFuelType.Electricity,i_EnergyToAdd);
             }
 
             else
