@@ -46,7 +46,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                //NT throw exception Vehicle not exist
+                throw new KeyNotFoundException();
             }
         }
 
@@ -59,7 +59,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                //NT throw exception Vehicle not exist
+                throw new KeyNotFoundException();
             }
 
         }
@@ -74,7 +74,7 @@ namespace Ex03.GarageLogic
 
             else
             {
-                //NT throw exception Vehicle not exist
+                throw new KeyNotFoundException();
             }
         }
 
@@ -88,15 +88,23 @@ namespace Ex03.GarageLogic
 
             else
             {
-                //NT throw exception Vehicle not exist
+                throw new KeyNotFoundException();
             }
 
         }
 
         //Request 7
-        public void ShowAllDetails()
+        public string ShowAllDetails(string i_LicenseNumber)
         {
-            
+            if (IsLicenseNumberInGarage(i_LicenseNumber))
+            {
+                return m_VehiclesInGarage[i_LicenseNumber].
+            }
+           else
+            {
+                throw new KeyNotFoundException();
+            }
+            return;
         }
         
         public bool IsLicenseNumberInGarage(string i_LicenseNumberToCheck)

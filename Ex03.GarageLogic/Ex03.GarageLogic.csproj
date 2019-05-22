@@ -40,10 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Battery.cs" />
     <Compile Include="CreateVehicle.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="FuelTank.cs" />
     <Compile Include="MotorCycle.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Garage.cs" />
