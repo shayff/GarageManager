@@ -34,8 +34,9 @@ namespace Ex03.GarageLogic
         }
 
         //*Methods*//
-        public string VehicleDetails()
+        public override string VehicleDetails()
         {
+
             return String.Format("Color:{0},  Number of doors: {1} ", m_CarColor, m_NumOfDoors);
         }
     }

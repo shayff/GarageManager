@@ -104,7 +104,6 @@ namespace Ex03.GarageLogic
             {
                 throw new KeyNotFoundException();
             }
-            return "";
         }
         
         public bool IsLicenseNumberInGarage(string i_LicenseNumberToCheck)

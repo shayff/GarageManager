@@ -79,7 +79,7 @@ namespace Ex03.GarageLogic
                 wheel.InflatingWheelToMax();
             }
         }
-
+        /*
         public override bool Equals(object obj)
         {
             bool equals = false;
@@ -90,6 +90,7 @@ namespace Ex03.GarageLogic
             }
             return equals;
         }
+        */
 
         public override int GetHashCode()
         {
@@ -98,13 +99,13 @@ namespace Ex03.GarageLogic
 
         public virtual string VehicleDetails()
         {
-            string res = String.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
-            res += m_Engine.EngineDetails();
+            string vehicleDetailsString = String.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
+            vehicleDetailsString += m_Engine.EngineDetails();
             foreach (Wheel wheel in m_Wheels) 
             {
-                res += wheel.WheelDetails();
+                vehicleDetailsString += wheel.WheelDetails();
             }
-            return res;
+            return vehicleDetailsString;
          }
     }
 }
