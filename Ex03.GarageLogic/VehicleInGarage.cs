@@ -23,10 +23,8 @@ namespace Ex03.GarageLogic
         public VehicleInGarage(string i_OwnerName, string i_PhoneNumber)
         { }
 
-        public string  VehicleInGarageDetails()
+        public string VehicleInGarageDetails()
         {
-            return StringBuilder("Owner:{0}, Owner",m_OwnerName,m_PhoneNumber,m_VehicleStatus,m_Vehicle.);
-        }
-
-    }
+            return String.Format("Owner Name:{0}, Owner Phone: {1},Vehicle Status: {2}, {3} ", m_OwnerName, m_PhoneNumber, m_VehicleStatus, m_Vehicle.VehicleDetails());
+     }
 }

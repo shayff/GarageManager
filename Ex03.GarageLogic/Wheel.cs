@@ -36,6 +36,7 @@ namespace Ex03.GarageLogic
                 throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
             }
         }
+        public string WheelDetails();
     
     }
 }

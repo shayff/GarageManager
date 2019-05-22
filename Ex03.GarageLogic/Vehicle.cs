@@ -6,13 +6,11 @@ namespace Ex03.GarageLogic
 {
     public class Vehicle
     {
-        private VehicleInGarage m_VehicleTicket;
         private string m_NameOfModel;
         private string m_LicenseNumber;
         private float m_EnergyLevel;
         private Wheel[] m_Wheels;
         private Engine m_Engine;
-
 
         //*Properties*//
         public Engine EnergySource
@@ -24,12 +22,6 @@ namespace Ex03.GarageLogic
         {
             set { m_Wheels = value; }
             get { return m_Wheels; }
-        }
-        public VehicleInGarage VehicleTicket
-        {
-            set { m_VehicleTicket = value; }
-            get { return m_VehicleTicket; }
-
         }
         public string LicenseNumber
         {
@@ -59,7 +51,7 @@ namespace Ex03.GarageLogic
         {
             string m_LicenseNumber = i_LicenseNumber;
             string m_NameOfModel = i_NameOfModel;
-            
+
             m_Wheels = new Wheel[i_NumOfWheels];
             //NT need to init wheels with the psi level
 
@@ -78,16 +70,13 @@ namespace Ex03.GarageLogic
             m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
         }
 
-        public void ShowVehicleDetails()
-        {
 
-        }
 
         public void InflatingWheelsToMax()
         {
             foreach (Wheel wheel in m_Wheels)
             {
-                wheel.InflatingWheelToMax(); 
+                wheel.InflatingWheelToMax();
             }
         }
 
@@ -95,7 +84,7 @@ namespace Ex03.GarageLogic
         {
             bool equals = false;
             Vehicle vehicleToCompre = obj as Vehicle;
-            if(vehicleToCompre != null)
+            if (vehicleToCompre != null)
             {
                 equals = m_LicenseNumber == vehicleToCompre.m_LicenseNumber;
             }
@@ -106,6 +95,10 @@ namespace Ex03.GarageLogic
         {
             return this.m_LicenseNumber.GetHashCode();
         }
- 
+
+        public virtual string VehicleDetails()
+        {
+            return String.Format("License Number: {0}, Model Name: {1}",m_LicenseNumber,m_NameOfModel);
+        }
     }
 }
