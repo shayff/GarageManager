@@ -14,10 +14,8 @@ namespace Ex03.GarageLogic
 
         eColor m_CarColor;
         int m_NumOfDoors;
-        public Car(eColor i_CarColor,int i_NumOfDoors, eEngineType i_EnergySource) :base(k_NumberOfWheels, k_MaxAirPressure, i_EnergySource)
-        {
-            m_CarColor = i_CarColor;
-            m_NumOfDoors = i_NumOfDoors;
-        }
+        //, eColor i_CarColor,int i_NumOfDoors
+        public Car(eEngineType i_EnergySource) :base(k_NumberOfWheels, k_MaxAirPressure, i_EnergySource)
+        {}
     }
 }

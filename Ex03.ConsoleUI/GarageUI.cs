@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
 {
-    class Program
+    public class GarageUI
     {
-        static void Main(string[] args)
+        public void PrintMenu()
         {
-            CreateVehicle.test();
+            throw new System.NotImplementedException();
         }
     }
 }

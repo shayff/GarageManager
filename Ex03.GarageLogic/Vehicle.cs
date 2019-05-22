@@ -6,12 +6,11 @@ namespace Ex03.GarageLogic
 {
     public class Vehicle
     {
-        private VehicleTicket m_VehicleTicket;
+        private VehicleInGarage m_VehicleTicket;
         private string m_NameOfModel;
         private string m_LicenseNumber;
         private float m_EnergyLevel;
         private Wheel[] m_Wheels;
-
         private EnergySource m_EnergySource;
 
 
@@ -21,7 +20,7 @@ namespace Ex03.GarageLogic
             set { ;}
             get { return m_Wheels; }
         }
-        public VehicleTicket VehicleTicket
+        public VehicleInGarage VehicleTicket
         {
             set { m_VehicleTicket = value; }
             get { return m_VehicleTicket; }
@@ -48,7 +47,16 @@ namespace Ex03.GarageLogic
         {
             m_Wheels = new Wheel[i_NumOfWheels];
             //NT need to init wheels with the psi level
+            if(i_EnergySource == eEngineType.Fuel)
+            {
+                m_EnergySource = new FuelTank();
+            }
+            else if (i_EnergySource == eEngineType.Fuel)
+            {
+                m_EnergySource = new Battery();
+            }
 
+               
         }
         public void ChangeStatus()
         {

@@ -6,7 +6,7 @@ namespace Ex03.GarageLogic
 {
     public enum eEngineType { Fuel, Electricity };
 
-    abstract class EnergySource
+    public abstract class EnergySource
     {
         public abstract void FillEnergy(float i_EnergyToAdd);
     }

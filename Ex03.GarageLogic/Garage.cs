@@ -16,10 +16,10 @@ namespace Ex03.GarageLogic
         }
 
 
-
         //Request 1
-        public void AddCarToGarage()
+        public void InsertVehicleToGarage()
         {
+
         }
 
         //Request 2
@@ -28,7 +28,7 @@ namespace Ex03.GarageLogic
         }
 
         //Request 3
-        public void ChangeConditionOfCar(string i_LicenseNumber, VehicleTicket.eVehicleStatus i_NewStatus)
+        public void ChangeConditionOfCar(string i_LicenseNumber, VehicleInGarage.eVehicleStatus i_NewStatus)
         {
             //Need to find by license number
 

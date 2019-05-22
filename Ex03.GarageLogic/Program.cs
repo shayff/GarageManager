@@ -8,8 +8,6 @@ namespace Ex03.GarageLogic
     {
         static void Main(string[] args)
         {
-            Vehicle test_FuelCar = new Car(Car.eColor.Black, 2, eEngineType.Fuel);
-            Vehicle test_ElectricityCar = new Car(Car.eColor.Blue, 2, eEngineType.Electricity);
 
         }
     }

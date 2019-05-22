@@ -17,7 +17,7 @@
   <Class Name="Ex03.GarageLogic.Garage">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACCgACAAAAAAgAAAAAAIAAAAAAAAAAAAAAAICAAAgAA=</HashCode>
+      <HashCode>ACCgACAAAAAAgAAAAAQAAAAAAAAAAAAAAAAICAAAgAA=</HashCode>
       <FileName>Garage.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -75,22 +75,22 @@
       <FileName>FuelTank.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Ex03.GarageLogic.VehicleTicket">
+  <Class Name="Ex03.GarageLogic.VehicleInGarage">
     <Position X="10" Y="2.5" Width="1.5" />
     <NestedTypes>
-      <Enum Name="Ex03.GarageLogic.VehicleTicket.eVehicleStatus" Collapsed="true">
+      <Enum Name="Ex03.GarageLogic.VehicleInGarage.eVehicleStatus" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>VehicleTicket.cs</NewMemberFileName>
+          <NewMemberFileName>VehicleInGarage.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAQAAAAAAAAAAAAAIAAAAAAIAAAAAAAAAA=</HashCode>
-      <FileName>VehicleTicket.cs</FileName>
+      <HashCode>AAAAAAAAgAAQAAAAAAAAAAAAAJAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>VehicleInGarage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.CreateVehicle">
-    <Position X="10.25" Y="1" Width="1.5" />
+    <Position X="10" Y="0.75" Width="1.5" />
     <NestedTypes>
       <Enum Name="Ex03.GarageLogic.CreateVehicle.eVehicleTypes" Collapsed="true">
         <TypeIdentifier>
@@ -99,7 +99,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>CreateVehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
