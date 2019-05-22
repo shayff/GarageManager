@@ -6,33 +6,34 @@ namespace Ex03.GarageLogic
 {
     public class Wheel
     {
+        const string k_ErrorTooMuchAir = "Too much Air to add";
         private string m_NameOfYAZRAN;
-        private float m_MaxPsiLevel;
-        private float m_PSILevel;
+        private readonly float r_MaxAirPressureLevel;
+        private float m_AirPressureLevel;
 
         //*ctor*//
-        public Wheel(string i_NameOfYAZRAN, float i_MaxPsiLevel, float i_PSILevel)
+        public Wheel(string i_NameOfYAZRAN, float i_MaxAirPressureLevel, float i_PSILevel)
         {
             m_NameOfYAZRAN = i_NameOfYAZRAN;
-            m_MaxPsiLevel = i_MaxPsiLevel;
-            m_PSILevel = i_PSILevel;
+            r_MaxAirPressureLevel = i_MaxAirPressureLevel;
+            m_AirPressureLevel = i_PSILevel;
         }
 
         //*Methods*//
         public void InflatingWheelToMax()
         {
-            m_PSILevel = m_MaxPsiLevel;
+            m_AirPressureLevel = r_MaxAirPressureLevel;
         }
 
         public void InflatingWheel(float i_AirToAdd)
         {
-            if (i_AirToAdd + m_PSILevel <= m_MaxPsiLevel)
+            if (i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel)
             {
-                m_PSILevel += i_AirToAdd;
+                m_AirPressureLevel += i_AirToAdd;
             }
             else
             {
-                //Exceptions
+                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
             }
         }
     
