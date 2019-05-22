@@ -6,15 +6,8 @@ namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        private static LinkedList<Vehicle> m_Vehicles;
-
-        /*Properties*/
-        public LinkedList<Vehicle> Vehicles
-        {
-            set { m_Vehicles=value; }
-            get { return m_Vehicles; }
-        }
-
+        //private static LinkedList<Vehicle> m_Vehicles;
+        private Dictionary<string, VehicleInGarage> m_VehiclesInGarage = new Dictionary<string, VehicleInGarage>();
 
         //Request 1
         public void InsertVehicleToGarage()
@@ -28,22 +21,31 @@ namespace Ex03.GarageLogic
         }
 
         //Request 3
-        public void ChangeConditionOfCar(string i_LicenseNumber, VehicleInGarage.eVehicleStatus i_NewStatus)
+        public void ChangeVehicleStatus(string i_LicenseNumber, VehicleInGarage.eVehicleStatus i_NewStatus)
         {
-            //Need to find by license number
-
-            foreach (Vehicle vehicle in Vehicles)
+            //NT should i check if the new status can change ?
+            if(IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                if (vehicle.LicenseNumber == i_LicenseNumber)
-                {
-                    vehicle.VehicleTicket.VehicleStatus = i_NewStatus;
-                }
+                m_VehiclesInGarage[i_LicenseNumber].VehicleStatus = i_NewStatus;
+            }
+            else
+            {
+                //NT throw exception Vehicle not exist
             }
         }
 
         //Request 4
-        public void InflatingWheelToMax(string i_LicenseNumber)
+        public void InflatingWheelToMaxs(string i_LicenseNumber)
         {
+            if (IsLicenseNumberInGarage(i_LicenseNumber))
+            {
+                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.;
+            }
+            else
+            {
+                //NT throw exception Vehicle not exist
+            }
+
         }
 
         //Request 5
@@ -59,10 +61,10 @@ namespace Ex03.GarageLogic
         {
             
         }
-        public static bool IsLicenseNumberInGarage(string i_LicenseNumberToCheck)
+        public bool IsLicenseNumberInGarage(string i_LicenseNumberToCheck)
         {
-            return m_Vehicles.Equals(new Vehicle(i_LicenseNumberToCheck));
+            return m_VehiclesInGarage.ContainsKey(i_LicenseNumberToCheck);             
         }
-        
+
     }
 }
