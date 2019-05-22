@@ -8,6 +8,7 @@ namespace Ex03.GarageLogic
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
