@@ -9,7 +9,7 @@ namespace Ex03.ConsoleUI
     {
         static void Main(string[] args)
         {
-            CreateVehicle.test();
+            Garage garage = new Garage();
         }
     }
 }
