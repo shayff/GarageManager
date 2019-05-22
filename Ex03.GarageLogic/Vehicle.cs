@@ -98,7 +98,13 @@ namespace Ex03.GarageLogic
 
         public virtual string VehicleDetails()
         {
-            return String.Format("License Number: {0}, Model Name: {1}",m_LicenseNumber,m_NameOfModel);
-        }
+            string res = String.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
+            res += m_Engine.EngineDetails();
+            foreach (Wheel wheel in m_Wheels) 
+            {
+                res += wheel.WheelDetails();
+            }
+            return res;
+         }
     }
 }
