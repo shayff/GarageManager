@@ -47,24 +47,42 @@ namespace Ex03.GarageLogic
             get { return m_EnergyLevel; }
         }
 
+
+        public eEnergyType TypeOfEngine()
+        {
+            return m_EnergySource.Get;
+
+            eEnergyType typeOfEngine;
+           if (m_EnergySource is Battery)
+            {
+                typeOfEngine = eEnergyType.Electricity;
+            }
+           else if(m_EnergySource is FuelTank)
+            {
+                typeOfEngine = eEnergyType.Fuel;
+            }
+            return typeOfEngine;
+        }
+
+
         //*ctor*//
 
         public Vehicle(string i_LicenseNumber)
         {
             string m_LicenseNumber = i_LicenseNumber;
         }
-        public Vehicle(eEngineType i_EnergySource, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_PSILevel)
+        public Vehicle(eEnergyType i_EnergySource, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_PSILevel)
         {
             string m_LicenseNumber = i_LicenseNumber;
             string m_NameOfModel = i_NameOfModel;
             
             m_Wheels = new Wheel[i_NumOfWheels];
             //NT need to init wheels with the psi level
-            if (i_EnergySource == eEngineType.Fuel)
+            if (i_EnergySource == eEnergyType.Fuel)
             {
                 //m_EnergySource = new FuelTank();
             }
-            else if (i_EnergySource == eEngineType.Fuel)
+            else if (i_EnergySource == eEnergyType.Fuel)
             {
                 //m_EnergySource = new Battery();
             }
@@ -110,5 +128,6 @@ namespace Ex03.GarageLogic
         {
             return this.m_LicenseNumber.GetHashCode();
         }
+ 
     }
 }

@@ -28,5 +28,9 @@ namespace Ex03.GarageLogic
                 throw new ValueOutOfRangeException(0, r_BatteryMaxCapacity, k_ErrorTooMuchEnergy);
             }
         }
+        public override eEnergyType GetEnergyType()
+        {
+            return eEnergyType.Electricity;
+        }
     }
 }

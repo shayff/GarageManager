@@ -28,7 +28,7 @@ namespace Ex03.GarageLogic
 
         //*ctor*//
         //eColor i_CarColor,int i_NumOfDoors, 
-        public Car(eEngineType i_EnergySource, string i_NameOfModel ,string i_LicenseNumber) :base(i_EnergySource, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
+        public Car(eEnergyType i_EnergySource, string i_NameOfModel ,string i_LicenseNumber) :base(i_EnergySource, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
 
         }
