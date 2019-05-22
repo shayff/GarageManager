@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battery.cs" />
-    <Compile Include="CreateVehicles.cs" />
+    <Compile Include="CreateVehicle.cs" />
     <Compile Include="EnergySource.cs" />
     <Compile Include="FuelTank.cs" />
     <Compile Include="MotorCycle.cs" />
