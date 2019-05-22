@@ -7,7 +7,7 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
-        private Garage m_Garage = new Garage();
+        private readonly Garage m_Garage = new Garage();
 
         public void PrintMenu()
         {
@@ -102,7 +102,15 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
+                    try
+                    {
+                        CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
                 }
             }
         }
@@ -164,9 +172,7 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Enter a license number");
             string licenseNumber = Console.ReadLine();
-
             m_Garage.InflatingWheelToMax(licenseNumber);
-
         }
 
         //Request 5
@@ -185,9 +191,17 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Enter How many liters to fill");
                 string liters = Console.ReadLine();
-                if (float.TryParse(liters, out float literToAdd))
+                if (float.TryParse(liters, out float literToAdd) && 0 < literToAdd)
                 {
-                    m_Garage.FillFuelToFuelVehicles(licenseNumber, (eFuelType)result, literToAdd);
+                    try
+                    {
+                        m_Garage.FillFuelToFuelVehicles(licenseNumber, (eFuelType)result, literToAdd);
+                    }
+                    catch (Exception valueOutOfRangeException)
+                    {
+                        Console.WriteLine("You tried to fill more capacity");
+                        throw;
+                    }
                 }
                 else
                 {
