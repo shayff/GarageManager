@@ -16,6 +16,8 @@ namespace Ex03.ConsoleUI
 
             while (flag)
             {
+                Console.Clear(); // Clear the screen
+
                 Console.WriteLine("Put a new car into the garage - press 1\n" +
                                   "View the list of vehicle license numbers in the garage - press 2\n" +
                                   "Change the condition of a car in the garage - press 3\n" +
@@ -197,11 +199,15 @@ namespace Ex03.ConsoleUI
                     {
                         m_Garage.FillFuelToFuelVehicles(licenseNumber, (eFuelType)result, literToAdd);
                     }
-                    catch (Exception valueOutOfRangeException)
+                    catch (ValueOutOfRangeException)
                     {
                         Console.WriteLine("You tried to fill more capacity");
-                        throw;
                     }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("An error occurred!\nReturn to the main menu");
+                    }
+
                 }
                 else
                 {
@@ -218,7 +224,26 @@ namespace Ex03.ConsoleUI
         //Request 6
         public void ChargingElectricVehicle()
         {
+            Console.WriteLine("Enter a license number");
+            string licenseNumber = Console.ReadLine();
 
+            Console.WriteLine("Enter How many minutes will you charge");
+            string minutes = Console.ReadLine();
+            if (float.TryParse(minutes, out float result))
+            {
+                try
+                {
+                    m_Garage.ChargingElectricVehicle(licenseNumber, result);
+                }
+                catch (ValueOutOfRangeException)
+                {
+                    Console.WriteLine("You tried to fill more capacity");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("An error occurred!\nReturn to the main menu");
+                }
+            }
         }
 
         //Request 7
