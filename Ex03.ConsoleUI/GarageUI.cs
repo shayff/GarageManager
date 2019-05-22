@@ -236,7 +236,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Enter a license number");
             string licenseNumber = Console.ReadLine();
 
-            m_Garage.InflatingWheelToMaxs(licenseNumber);
+            m_Garage.InflatingWheelToMax(licenseNumber);
 
         }
 
