@@ -98,13 +98,13 @@ namespace Ex03.GarageLogic
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                return m_VehiclesInGarage[i_LicenseNumber].
+                return m_VehiclesInGarage[i_LicenseNumber];
             }
            else
             {
                 throw new KeyNotFoundException();
             }
-            return;
+            return "";
         }
         
         public bool IsLicenseNumberInGarage(string i_LicenseNumberToCheck)
