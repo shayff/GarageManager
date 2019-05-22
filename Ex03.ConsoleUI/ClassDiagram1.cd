@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Ex03.ConsoleUI.GarageUI">
-    <Position X="3.75" Y="1.75" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACKAAAAAAAAAIAAAAIQAAAAAAIAAAAAACAAACAAAAAA=</HashCode>
       <FileName>GarageUI.cs</FileName>
     </TypeIdentifier>
   </Class>
