@@ -38,31 +38,36 @@ namespace Ex03.ConsoleUI
                                 InsertVehicleToGarage();
                                 break;
                             }
-
                         case '2':
                             {
                                 ViewListOfVehicleLicenseNumbers();
                                 break;
                             }
-
                         case '3':
                             {
                                 ChangeVehicleStatus();
                                 break;
                             }
-
                         case '4':
                             {
                                 InflatingWheelToMax();
                                 break;
                             }
-
                         case '5':
                             {
                                 FillFuelToFuelVehicles();
                                 break;
                             }
-
+                        case '6':
+                            {
+                                ChargingElectricVehicle();
+                                break;
+                            }
+                        case '7':
+                            {
+                                ShowAllDetails();
+                                break;
+                            }
                         case '8':
                             {
                                 flag = false;
