@@ -44,11 +44,17 @@ namespace Ex03.ConsoleUI
                             }
 
                         case '3':
-                        {
-                            ChangeVehicleStatus();
+                            {
+                                ChangeVehicleStatus();
                                 break;
                             }
 
+                        case '4':
+                        {
+                            InflatingWheelToMax();
+                            break;
+                            
+                        }
                         case '8':
                             {
                                 flag = false;
@@ -214,6 +220,16 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Incorrect input");
             }
+        }
+
+        //Request 4
+        public void InflatingWheelToMax()
+        {
+            Console.WriteLine("Enter a license number");
+            string licenseNumber = Console.ReadLine();
+
+            m_Garage.InflatingWheelToMaxs(licenseNumber);
+
         }
     }
 }
