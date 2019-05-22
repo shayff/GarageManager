@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
 
 
         //*Methods*//
-        public MotorCycle(eEngineType i_EnergySource) :base(k_NumberOfWheels, k_MaxAirPressure, i_EnergySource)
+        public MotorCycle(eEngineType i_EnergySource, string i_NameOfModel, string i_LicenseNumber) :base(i_EnergySource, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
 
         }
