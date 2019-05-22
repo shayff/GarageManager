@@ -12,11 +12,56 @@ namespace Ex03.ConsoleUI
         public void PrintMenu()
         {
             Console.WriteLine("Welcome to garage of Shay and Nelly!\n\n");
+            bool flag = true;
 
+            while (flag)
+            {
+                Console.WriteLine("Put a new car into the garage - press 1\n" +
+                                  "View the list of vehicle license numbers in the garage - press 2\n" +
+                                  "Change the condition of a car in the garage - press 3\n" +
+                                  "Inflate the air in the wheels of a vehicle to the maximum - press 4\n" +
+                                  "Fuel a vehicle powered by fuel - press 5\n" +
+                                  "To charge an electric vehicle - press 6\n" +
+                                  "View full data of a vehicle by license number - press 7\n");
+                string input = Console.ReadLine();
 
-            InsertVehicleToGarage();
+                if (Int32.TryParse(input, out int result))
+                {
+                    Console.Clear();                    // Clear the screen
 
+                    switch (result)
+                    {
+                        case '1':
+                            {
+                                InsertVehicleToGarage();
+                                break;
+                            }
 
+                        case '2':
+                            {
+                                ViewListOfVehicleLicenseNumbers();
+                                break;
+                            }
+
+                        case '3':
+                        {
+                            ChangeVehicleStatus();
+                                break;
+                            }
+
+                        case '8':
+                            {
+                                flag = false;
+                                break;
+                            }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+
+            }
         }
 
         //Request 1
@@ -38,42 +83,137 @@ namespace Ex03.ConsoleUI
 
                 Console.WriteLine("Enter a license number");
                 string licenseNumber = Console.ReadLine();
+
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
+                    Console.WriteLine("The car is already in the garage ");
 
                 }
-
-                switch (choice)
+                else
                 {
-                    case '1':
-                        {
-                            CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelMotorCycle, nameOfModel, licenseNumber);
-                            break;
-                        }
-                    case '2':
-                        {
-                            CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricMotorCycle, nameOfModel, licenseNumber);
-                            break;
-                        }
-                    case '3':
-                        {
-                            CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelCar, nameOfModel, licenseNumber);
-                            break;
-                        }
-                    case '4':
-                        {
-                            CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricCar, nameOfModel, licenseNumber);
-                            break;
-                        }
-                    case '5':
-                        {
-                            CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelTruck, nameOfModel, licenseNumber);
-                            break;
-                        }
+                    switch (choice)
+                    {
+                        case '1':
+                            {
+                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelMotorCycle, nameOfModel, licenseNumber);
+                                break;
+                            }
+                        case '2':
+                            {
+                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricMotorCycle, nameOfModel, licenseNumber);
+                                break;
+                            }
+                        case '3':
+                            {
+                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelCar, nameOfModel, licenseNumber);
+                                break;
+                            }
+                        case '4':
+                            {
+                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricCar, nameOfModel, licenseNumber);
+                                break;
+                            }
+                        case '5':
+                            {
+                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.FuelTruck, nameOfModel, licenseNumber);
+                                break;
+                            }
+                    }
                 }
             }
 
 
+        }
+
+        //Request 2
+        public void ViewListOfVehicleLicenseNumbers()
+        {
+            Console.WriteLine("For All Status - press 1\n" +
+                              "For only InRepair - press 2\n" +
+                              "For only Repaired - press 3\n" +
+                              "For only Paid - press 4\n");
+
+            string input = Console.ReadLine();
+            if (Int32.TryParse(input, out int result))
+            {
+                Console.Clear();                    // Clear the screen
+
+                switch (result)
+                {
+                    case '1':
+                        {
+                            m_Garage.GetVehiclesInGarage();
+                            break;
+                        }
+
+                    case '2':
+                        {
+                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.InRepair);
+                            break;
+                        }
+
+                    case '3':
+                        {
+                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.Repaired);
+                            break;
+                        }
+
+                    case '4':
+                        {
+                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.Paid);
+                            break;
+                        }
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input");
+
+            }
+
+
+        }
+
+        //Request 3
+        public void ChangeVehicleStatus()
+        {
+            Console.WriteLine("Enter a Vehicle Status:\n" +
+                              "for Repaired - press 1\n" +
+                              "for InRepair - press 2\n" +
+                              "for Paid - press 3");
+            string status = Console.ReadLine();
+
+            Console.WriteLine("Enter a license number");
+            string licenseNumber = Console.ReadLine();
+
+            if (Int32.TryParse(status, out int result))
+            {
+                switch (result)
+                {
+                    case '1':
+                        {
+                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.Repaired);
+                            break;
+                        }
+
+                    case '2':
+                        {
+                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.InRepair);
+                            break;
+                        }
+
+                    case '3':
+                        {
+                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.Paid);
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input");
+            }
         }
     }
 }
