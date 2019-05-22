@@ -39,7 +39,13 @@ namespace Ex03.ConsoleUI
 
                         case '2':
                             {
+                                ViewListOfVehicleLicenseNumbers();
+                                break;
+                            }
 
+                        case '3':
+                        {
+                            ChangeVehicleStatus();
                                 break;
                             }
 
@@ -136,26 +142,26 @@ namespace Ex03.ConsoleUI
                 {
                     case '1':
                         {
-
+                            m_Garage.GetVehiclesInGarage();
                             break;
                         }
 
                     case '2':
                         {
-
+                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.InRepair);
                             break;
                         }
 
                     case '3':
                         {
-
+                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.Repaired);
                             break;
                         }
 
                     case '4':
                         {
+                            m_Garage.GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus.Paid);
                             break;
-
                         }
                 }
 
@@ -167,6 +173,47 @@ namespace Ex03.ConsoleUI
             }
 
 
+        }
+
+        //Request 3
+        public void ChangeVehicleStatus()
+        {
+            Console.WriteLine("Enter a Vehicle Status:\n" +
+                              "for Repaired - press 1\n" +
+                              "for InRepair - press 2\n" +
+                              "for Paid - press 3");
+            string status = Console.ReadLine();
+
+            Console.WriteLine("Enter a license number");
+            string licenseNumber = Console.ReadLine();
+
+            if (Int32.TryParse(status, out int result))
+            {
+                switch (result)
+                {
+                    case '1':
+                        {
+                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.Repaired);
+                            break;
+                        }
+
+                    case '2':
+                        {
+                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.InRepair);
+                            break;
+                        }
+
+                    case '3':
+                        {
+                            m_Garage.ChangeVehicleStatus(licenseNumber, VehicleInGarage.eVehicleStatus.Paid);
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input");
+            }
         }
     }
 }
