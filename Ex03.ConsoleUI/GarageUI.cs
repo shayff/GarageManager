@@ -99,7 +99,6 @@ namespace Ex03.ConsoleUI
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
                     Console.WriteLine("The car is already in the garage ");
-
                 }
                 else
                 {
@@ -114,8 +113,7 @@ namespace Ex03.ConsoleUI
 
                         case '2':
                             {
-                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricMotorCycle, nameOfModel,
-                                    licenseNumber);
+                                CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricMotorCycle, nameOfModel, licenseNumber);
                                 break;
                             }
 
@@ -139,8 +137,6 @@ namespace Ex03.ConsoleUI
                     }
                 }
             }
-
-
         }
 
         //Request 2
@@ -247,10 +243,8 @@ namespace Ex03.ConsoleUI
         //Request 5
         public void FillFuelToFuelVehicles()
         {
-            //  public enum eFuelType { Octan98, Octan96, Octan95, Soler };
             Console.WriteLine("Enter a license number");
             string licenseNumber = Console.ReadLine();
-
 
             Console.WriteLine("Enter a Fuel type:\n" +
                               "for Octan98 - press 1\n" +
