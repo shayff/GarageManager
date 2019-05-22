@@ -9,7 +9,7 @@ namespace Ex03.ConsoleUI
     {
         static void Main(string[] args)
         {
-            Garage garage = new Garage();
+            GarageUI garageUI = new GarageUI();
         }
     }
 }

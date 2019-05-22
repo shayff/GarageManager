@@ -7,6 +7,8 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
+        private Garage m_Garage = new Garage();
+
         public void PrintMenu()
         {
             Console.WriteLine("Welcome to garage of Shay and Nelly!\n\n");
@@ -36,7 +38,7 @@ namespace Ex03.ConsoleUI
 
                 Console.WriteLine("Enter a license number");
                 string licenseNumber = Console.ReadLine();
-                if (Garage.IsLicenseNumberInGarage(licenseNumber))
+                if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
 
                 }
