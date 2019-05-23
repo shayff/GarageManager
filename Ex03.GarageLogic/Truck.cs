@@ -6,6 +6,7 @@ namespace Ex03.GarageLogic
 {
     public class Truck : Vehicle
     {
+
         private const int k_NumberOfWheels = 12;
         private const float k_MaxAirPressure = 26f;
         private bool m_IsDriveDangerousCargo;
