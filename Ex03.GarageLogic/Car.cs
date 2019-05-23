@@ -28,7 +28,11 @@ namespace Ex03.GarageLogic
         //*ctor*//
         public Car(eFuelType i_EngineType, string i_NameOfModel ,string i_LicenseNumber) :base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
-            m_AdditionalFields = new string[] { "CarColor", "NumOfDoors" };
+            m_AdditionalFields = new Dictionary<string, string>
+                  {
+            { "CarColor", "Car Color, \n 0. Red\n 1. Blue\n 2. Black\n 3. Grey" },
+            { "NumOfDoors", "value2" }
+                 };
         }
 
         //*Methods*//

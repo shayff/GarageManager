@@ -28,7 +28,7 @@ namespace Ex03.GarageLogic
         // bool i_IsDriveDangerousCargo, float i_CargoCapacity
         public Truck(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
-            m_AdditionalFields =new string[]{ "IsDriveDangerousCargo", "CargoCapacity" };
+            m_AdditionalFields =new Dictionary<string,string>{ {"IsDriveDangerousCargo", "0 fir trye "},{ "CargoCapacity", "" } };
         }
 
         public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)

@@ -304,14 +304,14 @@ namespace Ex03.ConsoleUI
 
         }
 
-        public Dictionary<string, int> GetAdditonalFieldsData(string[] i_AdditonalFieldsName)
+        public Dictionary<string, int> GetAdditonalFieldsData(Dictionary<string, string> i_AdditonalFieldsName)
         {
             int FieldData;
             Dictionary<string, int> AdditonalFieldsData = new Dictionary<string, int>();
-            foreach (string FieldName in i_AdditonalFieldsName)
+            foreach (KeyValuePair<string, string> field in i_AdditonalFieldsName)
             {
-                FieldData = GetFieldData(FieldName);
-                AdditonalFieldsData.Add(FieldName, FieldData);
+                FieldData = GetFieldData(field.Value);
+                AdditonalFieldsData.Add(field.Key, FieldData);
             }
             return AdditonalFieldsData;
         }

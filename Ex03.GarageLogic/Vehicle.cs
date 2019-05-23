@@ -11,7 +11,8 @@ namespace Ex03.GarageLogic
         private float m_EnergyLevel;
         private List<Wheel> m_Wheels;
         private Engine m_Engine;
-        public static string[] m_AdditionalFields;
+        // public static string[] m_AdditionalFields;
+        public static Dictionary<string, string> m_AdditionalFields;
 
         /*
         public T dosomething<T>(object o)
@@ -26,7 +27,7 @@ namespace Ex03.GarageLogic
        /*
 
         //*Properties*/
-        public string[] AdditionalFields
+        public Dictionary<string, string> AdditionalFields
         {
             get { return m_AdditionalFields; }
         }
