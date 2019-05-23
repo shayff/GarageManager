@@ -9,15 +9,16 @@ namespace Ex03.GarageLogic
         private string m_NameOfModel;
         private string m_LicenseNumber;
         private float m_EnergyLevel;
-        private Wheel[] m_Wheels;
+        private List<Wheel> m_Wheels;
         private Engine m_Engine;
         public static string[] m_AdditionalFields;
 
+        /*
         public T dosomething<T>(object o)
         {
             T enumVal = (T)Enum.Parse(typeof(T), o.ToString());
             return enumVal;
-        }
+        }*/
 
         /*
          * object o = 4;
@@ -34,12 +35,6 @@ namespace Ex03.GarageLogic
         {
             set { m_Engine = value; }
             get { return m_Engine; }
-        }
-
-        public Wheel[] Wheels
-        {
-            set { m_Wheels = value; }
-            get { return m_Wheels; }
         }
 
         public string LicenseNumber
@@ -69,23 +64,23 @@ namespace Ex03.GarageLogic
             string m_LicenseNumber = i_LicenseNumber;
         }
 
-        public Vehicle(eFuelType i_EngineType, float FuelCapacity, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_MaxAirPressureLevel)
+        public Vehicle(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
             m_LicenseNumber = i_LicenseNumber;
             m_NameOfModel = i_NameOfModel;
 
-            m_Engine = new Engine(i_EngineType, FuelCapacity);
-
-            m_Wheels = new Wheel[i_NumOfWheels];
-            //init wheels
-            //NT need to init wheels with the psi level
-
+            m_Engine = new Engine(i_EngineType); //FuelCapacity);
+            m_Wheels = CreateWheels(i_NumOfWheels, i_MaxAirPressureLevel);
         }
 
-        //*Methods*//
-        public void ChangeStatus()
+        public List<Wheel> CreateWheels(int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
-            
+            List<Wheel> Wheels = new List<Wheel>(i_NumOfWheels);
+            for (int i = 0; i < i_NumOfWheels; i++)
+            {
+                Wheels.Add(new Wheel(i_MaxAirPressureLevel));
+            }
+            return Wheels;
         }
 
         public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
@@ -103,7 +98,7 @@ namespace Ex03.GarageLogic
 
         public override int GetHashCode()
         {
-            return m_LicenseNumber.GetHashCode();
+            return this.m_LicenseNumber.GetHashCode();
         }
 
         public virtual string VehicleDetails()
@@ -121,17 +116,11 @@ namespace Ex03.GarageLogic
 
         public void AddDetailsWheels(string i_NameOfWheelManufacturer, float i_AirPressureLevel)
         {
-            foreach (Wheel wheel in m_Wheels)
+            foreach (Wheel wheels in m_Wheels)
             {
-                wheel.AirPressureLevel = i_AirPressureLevel;
-                wheel.NameOfManufacturer = i_NameOfWheelManufacturer;
+                wheels.AirPressureLevel = i_AirPressureLevel;
+                wheels.NameOfManufacturer = i_NameOfWheelManufacturer;
             }
-        }
-
-
-        public float GetMaxAirPressureLevel()
-        {
-            return m_Wheels[0].MaxAirPressureLevel;
         }
 
     }

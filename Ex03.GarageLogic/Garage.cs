@@ -112,6 +112,5 @@ namespace Ex03.GarageLogic
             return m_VehiclesInGarage.ContainsKey(i_LicenseNumberToCheck);
         }
 
-
     }
 }
