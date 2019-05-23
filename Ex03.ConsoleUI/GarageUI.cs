@@ -107,7 +107,7 @@ namespace Ex03.ConsoleUI
                         string i_NameOfWheelManufacturer = "none";
                         float i_AirPressureLevel = 4;
                        //for test
-                        Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber, i_NameOfWheelManufacturer, i_AirPressureLevel);
+                        Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
 
                         //*Details wheels*//
                         RequestDetailswheels(newVehicle.Wheels[0].MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel);
