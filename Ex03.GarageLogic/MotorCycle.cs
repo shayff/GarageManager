@@ -4,20 +4,20 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    enum eLicneceType { A, A1, A2, B }
+    enum eLicenseType { A, A1, A2, B }
     public class MotorCycle : Vehicle
     {
         private const int k_NumberOfWheels = 2;
         private const float k_MaxAirPressure = 33f;
-        private eLicneceType m_LicneceType;
-        private int m_EngineCapcity;
+        private eLicenseType m_LicenseType;
+        private int m_EngineCapacity;
 
 
         //*ctor*//
         public MotorCycle(eFuelType i_EngineType,float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
-            m_AdditionalFields = new Dictionary<string, string> { { "LicneceType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
-                { "EngineCapcity" ,"Engine Capacity Insert in int"} };
+            m_AdditionalFields = new Dictionary<string, string> { { "LicenseType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
+                { "EngineCapacity" ,"Engine Capacity Insert in int"} };
 
 
         }
@@ -25,12 +25,12 @@ namespace Ex03.GarageLogic
         //*Methods*//
         public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
         {
-            if (i_AdditionalFieldsToSet.ContainsKey("LicneceType"))
+            if (i_AdditionalFieldsToSet.ContainsKey("LicenseType"))
             {
-                m_LicneceType = (eLicneceType)i_AdditionalFieldsToSet["LicneceType"];
+                m_LicenseType = (eLicenseType)i_AdditionalFieldsToSet["LicenseType"];
             }
 
-            m_EngineCapcity = (int)i_AdditionalFieldsToSet["EngineCapcity"];
+            m_EngineCapacity = (int)i_AdditionalFieldsToSet["EngineCapacity"];
         }
     }
 }

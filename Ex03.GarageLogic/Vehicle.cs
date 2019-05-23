@@ -72,12 +72,12 @@ namespace Ex03.GarageLogic
 
         public List<Wheel> CreateWheels(int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
-            List<Wheel> Wheels = new List<Wheel>(i_NumOfWheels);
+            List<Wheel> wheels = new List<Wheel>(i_NumOfWheels);
             for (int i = 0; i < i_NumOfWheels; i++)
             {
-                Wheels.Add(new Wheel(i_MaxAirPressureLevel));
+                wheels.Add(new Wheel(i_MaxAirPressureLevel));
             }
-            return Wheels;
+            return wheels;
         }
 
         public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
