@@ -31,7 +31,7 @@ namespace Ex03.GarageLogic
             m_AdditionalFields = new Dictionary<string, string>
                   {
             { "CarColor", "Car Color, \n 0. Red\n 1. Blue\n 2. Black\n 3. Grey" },
-            { "NumOfDoors", "value2" }
+            { "NumOfDoors", "Num of Doors value2" }
                  };
         }
 
@@ -40,6 +40,8 @@ namespace Ex03.GarageLogic
         {
             return String.Format("Color:{0},  Number of doors: {1} ", m_CarColor, m_NumOfDoors);
         }
+
+
 
         public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
         {
