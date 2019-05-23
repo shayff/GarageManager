@@ -91,10 +91,8 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Enter a vehicle model");
                 string nameOfModel = Console.ReadLine();
+                string licenseNumber = AskLicenseNumber();
 
-                Console.WriteLine("Enter a license number");
-                string licenseNumber = Console.ReadLine();
-                
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
                     Console.WriteLine("The car is already in the garage ");
@@ -103,10 +101,6 @@ namespace Ex03.ConsoleUI
                 { 
                     try
                     {
-                        //for test
-                        string i_NameOfWheelManufacturer = "none";
-                        float i_AirPressureLevel = 4;
-                       //for test
                         Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
 
                         //*Details wheels*//
@@ -178,8 +172,7 @@ namespace Ex03.ConsoleUI
                               "for Paid - press 2");
             string status = Console.ReadLine();
 
-            Console.WriteLine("Enter a license number");
-            string licenseNumber = Console.ReadLine();
+            string licenseNumber = AskLicenseNumber();
 
             if (Int32.TryParse(status, out int result))
             {
@@ -194,8 +187,7 @@ namespace Ex03.ConsoleUI
         //Request 4
         public void InflatingWheelToMax()
         {
-            Console.WriteLine("Enter a license number");
-            string licenseNumber = Console.ReadLine();
+            string licenseNumber = AskLicenseNumber();
             m_Garage.InflatingWheelToMax(licenseNumber);
         }
 
