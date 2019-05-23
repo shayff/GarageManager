@@ -15,50 +15,37 @@ namespace Ex03.GarageLogic
             FuelTruck
         }
 
-        public static void test()
-        {
-            /*
-            Vehicle test_FuelMotor = new MotorCycle(eEngineType.Fuel);
-            Vehicle test_ElectricMotor = new MotorCycle(eEngineType.Electricity);
-            Vehicle test_FuelCar = new Car(eEngineType.Fuel);
-            Vehicle test_ElectricCar = new Car(eEngineType.Electricity);
-            Vehicle test_Truck = new Truck(eEngineType.Fuel);
-            */
-        }
-
-        public static Vehicle Create(eVehicleTypes i_VehicleType, string i_NameOfModel, string i_LicenseNumber)
+        public static Vehicle Create(eVehicleTypes i_VehicleType, string i_NameOfModel, string i_LicenseNumber,string i_NameOfWheelManufacturer, float i_AirPressureLevel)
         {
             Vehicle newVehicle = null;
             switch (i_VehicleType)
             {
                 case eVehicleTypes.FuelMotorCycle:
                     {
-                        newVehicle = new MotorCycle(eEnergyType.Fuel, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new MotorCycle(eFuelType.Octan95, i_NameOfModel, i_LicenseNumber, i_NameOfWheelManufacturer, i_AirPressureLevel);
                         break;
                     }
                 case eVehicleTypes.ElectricMotorCycle:
                     {
-                        newVehicle = new MotorCycle(eEnergyType.Electricity, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new MotorCycle(eFuelType.Electricity, i_NameOfModel, i_LicenseNumber, i_NameOfWheelManufacturer, i_AirPressureLevel);
                         break;
                     }
                 case eVehicleTypes.FuelCar:
                     {
-                        newVehicle = new Car(eEnergyType.Fuel, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new Car(eFuelType.Octan96, i_NameOfModel, i_LicenseNumber, i_NameOfWheelManufacturer, i_AirPressureLevel);
                         break;
                     }
                 case eVehicleTypes.ElectricCar:
                     {
-                        newVehicle = new Car(eEnergyType.Electricity, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new Car(eFuelType.Electricity, i_NameOfModel, i_LicenseNumber, i_NameOfWheelManufacturer, i_AirPressureLevel);
                         break;
                     }
                 case eVehicleTypes.FuelTruck:
                     {
-                        newVehicle = new Truck(eEnergyType.Fuel, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new Truck(eFuelType.Soler, i_NameOfModel, i_LicenseNumber, i_NameOfWheelManufacturer, i_AirPressureLevel);
                         break;
                     }
             }
-
-
             return newVehicle;
         }
 

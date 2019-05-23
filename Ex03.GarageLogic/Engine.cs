@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    public enum eEnergyType { Fuel, Electricity };
+    //public enum eEnergyType { Fuel, Electricity };
     public enum eFuelType { Octan98, Octan96, Octan95, Soler, Electricity };
-
 
     public class Engine
     {
@@ -17,9 +16,9 @@ namespace Ex03.GarageLogic
         private float m_CurrentFuelCapacity;
         private readonly float r_MaxFuelCapacity;
 
-        public  void FillEnergy(eFuelType i_FuelTypeToAdd , float i_AmountToAdd)
+        public void FillEnergy(eFuelType i_FuelTypeToAdd, float i_AmountToAdd)
         {
-            if(i_FuelTypeToAdd == m_FuelType)
+            if (i_FuelTypeToAdd == m_FuelType)
             {
                 if (i_AmountToAdd + m_CurrentFuelCapacity <= r_MaxFuelCapacity)
                 {
@@ -35,6 +34,7 @@ namespace Ex03.GarageLogic
                 throw new Exception(k_ErrorWrongTypeOfFuel);
             }
         }
+
         public string EngineDetails()
         {
             return String.Format("Fuel type: {0}, Current Fuel Capacity {1}", m_FuelType, m_CurrentFuelCapacity);

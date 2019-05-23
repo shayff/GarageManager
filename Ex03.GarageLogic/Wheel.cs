@@ -12,11 +12,11 @@ namespace Ex03.GarageLogic
         private float m_AirPressureLevel;
 
         //*ctor*//
-        public Wheel(string i_NameOfYAZRAN, float i_MaxAirPressureLevel, float i_PSILevel)
+        public Wheel(string i_NameOfManufacturer, float i_MaxAirPressureLevel, float i_AirPressureLevel)
         {
-            m_NameOfManufacturer = i_NameOfYAZRAN;
+            m_NameOfManufacturer = i_NameOfManufacturer;
             r_MaxAirPressureLevel = i_MaxAirPressureLevel;
-            m_AirPressureLevel = i_PSILevel;
+            m_AirPressureLevel = i_AirPressureLevel;
         }
 
         //*Methods*//
@@ -36,6 +36,7 @@ namespace Ex03.GarageLogic
                 throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
             }
         }
+
         public string WheelDetails()
         {
             return String.Format("Manufacturer: {0}, AirPressure Level: {1}", m_NameOfManufacturer, m_AirPressureLevel);

@@ -4,36 +4,56 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    public class Vehicle
+    public abstract class Vehicle
     {
         private string m_NameOfModel;
         private string m_LicenseNumber;
         private float m_EnergyLevel;
         private Wheel[] m_Wheels;
         private Engine m_Engine;
-         
+        public static string[] m_AdditonalFields;
 
-        //*Properties*//
+        public T dosomething<T>(object o)
+        {
+            T enumVal = (T)Enum.Parse(typeof(T), o.ToString());
+            return enumVal;
+        }
+
+        /*
+         * object o = 4;
+         *dosomething<Crustaceans>(o);
+       = =/*
+
+        //*Properties*/
+        public string[] AdditonalFields
+        {
+            get { return m_AdditonalFields; }
+        }
+
         public Engine EnergySource
         {
             set { m_Engine = value; }
             get { return m_Engine; }
         }
+
         public Wheel[] Wheels
         {
             set { m_Wheels = value; }
             get { return m_Wheels; }
         }
+
         public string LicenseNumber
         {
             set { m_LicenseNumber = value; }
             get { return m_LicenseNumber; }
         }
+
         public string NameOfModel
         {
             set { m_NameOfModel = value; }
             get { return m_NameOfModel; }
         }
+
         public float EnergyLevel
         {
             set { m_EnergyLevel = value; }
@@ -48,30 +68,28 @@ namespace Ex03.GarageLogic
         {
             string m_LicenseNumber = i_LicenseNumber;
         }
-        public Vehicle(eEnergyType i_EnergySource, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_PSILevel)
-        {
-            string m_LicenseNumber = i_LicenseNumber;
-            string m_NameOfModel = i_NameOfModel;
 
-            m_Wheels = new Wheel[i_NumOfWheels];
+        public Vehicle(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, string i_NameOfManufacturer, float i_MaxAirPressureLevel, float i_AirPressureLevel)
+        {
+            m_LicenseNumber = i_LicenseNumber;
+            m_NameOfModel = i_NameOfModel;
+
+            m_Wheels = new Wheel[i_NumOfWheels] ;
+            //init wheels
             //NT need to init wheels with the psi level
 
-
-
         }
-
 
         //*Methods*//
         public void ChangeStatus()
         {
 
         }
+
         public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
         {
             m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
         }
-
-
 
         public void InflatingWheelsToMax()
         {
@@ -80,18 +98,6 @@ namespace Ex03.GarageLogic
                 wheel.InflatingWheelToMax();
             }
         }
-        /*
-        public override bool Equals(object obj)
-        {
-            bool equals = false;
-            Vehicle vehicleToCompre = obj as Vehicle;
-            if (vehicleToCompre != null)
-            {
-                equals = m_LicenseNumber == vehicleToCompre.m_LicenseNumber;
-            }
-            return equals;
-        }
-        */
 
         public override int GetHashCode()
         {
@@ -107,6 +113,8 @@ namespace Ex03.GarageLogic
                 vehicleDetailsString += wheel.WheelDetails();
             }
             return vehicleDetailsString;
-         }
+        }
+
+        public abstract void SetAdditonalFields(Dictionary<string, int> i_AdditonalFieldsToSet);
     }
 }

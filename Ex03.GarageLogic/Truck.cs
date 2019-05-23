@@ -8,7 +8,6 @@ namespace Ex03.GarageLogic
     {
         private const int k_NumberOfWheels = 12;
         private const float k_MaxAirPressure = 26f;
-
         private bool m_IsDriveDangerousCargo;
         private float m_CargoCapacity;
 
@@ -18,6 +17,7 @@ namespace Ex03.GarageLogic
             set { m_IsDriveDangerousCargo = value; }
             get { return m_IsDriveDangerousCargo; }
         }
+
         public float CargoCapacity
         {
             set { m_CargoCapacity = value; }
@@ -26,8 +26,16 @@ namespace Ex03.GarageLogic
 
         //*ctor**/
         // bool i_IsDriveDangerousCargo, float i_CargoCapacity
-        public Truck(eEnergyType i_EnergySource, string i_NameOfModel, string i_LicenseNumber) :base(i_EnergySource, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
+        public Truck(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber, string i_NameOfWheelManufacturer, float i_AirPressureLevel) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, i_NameOfWheelManufacturer, k_MaxAirPressure, i_AirPressureLevel)
         {
+            m_AdditonalFields =new string[]{ "IsDriveDangerousCargo", "CargoCapacity" };
         }
+
+        public override void SetAdditonalFields(Dictionary<string, int> i_AdditonalFieldsToSet)
+        {
+            m_IsDriveDangerousCargo = i_AdditonalFieldsToSet["IsDriveDangerousCargo"] == 0;
+            m_CargoCapacity = (float)i_AdditonalFieldsToSet["CargoCapacity"];
+        }
+
     }
 }

@@ -9,7 +9,7 @@ namespace Ex03.ConsoleUI
     {
         private readonly Garage m_Garage = new Garage();
 
-        public void PrintMenu()
+        public void Start()
         {
             bool flag = true;
 
@@ -17,20 +17,12 @@ namespace Ex03.ConsoleUI
             {
                 Console.Clear(); // Clear the screen
                 Console.WriteLine("Welcome to garage of Shay and Nelly!\n");
-
-                Console.WriteLine("1. Put a new car into the garage\n" +
-                                  "2. View the list of vehicle license numbers in the garage\n" +
-                                  "3. Change the condition of a car in the garage\n" +
-                                  "4. Inflate the air in the wheels of a vehicle to the maximum\n" +
-                                  "5. Fuel a vehicle powered by fuel\n" +
-                                  "6. To charge an electric vehicle\n" +
-                                  "7. View full data of a vehicle by license number\n" +
-                                  "8. Exit");
+                PrintMainMenu();
                 string input = Console.ReadLine();
 
                 if (Int32.TryParse(input, out int result))
                 {
-                    Console.Clear(); // Clear the screen
+                    Console.Clear();
 
                     switch (result)
                     {
@@ -80,7 +72,6 @@ namespace Ex03.ConsoleUI
                 {
                     Console.WriteLine("Incorrect input");
                 }
-
             }
         }
 
@@ -109,10 +100,16 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("The car is already in the garage ");
                 }
                 else
-                {
+                { //Nelly we need to add the wheel things , , i_NameOfWheelManufacturer, i_AirPressureLevel
                     try
                     {
-                        Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
+                        //for test
+                        string i_NameOfWheelManufacturer = "none";
+                        float i_AirPressureLevel = 4;
+                       //for test
+                        Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber, i_NameOfWheelManufacturer, i_AirPressureLevel);
+                        Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.AdditonalFields);
+                        newVehicle.SetAdditonalFields(FieldsToSet);
                         CreateVehicleInGarage(newVehicle);
                     }
                     catch
@@ -166,7 +163,6 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Incorrect input");
             }
         }
-
 
         //Request 3
         public void ChangeVehicleStatus()
@@ -241,7 +237,6 @@ namespace Ex03.ConsoleUI
             }
         }
 
-
         //Request 6
         public void ChargingElectricVehicle()
         {
@@ -284,7 +279,44 @@ namespace Ex03.ConsoleUI
             }
         }
 
+        public void PrintMainMenu()
+        {
+            Console.WriteLine("1. Put a new car into the garage\n" +
+                                  "2. View the list of vehicle license numbers in the garage\n" +
+                                  "3. Change the condition of a car in the garage\n" +
+                                  "4. Inflate the air in the wheels of a vehicle to the maximum\n" +
+                                  "5. Fuel a vehicle powered by fuel\n" +
+                                  "6. To charge an electric vehicle\n" +
+                                  "7. View full data of a vehicle by license number\n" +
+                                  "8. Exit");
+        }
 
+        public void SetAdditonalFields()
+        {
+
+
+        }
+
+        public Dictionary<string, int> GetAdditonalFieldsData(string[] i_AdditonalFieldsName)
+        {
+            int FieldData;
+            Dictionary<string, int> AdditonalFieldsData = new Dictionary<string, int>();
+            foreach (string FieldName in i_AdditonalFieldsName)
+            {
+                FieldData = GetFieldData(FieldName);
+                AdditonalFieldsData.Add(FieldName, FieldData);
+            }
+            return AdditonalFieldsData;
+        }
+
+        public int GetFieldData(string i_FieldName) //NT check if the input is ok
+        {
+            Console.WriteLine("Please enter ");
+            Console.WriteLine(i_FieldName);
+            string FieldData = Console.ReadLine();
+            Int32.TryParse(FieldData, out int res);
+            return res;
+        }
 
         public void CreateVehicleInGarage(Vehicle i_NewVehicle)
         {
@@ -308,6 +340,4 @@ namespace Ex03.ConsoleUI
 
         }
     }
-
-
 }
