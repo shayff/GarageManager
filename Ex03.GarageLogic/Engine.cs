@@ -14,25 +14,25 @@ namespace Ex03.GarageLogic
 
         private eFuelType m_FuelType;
         private float m_CurrentFuelCapacity;
-        private float m_MaxFuelCapacity;
+        private readonly float r_MaxFuelCapacity;
 
-        public Engine(eFuelType i_EngineType)
+        public Engine(eFuelType i_EngineType, float i_MaxEnergyCapacity)
         {
             m_FuelType = i_EngineType;
-            //m_CurrentFuelCapacity= i_FuelCapacity;
+            m_CurrentFuelCapacity= i_MaxEnergyCapacity;
         }
 
         public void FillEnergy(eFuelType i_FuelTypeToAdd, float i_AmountToAdd)
         {
             if (i_FuelTypeToAdd == m_FuelType)
             {
-                if (i_AmountToAdd + m_CurrentFuelCapacity <= m_MaxFuelCapacity)
+                if (i_AmountToAdd + m_CurrentFuelCapacity <= r_MaxFuelCapacity)
                 {
                     m_CurrentFuelCapacity += i_AmountToAdd;
                 }
                 else
                 {
-                    throw new ValueOutOfRangeException(0, m_MaxFuelCapacity, k_ErrorTooMuchFuel);
+                    throw new ValueOutOfRangeException(0, r_MaxFuelCapacity, k_ErrorTooMuchFuel);
                 }
             }
             else
