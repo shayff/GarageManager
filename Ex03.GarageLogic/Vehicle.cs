@@ -66,9 +66,6 @@ namespace Ex03.GarageLogic
 
         public Vehicle(eFuelType i_EngineType,float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
-            m_LicenseNumber = i_LicenseNumber;
-            m_NameOfModel = i_NameOfModel;
-
             m_Engine = new Engine(i_EngineType, i_MaxEnergyCapacity);
             m_Wheels = CreateWheels(i_NumOfWheels, i_MaxAirPressureLevel);
         }

@@ -26,7 +26,7 @@ namespace Ex03.GarageLogic
 
         //*ctor**/
         // bool i_IsDriveDangerousCargo, float i_CargoCapacity
-        public Truck(eFuelType i_EngineType,float i_MaxEnergyCapacity, string i_NameOfModel, string i_LicenseNumber) : base(i_EngineType, i_MaxEnergyCapacity, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
+        public Truck(eFuelType i_EngineType,float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
             m_AdditionalFields =new Dictionary<string,string>{ {"IsDriveDangerousCargo", "Is Drive Dangerous Cargo Type, \n 0. YES\n 1. NO" },
                 { "CargoCapacity", "Cargo Capacity Insert in float" } };

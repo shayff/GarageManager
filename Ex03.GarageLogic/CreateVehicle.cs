@@ -48,7 +48,7 @@ namespace Ex03.GarageLogic
                     }
                 case eVehicleTypes.FuelTruck:
                     {
-                        newVehicle = new Truck(eFuelType.Soler, k_MaxEnergyCapacityFuelTruck, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new Truck(eFuelType.Soler, k_MaxEnergyCapacityFuelTruck);
                         break;
                     }
             }
