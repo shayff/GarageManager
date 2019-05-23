@@ -202,8 +202,7 @@ namespace Ex03.ConsoleUI
         //Request 5
         public void FillFuelToFuelVehicles()
         {
-            Console.WriteLine("Enter a license number");
-            string licenseNumber = Console.ReadLine();
+            string licenseNumber = AskLicenseNumber();
 
             Console.WriteLine("Enter a Fuel type:\n" +
                               "for Octan98 - press 0\n" +
@@ -245,8 +244,7 @@ namespace Ex03.ConsoleUI
         //Request 6
         public void ChargingElectricVehicle()
         {
-            Console.WriteLine("Enter a license number");
-            string licenseNumber = Console.ReadLine();
+            string licenseNumber = AskLicenseNumber();
 
             Console.WriteLine("Enter How many minutes will you charge");
             string minutesStr = Console.ReadLine();
@@ -272,8 +270,7 @@ namespace Ex03.ConsoleUI
         //Request 7
         public void ShowAllDetails()
         {
-            Console.WriteLine("Enter a license number");
-            string licenseNumber = Console.ReadLine();
+            string licenseNumber = AskLicenseNumber();
 
             try
             {
@@ -341,9 +338,7 @@ namespace Ex03.ConsoleUI
             else
             {
                 Console.WriteLine("Error");
-
             }
-
 
         }
 
@@ -376,5 +371,13 @@ namespace Ex03.ConsoleUI
             o_NameOfWheelManufacturer = Console.ReadLine();
 
         }
+
+        public string AskLicenseNumber()
+        {
+            Console.WriteLine("Enter a license number");
+            return Console.ReadLine();
+        }
     }
+
+
 }

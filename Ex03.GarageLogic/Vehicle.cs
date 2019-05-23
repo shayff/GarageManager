@@ -64,7 +64,7 @@ namespace Ex03.GarageLogic
             string m_LicenseNumber = i_LicenseNumber;
         }
 
-        public Vehicle(eFuelType i_EngineType,float i_MaxEnergyCapacity, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_MaxAirPressureLevel)
+        public Vehicle(eFuelType i_EngineType,float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
             m_LicenseNumber = i_LicenseNumber;
             m_NameOfModel = i_NameOfModel;

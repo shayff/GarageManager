@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
 
 
         //*ctor*//
-        public MotorCycle(eFuelType i_EngineType,float i_MaxEnergyCapacity, string i_NameOfModel, string i_LicenseNumber) : base(i_EngineType, i_MaxEnergyCapacity, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
+        public MotorCycle(eFuelType i_EngineType,float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
             m_AdditionalFields = new Dictionary<string, string> { { "LicneceType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
                 { "EngineCapcity" ,"bla"} };

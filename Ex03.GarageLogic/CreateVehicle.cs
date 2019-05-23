@@ -28,22 +28,22 @@ namespace Ex03.GarageLogic
             {
                 case eVehicleTypes.FuelMotorCycle:
                     {
-                        newVehicle = new MotorCycle(eFuelType.Octan95, k_MaxEnergyCapacityFuelMotorCycle, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new MotorCycle(eFuelType.Octan95, k_MaxEnergyCapacityFuelMotorCycle);
                         break;
                     }
                 case eVehicleTypes.ElectricMotorCycle:
                     {
-                        newVehicle = new MotorCycle(eFuelType.Electricity, k_MaxEnergyCapacityElectricMotorCycle, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new MotorCycle(eFuelType.Electricity, k_MaxEnergyCapacityElectricMotorCycle);
                         break;
                     }
                 case eVehicleTypes.FuelCar:
                     {
-                        newVehicle = new Car(eFuelType.Octan96, k_MaxEnergyCapacityFuelCar, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new Car(eFuelType.Octan96, k_MaxEnergyCapacityFuelCar);
                         break;
                     }
                 case eVehicleTypes.ElectricCar:
                     {
-                        newVehicle = new Car(eFuelType.Electricity,k_MaxEnergyCapacityElectricCar, i_NameOfModel, i_LicenseNumber);
+                        newVehicle = new Car(eFuelType.Electricity,k_MaxEnergyCapacityElectricCar);
                         break;
                     }
                 case eVehicleTypes.FuelTruck:
