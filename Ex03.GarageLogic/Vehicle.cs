@@ -85,7 +85,7 @@ namespace Ex03.GarageLogic
         //*Methods*//
         public void ChangeStatus()
         {
-
+            
         }
 
         public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
@@ -103,7 +103,7 @@ namespace Ex03.GarageLogic
 
         public override int GetHashCode()
         {
-            return this.m_LicenseNumber.GetHashCode();
+            return m_LicenseNumber.GetHashCode();
         }
 
         public virtual string VehicleDetails()
@@ -121,11 +121,17 @@ namespace Ex03.GarageLogic
 
         public void AddDetailsWheels(string i_NameOfWheelManufacturer, float i_AirPressureLevel)
         {
-            foreach (Wheel wheels in m_Wheels)
+            foreach (Wheel wheel in m_Wheels)
             {
-                wheels.AirPressureLevel = i_AirPressureLevel;
-                wheels.NameOfManufacturer = i_NameOfWheelManufacturer;
+                wheel.AirPressureLevel = i_AirPressureLevel;
+                wheel.NameOfManufacturer = i_NameOfWheelManufacturer;
             }
+        }
+
+
+        public float GetMaxAirPressureLevel()
+        {
+            return m_Wheels[0].MaxAirPressureLevel;
         }
 
     }
