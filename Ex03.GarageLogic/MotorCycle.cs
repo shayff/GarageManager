@@ -16,13 +16,17 @@ namespace Ex03.GarageLogic
         //*ctor*//
         public MotorCycle(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
+            if (i_EngineType == eFuelType.Electricity)
+            {
 
-            m_AdditonalFields = new string[] { "LicneceType", "EngineCapcity" };
+            }
+                m_AdditonalFields = new string[] { "LicneceType", "EngineCapcity" };
         }
 
         //*Methods*//
         public override void SetAdditonalFields(Dictionary<string, int> i_AdditonalFieldsToSet)
         {
+
             if (i_AdditonalFieldsToSet.ContainsKey("LicneceType"))
             {
                 m_LicneceType = (eLicneceType)i_AdditonalFieldsToSet["LicneceType"];
