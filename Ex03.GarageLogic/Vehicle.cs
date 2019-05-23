@@ -123,5 +123,9 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public float GetMaxAirPressureLevel()
+        {
+            return m_Wheels[0].MaxAirPressureLevel;
+        }
     }
 }

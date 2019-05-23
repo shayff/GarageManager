@@ -320,8 +320,8 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Please enter ");
             Console.WriteLine(i_FieldName);
-            string FieldData = Console.ReadLine();
-            Int32.TryParse(FieldData, out int res);
+            string fieldData = Console.ReadLine();
+            Int32.TryParse(fieldData, out int res);
             return res;
         }
 
@@ -346,7 +346,6 @@ namespace Ex03.ConsoleUI
 
 
         }
-
 
         public void RequestDetailswheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
         {
