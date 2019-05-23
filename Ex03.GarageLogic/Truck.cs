@@ -6,7 +6,6 @@ namespace Ex03.GarageLogic
 {
     public class Truck : Vehicle
     {
-
         private const int k_NumberOfWheels = 12;
         private const float k_MaxAirPressure = 26f;
         private bool m_IsDriveDangerousCargo;
@@ -29,7 +28,8 @@ namespace Ex03.GarageLogic
         // bool i_IsDriveDangerousCargo, float i_CargoCapacity
         public Truck(eFuelType i_EngineType,float i_MaxEnergyCapacity, string i_NameOfModel, string i_LicenseNumber) : base(i_EngineType, i_MaxEnergyCapacity, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
-            m_AdditionalFields =new Dictionary<string,string>{ {"IsDriveDangerousCargo", "0 fir trye "},{ "CargoCapacity", "" } };
+            m_AdditionalFields =new Dictionary<string,string>{ {"IsDriveDangerousCargo", "Is Drive Dangerous Cargo Type, \n 0. YES\n 1. NO" },
+                { "CargoCapacity", "Cargo Capacity Insert in float" } };
         }
 
         public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
