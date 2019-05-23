@@ -94,13 +94,13 @@ namespace Ex03.ConsoleUI
 
                 Console.WriteLine("Enter a license number");
                 string licenseNumber = Console.ReadLine();
-
+                
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
                     Console.WriteLine("The car is already in the garage ");
                 }
                 else
-                { //Nelly we need to add the wheel things , , i_NameOfWheelManufacturer, i_AirPressureLevel
+                { 
                     try
                     {
                         //for test
@@ -108,8 +108,13 @@ namespace Ex03.ConsoleUI
                         float i_AirPressureLevel = 4;
                        //for test
                         Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber, i_NameOfWheelManufacturer, i_AirPressureLevel);
-                        Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.AdditonalFields);
-                        newVehicle.SetAdditonalFields(FieldsToSet);
+
+                        //*Details wheels*//
+                        RequestDetailswheels(newVehicle.Wheels[0].MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel);
+                        newVehicle.AddDetailsWheels(o_NameOfWheelManufacturer, o_AirPressureLevel);
+
+                        Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.AdditionalFields);
+                        newVehicle.SetAdditionalFields(FieldsToSet);
                         CreateVehicleInGarage(newVehicle);
                     }
                     catch
@@ -244,12 +249,14 @@ namespace Ex03.ConsoleUI
             string licenseNumber = Console.ReadLine();
 
             Console.WriteLine("Enter How many minutes will you charge");
-            string minutes = Console.ReadLine();
-            if (float.TryParse(minutes, out float result))
+            string minutesStr = Console.ReadLine();
+
+            if (float.TryParse(minutesStr, out float minutes))
             {
                 try
                 {
-                    m_Garage.ChargingElectricVehicle(licenseNumber, result);
+                    float hours = minutes / 60;
+                    m_Garage.ChargingElectricVehicle(licenseNumber, hours);
                 }
                 catch (ValueOutOfRangeException)
                 {
@@ -337,6 +344,37 @@ namespace Ex03.ConsoleUI
 
             }
 
+
+        }
+
+
+        public void RequestDetailswheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
+        {
+            bool inputCorrectly = true;
+            o_AirPressureLevel = 0;
+            while (inputCorrectly)
+            {
+                Console.WriteLine("Enter the current air pressure in the wheels " +
+                                  "(The maximum is- " + i_MaxAirPressureLevel + ") ");
+                string airPressureLevelStr = Console.ReadLine();
+
+                float.TryParse(airPressureLevelStr, out float airPressureLevel);
+
+                if (airPressureLevel <= i_MaxAirPressureLevel && airPressureLevel >= 0)
+                {
+                    o_AirPressureLevel = airPressureLevel;
+                    inputCorrectly = false;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, please try again ");
+                }
+
+            }
+
+            Console.WriteLine("EnterThe manufacturer's name of the wheels");
+
+            o_NameOfWheelManufacturer = Console.ReadLine();
 
         }
     }

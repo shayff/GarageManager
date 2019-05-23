@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
         private float m_EnergyLevel;
         private Wheel[] m_Wheels;
         private Engine m_Engine;
-        public static string[] m_AdditonalFields;
+        public static string[] m_AdditionalFields;
 
         public T dosomething<T>(object o)
         {
@@ -21,13 +21,13 @@ namespace Ex03.GarageLogic
 
         /*
          * object o = 4;
-         *dosomething<Crustaceans>(o);
-       = =/*
+         *do something<Crustaceans>(o);
+       /*
 
         //*Properties*/
-        public string[] AdditonalFields
+        public string[] AdditionalFields
         {
-            get { return m_AdditonalFields; }
+            get { return m_AdditionalFields; }
         }
 
         public Engine EnergySource
@@ -69,14 +69,12 @@ namespace Ex03.GarageLogic
             string m_LicenseNumber = i_LicenseNumber;
         }
 
-        public Vehicle(eFuelType i_EngineType,float FuelCapacity, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, float i_MaxAirPressureLevel)
+        public Vehicle(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber, int i_NumOfWheels, string i_NameOfManufacturer, float i_MaxAirPressureLevel, float i_AirPressureLevel)
         {
             m_LicenseNumber = i_LicenseNumber;
             m_NameOfModel = i_NameOfModel;
 
-            m_Engine = new Engine(i_EngineType, FuelCapacity);
-
-            m_Wheels = new Wheel[i_NumOfWheels] ;
+            m_Wheels = new Wheel[i_NumOfWheels];
             //init wheels
             //NT need to init wheels with the psi level
 
@@ -110,13 +108,23 @@ namespace Ex03.GarageLogic
         {
             string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
             vehicleDetailsString += m_Engine.EngineDetails();
-            foreach (Wheel wheel in m_Wheels) 
+            foreach (Wheel wheel in m_Wheels)
             {
                 vehicleDetailsString += wheel.WheelDetails();
             }
             return vehicleDetailsString;
         }
 
-        public abstract void SetAdditonalFields(Dictionary<string, int> i_AdditonalFieldsToSet);
+        public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
+
+        public void AddDetailsWheels(string i_NameOfWheelManufacturer, float i_AirPressureLevel)
+        {
+            foreach (Wheel wheels in m_Wheels)
+            {
+                wheels.AirPressureLevel = i_AirPressureLevel;
+                wheels.NameOfManufacturer = i_NameOfWheelManufacturer;
+            }
+        }
+
     }
 }

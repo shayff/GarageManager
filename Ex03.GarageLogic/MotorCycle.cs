@@ -14,25 +14,20 @@ namespace Ex03.GarageLogic
 
 
         //*ctor*//
-        public MotorCycle(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
+        public MotorCycle(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber, string i_NameOfWheelManufacturer, float i_AirPressureLevel) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, i_NameOfWheelManufacturer, k_MaxAirPressure, i_AirPressureLevel)
         {
-            if (i_EngineType == eFuelType.Electricity)
-            {
-
-            }
-                m_AdditonalFields = new string[] { "LicneceType", "EngineCapcity" };
+            m_AdditionalFields = new string[] { "LicneceType", "EngineCapcity" };
         }
 
         //*Methods*//
-        public override void SetAdditonalFields(Dictionary<string, int> i_AdditonalFieldsToSet)
+        public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
         {
-
-            if (i_AdditonalFieldsToSet.ContainsKey("LicneceType"))
+            if (i_AdditionalFieldsToSet.ContainsKey("LicneceType"))
             {
-                m_LicneceType = (eLicneceType)i_AdditonalFieldsToSet["LicneceType"];
+                m_LicneceType = (eLicneceType)i_AdditionalFieldsToSet["LicneceType"];
             }
 
-            m_EngineCapcity = (int)i_AdditonalFieldsToSet["EngineCapcity"];
+            m_EngineCapcity = (int)i_AdditionalFieldsToSet["EngineCapcity"];
         }
     }
 }
