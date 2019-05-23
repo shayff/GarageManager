@@ -11,20 +11,21 @@ namespace Ex03.ConsoleUI
 
         public void PrintMenu()
         {
-            Console.WriteLine("Welcome to garage of Shay and Nelly!\n\n");
             bool flag = true;
 
             while (flag)
             {
                 Console.Clear(); // Clear the screen
+                Console.WriteLine("Welcome to garage of Shay and Nelly!\n");
 
-                Console.WriteLine("Put a new car into the garage - press 1\n" +
-                                  "View the list of vehicle license numbers in the garage - press 2\n" +
-                                  "Change the condition of a car in the garage - press 3\n" +
-                                  "Inflate the air in the wheels of a vehicle to the maximum - press 4\n" +
-                                  "Fuel a vehicle powered by fuel - press 5\n" +
-                                  "To charge an electric vehicle - press 6\n" +
-                                  "View full data of a vehicle by license number - press 7\n");
+                Console.WriteLine("1. Put a new car into the garage\n" +
+                                  "2. View the list of vehicle license numbers in the garage\n" +
+                                  "3. Change the condition of a car in the garage\n" +
+                                  "4. Inflate the air in the wheels of a vehicle to the maximum\n" +
+                                  "5. Fuel a vehicle powered by fuel\n" +
+                                  "6. To charge an electric vehicle\n" +
+                                  "7. View full data of a vehicle by license number\n" +
+                                  "8. Exit");
                 string input = Console.ReadLine();
 
                 if (Int32.TryParse(input, out int result))
@@ -33,42 +34,42 @@ namespace Ex03.ConsoleUI
 
                     switch (result)
                     {
-                        case '1':
+                        case 1:
                             {
                                 InsertVehicleToGarage();
                                 break;
                             }
-                        case '2':
+                        case 2:
                             {
                                 ViewListOfVehicleLicenseNumbers();
                                 break;
                             }
-                        case '3':
+                        case 3:
                             {
                                 ChangeVehicleStatus();
                                 break;
                             }
-                        case '4':
+                        case 4:
                             {
                                 InflatingWheelToMax();
                                 break;
                             }
-                        case '5':
+                        case 5:
                             {
                                 FillFuelToFuelVehicles();
                                 break;
                             }
-                        case '6':
+                        case 6:
                             {
                                 ChargingElectricVehicle();
                                 break;
                             }
-                        case '7':
+                        case 7:
                             {
                                 ShowAllDetails();
                                 break;
                             }
-                        case '8':
+                        case 8:
                             {
                                 flag = false;
                                 break;
@@ -86,12 +87,12 @@ namespace Ex03.ConsoleUI
         //Request 1
         public void InsertVehicleToGarage()
         {
-            Console.WriteLine("Insert a car type:/n" +
-                              "for A Fuel MotorCycle press 0\n" +
-                              "for A Electric motorcycle press 1\n " +
-                              "for A Fuel Car press 2\n" +
-                              "for A Electric car press 3\n" +
-                              "for A Fuel truck press 4\n");
+            Console.WriteLine("Insert a car type:\n" +
+                              "0. Fuel MotorCycle\n" +
+                              "1. Electric motorcycle\n" +
+                              "2. Fuel Car\n" +
+                              "3. Electric car\n" +
+                              "4. Fuel truck\n");
 
             string typeOfVehicle = Console.ReadLine();
 
@@ -111,7 +112,8 @@ namespace Ex03.ConsoleUI
                 {
                     try
                     {
-                        CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
+                        Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
+                        CreateVehicleInGarage(newVehicle);
                     }
                     catch
                     {
@@ -124,10 +126,11 @@ namespace Ex03.ConsoleUI
         //Request 2
         public void ViewListOfVehicleLicenseNumbers()
         {
-            Console.WriteLine("For only InRepair - press 0\n" +
-                              "For only Repaired - press 1\n" +
-                              "For only Paid - press 2\n" +
-                              "For All Status - press 3\n");
+            Console.WriteLine("How would you like the list?" +
+                              "0. only InRepair\n" +
+                              "1. only Repaired \n" +
+                              "2. only Paid\n" +
+                              "3. All Status\n");
 
             string input = Console.ReadLine();
             if (int.TryParse(input, out int result))
@@ -136,11 +139,20 @@ namespace Ex03.ConsoleUI
                 {
                     if (result == 3)
                     {
-                        m_Garage.GetVehiclesInGarage();
+                        List<string> listsGarage = m_Garage.GetVehiclesInGarage();
+                        foreach (string licenseNumber in listsGarage)
+                        {
+                            Console.WriteLine(licenseNumber);
+                        }
                     }
                     else
                     {
-                        m_Garage.GetVehiclesInGarageByStatus((VehicleInGarage.eVehicleStatus)result);
+                        List<string> listsGarage = m_Garage.GetVehiclesInGarageByStatus((VehicleInGarage.eVehicleStatus)result);
+
+                        foreach (string licenseNumber in listsGarage)
+                        {
+                            Console.WriteLine(licenseNumber);
+                        }
 
                     }
                 }
@@ -271,5 +283,31 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Error");
             }
         }
+
+
+
+        public void CreateVehicleInGarage(Vehicle i_NewVehicle)
+        {
+
+            Console.WriteLine("Enter the owner's name");
+            string ownerName = Console.ReadLine();
+
+            Console.WriteLine("Enter the Phone Number");
+            string phoneNumber = Console.ReadLine();
+
+            if (Int32.TryParse(phoneNumber, out int number))
+            {
+                m_Garage.InsertVehicleToGarage(ownerName, phoneNumber, i_NewVehicle);
+            }
+            else
+            {
+                Console.WriteLine("Error");
+
+            }
+
+
+        }
     }
+
+
 }

@@ -12,9 +12,10 @@ namespace Ex03.GarageLogic
         private Dictionary<string, VehicleInGarage> m_VehiclesInGarage = new Dictionary<string, VehicleInGarage>();
 
         //Request 1
-        public void InsertVehicleToGarage()
+        public void InsertVehicleToGarage(string ownerName, string phoneNumber, Vehicle newVehicle)
         {
-
+            VehicleInGarage newVehicleInGarage=new VehicleInGarage( ownerName,  phoneNumber, newVehicle);
+            m_VehiclesInGarage.Add(newVehicle.LicenseNumber,newVehicleInGarage);
         }
 
         //Request 2 
@@ -25,22 +26,22 @@ namespace Ex03.GarageLogic
 
         public List<string> GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus i_VehicleStatusToCompare)
         {
-            List<string> ListOfVehiclesByStatus = new List<string>();
+            List<string> listOfVehiclesByStatus = new List<string>();
             foreach (KeyValuePair<string, VehicleInGarage> vehicle in m_VehiclesInGarage)
             {
                 if (vehicle.Value.VehicleStatus == i_VehicleStatusToCompare)
                 {
-                    ListOfVehiclesByStatus.Add(vehicle.Key);
+                    listOfVehiclesByStatus.Add(vehicle.Key);
                 }
             }
-            return ListOfVehiclesByStatus;
+            return listOfVehiclesByStatus;
         }
 
         //Request 3
         public void ChangeVehicleStatus(string i_LicenseNumber, VehicleInGarage.eVehicleStatus i_NewStatus)
         {
             //NT should i check if the new status can change ?
-            if(IsLicenseNumberInGarage(i_LicenseNumber))
+            if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
                 m_VehiclesInGarage[i_LicenseNumber].VehicleStatus = i_NewStatus;
             }
@@ -67,7 +68,7 @@ namespace Ex03.GarageLogic
         //Request 5
         public void FillFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
         {
-            if (IsLicenseNumberInGarage(i_LicenseNumber)) 
+            if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
                 m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy(i_FuelType, i_FuelLiterToAdd);
             }
@@ -83,7 +84,7 @@ namespace Ex03.GarageLogic
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy(eFuelType.Electricity,i_EnergyToAdd);
+                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy(eFuelType.Electricity, i_EnergyToAdd);
             }
 
             else
@@ -100,17 +101,17 @@ namespace Ex03.GarageLogic
             {
                 return m_VehiclesInGarage[i_LicenseNumber].VehicleInGarageDetails();
             }
-           else
+            else
             {
                 throw new KeyNotFoundException();
             }
         }
-        
+
         public bool IsLicenseNumberInGarage(string i_LicenseNumberToCheck)
         {
-            return m_VehiclesInGarage.ContainsKey(i_LicenseNumberToCheck);             
+            return m_VehiclesInGarage.ContainsKey(i_LicenseNumberToCheck);
         }
 
-       
+
     }
 }

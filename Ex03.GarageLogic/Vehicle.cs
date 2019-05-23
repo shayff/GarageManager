@@ -11,6 +11,7 @@ namespace Ex03.GarageLogic
         private float m_EnergyLevel;
         private Wheel[] m_Wheels;
         private Engine m_Engine;
+         
 
         //*Properties*//
         public Engine EnergySource
@@ -99,7 +100,7 @@ namespace Ex03.GarageLogic
 
         public virtual string VehicleDetails()
         {
-            string vehicleDetailsString = String.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
+            string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
             vehicleDetailsString += m_Engine.EngineDetails();
             foreach (Wheel wheel in m_Wheels) 
             {
