@@ -14,8 +14,9 @@ namespace Ex03.GarageLogic
 
 
         //*ctor*//
-        public MotorCycle(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber, string i_NameOfWheelManufacturer, float i_AirPressureLevel) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, i_NameOfWheelManufacturer, k_MaxAirPressure, i_AirPressureLevel)
+        public MotorCycle(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
+
             m_AdditonalFields = new string[] { "LicneceType", "EngineCapcity" };
         }
 

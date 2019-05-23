@@ -26,7 +26,7 @@ namespace Ex03.GarageLogic
 
         //*ctor**/
         // bool i_IsDriveDangerousCargo, float i_CargoCapacity
-        public Truck(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber, string i_NameOfWheelManufacturer, float i_AirPressureLevel) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, i_NameOfWheelManufacturer, k_MaxAirPressure, i_AirPressureLevel)
+        public Truck(eFuelType i_EngineType, string i_NameOfModel, string i_LicenseNumber) : base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, k_MaxAirPressure)
         {
             m_AdditonalFields =new string[]{ "IsDriveDangerousCargo", "CargoCapacity" };
         }
