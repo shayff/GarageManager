@@ -110,7 +110,7 @@ namespace Ex03.ConsoleUI
                         Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
 
                         //*Details wheels*//
-                        RequestDetailswheels(newVehicle.GetMaxAirPressureLevel(), out string o_NameOfWheelManufacturer, out float o_AirPressureLevel);
+                        RequestDetailsWheels(newVehicle.GetMaxAirPressureLevel(), out string o_NameOfWheelManufacturer, out float o_AirPressureLevel);
                         newVehicle.AddDetailsWheels(o_NameOfWheelManufacturer, o_AirPressureLevel);
 
                         Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.AdditionalFields);
@@ -318,7 +318,7 @@ namespace Ex03.ConsoleUI
 
         public int GetFieldData(string i_FieldName) //NT check if the input is ok
         {
-            Console.WriteLine("Please enter ");
+            Console.Write("Please enter ");
             Console.WriteLine(i_FieldName);
             string fieldData = Console.ReadLine();
             Int32.TryParse(fieldData, out int res);
@@ -347,7 +347,7 @@ namespace Ex03.ConsoleUI
 
         }
 
-        public void RequestDetailswheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
+        public void RequestDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
         {
             bool inputCorrectly = true;
             o_AirPressureLevel = 0;
