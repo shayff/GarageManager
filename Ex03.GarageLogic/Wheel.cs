@@ -11,6 +11,25 @@ namespace Ex03.GarageLogic
         private readonly float r_MaxAirPressureLevel;
         private float m_AirPressureLevel;
 
+
+        //*Properties*/
+        public float MaxAirPressureLevel
+        {
+            get { return r_MaxAirPressureLevel; }
+        }
+
+        public float AirPressureLevel
+        {
+            get { return m_AirPressureLevel; }
+            set { m_AirPressureLevel = value; }
+        }
+
+        public string NameOfManufacturer
+        {
+            get { return m_NameOfManufacturer; }
+            set { m_NameOfManufacturer = value; }
+        }
+
         //*ctor*//
         public Wheel(string i_NameOfManufacturer, float i_MaxAirPressureLevel, float i_AirPressureLevel)
         {

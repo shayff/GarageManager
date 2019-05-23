@@ -28,7 +28,7 @@ namespace Ex03.GarageLogic
         //*ctor*//
         public Car(eFuelType i_EngineType, string i_NameOfModel ,string i_LicenseNumber, string i_NameOfWheelManufacturer, float i_AirPressureLevel) :base(i_EngineType, i_NameOfModel, i_LicenseNumber, k_NumberOfWheels, i_NameOfWheelManufacturer, k_MaxAirPressure, i_AirPressureLevel)
         {
-            m_AdditonalFields = new string[] { "CarColor", "NumOfDoors" };
+            m_AdditionalFields = new string[] { "CarColor", "NumOfDoors" };
         }
 
         //*Methods*//
@@ -37,10 +37,10 @@ namespace Ex03.GarageLogic
             return String.Format("Color:{0},  Number of doors: {1} ", m_CarColor, m_NumOfDoors);
         }
 
-        public override void SetAdditonalFields(Dictionary<string, int> i_AdditonalFieldsToSet)
+        public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
         {
-            m_CarColor = (eColor)i_AdditonalFieldsToSet["CarColor"];
-            m_NumOfDoors = (int)i_AdditonalFieldsToSet["NumOfDoors"];
+            m_CarColor = (eColor)i_AdditionalFieldsToSet["CarColor"];
+            m_NumOfDoors = (int)i_AdditionalFieldsToSet["NumOfDoors"];
         }
     }
 }
