@@ -142,10 +142,11 @@ namespace Ex03.ConsoleUI
         }
         public void InitWheels(Vehicle i_Vehicle)
         {
-            RequestDetailsWheels(i_Vehicle.GetMaxAirPressureLevel(), out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
+            RequestDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
             try
             {
-                i_Vehicle.AddDetailsWheels(o_NameOfWheelManuFacturer, o_AirPressureLevel);
+                i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
+                //i_Vehicle.AddDetailsWheels(o_NameOfWheelManuFacturer, o_AirPressureLevel);
             }
             catch (ValueOutOfRangeException ex)
             {
@@ -402,8 +403,9 @@ namespace Ex03.ConsoleUI
 
         }
         */
-        public void RequestDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
+        public void RequestDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel) 
         {
+            //NT why airpressure is 0?
             bool inputCorrectly = false;
             o_AirPressureLevel = 0;
 
@@ -413,22 +415,11 @@ namespace Ex03.ConsoleUI
             while (!inputCorrectly)
             {
                 Console.WriteLine("Enter the current air pressure in the wheels " +
-                                  "(The maximum is- " + i_MaxAirPressureLevel + ") ");
+                                  "(The maximum is- "); //i_MaxAirPressureLevel
                 string airPressureLevelStr = Console.ReadLine();
 
                 inputCorrectly = float.TryParse(airPressureLevelStr, out float airPressureLevel);
 
-                /*
-                if (airPressureLevel <= i_MaxAirPressureLevel && airPressureLevel >= 0)
-                {
-                    o_AirPressureLevel = airPressureLevel;
-                    inputCorrectly = false;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input, please try again ");
-                }
-                */
             }
 
         }

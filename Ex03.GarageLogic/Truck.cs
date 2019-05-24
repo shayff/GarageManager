@@ -50,7 +50,7 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException();
             }
-
+            //NT should be float
 
             m_CargoCapacity = (float)i_AdditionalFieldsToSet["CargoCapacity"];
         }

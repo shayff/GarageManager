@@ -22,7 +22,7 @@ namespace Ex03.GarageLogic
         public float AirPressureLevel
         {
             get { return m_AirPressureLevel; }
-            set { m_AirPressureLevel = value;   }
+            set { m_AirPressureLevel = value; }
         }
 
         public string NameOfManufacturer
@@ -32,11 +32,18 @@ namespace Ex03.GarageLogic
         }
 
         //*ctor*//
-        public Wheel(float i_MaxAirPressureLevel,string i_NameOfManufacturer,float i_CurrentAirPressureLevel)
+        public Wheel(float i_MaxAirPressureLevel, string i_NameOfManufacturer, float i_CurrentAirPressureLevel)
         {
             m_NameOfManufacturer = i_NameOfManufacturer;
             r_MaxAirPressureLevel = i_MaxAirPressureLevel;
-            m_AirPressureLevel = i_CurrentAirPressureLevel;
+            if (i_CurrentAirPressureLevel >= 0 && i_CurrentAirPressureLevel <= r_MaxAirPressureLevel)
+            {
+                m_AirPressureLevel = i_CurrentAirPressureLevel;
+            }
+            else
+            {
+                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, "error"); //NT error message
+            }
         }
 
 
