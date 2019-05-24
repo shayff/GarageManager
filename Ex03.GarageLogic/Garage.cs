@@ -9,7 +9,12 @@ namespace Ex03.GarageLogic
     public class Garage
     {
         //private static LinkedList<Vehicle> m_Vehicles;
-        private Dictionary<string, VehicleInGarage> m_VehiclesInGarage = new Dictionary<string, VehicleInGarage>();
+        private Dictionary<string, VehicleInGarage> m_VehiclesInGarage;
+
+        public Garage()
+        {
+            m_VehiclesInGarage = new Dictionary<string, VehicleInGarage>();
+        }
 
         //Request 1
         public void InsertVehicleToGarage(string ownerName, string phoneNumber, Vehicle newVehicle)

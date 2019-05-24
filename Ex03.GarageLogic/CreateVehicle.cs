@@ -53,8 +53,8 @@ namespace Ex03.GarageLogic
                     }
             }
             //NT 2
-            newVehicle.LicenseNumber = i_NameOfModel;
-            newVehicle.NameOfModel = i_LicenseNumber;
+            newVehicle.LicenseNumber = i_LicenseNumber;
+            newVehicle.NameOfModel = i_NameOfModel;
             return newVehicle;
         }
 
