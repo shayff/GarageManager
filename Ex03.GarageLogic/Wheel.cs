@@ -32,19 +32,13 @@ namespace Ex03.GarageLogic
         }
 
         //*ctor*//
-        public Wheel(float i_MaxAirPressureLevel,string i_NameOfManufacturer)
+        public Wheel(float i_MaxAirPressureLevel,string i_NameOfManufacturer,float i_CurrentAirPressureLevel)
         {
             m_NameOfManufacturer = i_NameOfManufacturer;
-
-            if (i_MaxAirPressureLevel >= 0 && i_MaxAirPressureLevel <= r_MaxAirPressureLevel)
-            {
-                m_AirPressureLevel = i_MaxAirPressureLevel;
-            }
-            else
-            {
-                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, "error"); //edit the error message
-            }
+            r_MaxAirPressureLevel = i_MaxAirPressureLevel;
+            m_AirPressureLevel = i_CurrentAirPressureLevel;
         }
+
 
         //*Methods*//
         public void InflatingWheelToMax()

@@ -38,7 +38,20 @@ namespace Ex03.GarageLogic
 
         public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
         {
-            m_IsDriveDangerousCargo = i_AdditionalFieldsToSet["IsDriveDangerousCargo"] == 0;
+            if (i_AdditionalFieldsToSet["IsDriveDangerousCargo"] == 0)
+            {
+                m_IsDriveDangerousCargo = true;
+            }
+            else if (i_AdditionalFieldsToSet["IsDriveDangerousCargo"] == 1)
+            {
+                m_IsDriveDangerousCargo = false;
+            }
+            else
+            {
+                throw new FormatException();
+            }
+
+
             m_CargoCapacity = (float)i_AdditionalFieldsToSet["CargoCapacity"];
         }
 

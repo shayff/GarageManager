@@ -9,23 +9,16 @@ namespace Ex03.GarageLogic
         private string m_NameOfModel;
         private string m_LicenseNumber;
         private float m_EnergyLevel;
-        private List<Wheel> m_Wheels;
         private Engine m_Engine;
-        // public static string[] m_AdditionalFields;
-        //public static Dictionary<string, string> m_AdditionalFields;
+        private List<Wheel> m_Wheels;
+        private int r_NumberOfWheels;
+        private readonly float r_MaxAirPressureLevel;
 
-        /*
-        public T dosomething<T>(object o)
+        public int NumberOfWheels
         {
-            T enumVal = (T)Enum.Parse(typeof(T), o.ToString());
-            return enumVal;
-        }*/
-
-        /*
-         * object o = 4;
-         * do something<Crustaceans>(o);
-       /*
-
+            get { return r_NumberOfWheels; }
+        }
+        
         //*Properties*/
         public Engine EnergySource
         {
@@ -61,21 +54,20 @@ namespace Ex03.GarageLogic
         public Vehicle(eFuelType i_EngineType, float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
             m_Engine = new Engine(i_EngineType, i_MaxEnergyCapacity);
-            //m_Wheels = CreateWheels(i_NumOfWheels, i_MaxAirPressureLevel);
+            r_NumberOfWheels = i_NumOfWheels;
+            i_MaxAirPressureLevel = r_MaxAirPressureLevel;
         }
-
-
-        /*
-        public List<Wheel> CreateWheels(int i_NumOfWheels, float i_MaxAirPressureLevel)
+        
+        public List<Wheel> InitWheels(float i_AirPressureLevel,string i_NameOfWheelManuFacturer)
         {
-            List<Wheel> wheels = new List<Wheel>(i_NumOfWheels);
-            for (int i = 0; i < i_NumOfWheels; i++)
+            List<Wheel> wheels = new List<Wheel>();
+            for (int i = 0; i < r_NumberOfWheels; i++)
             {
-                wheels.Add(new Wheel(i_MaxAirPressureLevel));
+                wheels.Add(new Wheel(r_MaxAirPressureLevel,i_NameOfWheelManuFacturer,i_AirPressureLevel));
             }
             return wheels;
         }
-        */
+        
         public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
         {
             m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
