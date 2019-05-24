@@ -7,6 +7,11 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
+
+
+        /// <summary>
+        /// shay hi!
+        /// </summary>
         const string k_WelcomeGarage = "Welcome to garage of Shay and Nelly!\n";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
 
