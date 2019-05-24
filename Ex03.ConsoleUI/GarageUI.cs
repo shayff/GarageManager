@@ -101,8 +101,15 @@ namespace Ex03.ConsoleUI
             try
             {
                 Console.Clear();
+
                 Console.WriteLine("Insert owner name please: ");
                 string ownerName = Console.ReadLine();//check if not enter or revah
+
+                if (String.IsNullOrWhiteSpace(ownerName))
+                {
+
+                }
+
                 string ownerPhoneNumber = GetPhoeNumberFromUser(); //check if phone is ok
                 string licenseNumber = AskLicenseNumber(); //check if license is ok
 
@@ -430,6 +437,11 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Enter a license number");
             return Console.ReadLine();
+        }
+
+        public strint ownerName()
+        {
+
         }
     }
 
