@@ -156,8 +156,13 @@ namespace Ex03.ConsoleUI
             //NT checck if its phone number no letters
             Console.WriteLine("Enter a phone number of owner");
             string phoneNumber = Console.ReadLine();
+            
+            while (phoneNumber.Length!=10 || !(int.TryParse(phoneNumber,out int result)))
+            {
+                Console.WriteLine("Error, type again");
+                phoneNumber = Console.ReadLine();
+            }
             return phoneNumber;
-
         }
 
         public string GetVhicleModelFromUser() //chcek input 
