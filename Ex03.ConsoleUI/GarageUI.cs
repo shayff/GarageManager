@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Ex03.GarageLogic;
+using System.Runtime;
 
 namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
-
-
         /// <summary>
         /// shay 
         /// </summary>
@@ -102,16 +101,9 @@ namespace Ex03.ConsoleUI
             {
                 Console.Clear();
 
-                Console.WriteLine("Insert owner name please: ");
-                string ownerName = Console.ReadLine();//check if not enter or revah
-
-                if (String.IsNullOrWhiteSpace(ownerName))
-                {
-
-                }
-
+                string ownerName = GetOwnerName();
                 string ownerPhoneNumber = GetPhoeNumberFromUser(); //check if phone is ok
-                string licenseNumber = AskLicenseNumber(); //check if license is ok
+                string licenseNumber = GetLicenseNumber(); //check if license is ok
 
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
@@ -160,7 +152,6 @@ namespace Ex03.ConsoleUI
         }
         public string GetPhoeNumberFromUser()
         {
-            //NT checck if its phone number no letters
             Console.WriteLine("Enter a phone number of owner");
             string phoneNumber = Console.ReadLine();
             
@@ -170,6 +161,33 @@ namespace Ex03.ConsoleUI
                 phoneNumber = Console.ReadLine();
             }
             return phoneNumber;
+        }
+
+        public string GetOwnerName()
+        {
+            Console.WriteLine("Insert owner name please: ");
+            string ownerName = Console.ReadLine();
+
+          return CheckWhiteSpace(ownerName);
+          
+        }
+        public string GetLicenseNumber()
+        {
+            Console.WriteLine("Enter a license number");
+            string LicenseNumber= Console.ReadLine();
+          
+            return CheckWhiteSpace(LicenseNumber);
+        }
+
+        public string CheckWhiteSpace(string i_toCheck)
+        {
+            while (String.IsNullOrWhiteSpace(i_toCheck))
+            {
+                Console.WriteLine("Error, type again");
+                i_toCheck = Console.ReadLine();
+              
+            }
+            return i_toCheck;
         }
 
         public string GetVhicleModelFromUser() //chcek input 
@@ -242,7 +260,7 @@ namespace Ex03.ConsoleUI
                               "for Paid - press 2");
             string status = Console.ReadLine();
 
-            string licenseNumber = AskLicenseNumber();
+            string licenseNumber = GetLicenseNumber();
 
             if (Int32.TryParse(status, out int result))
             {
@@ -257,14 +275,14 @@ namespace Ex03.ConsoleUI
         //Request 4
         public void InflatingWheelToMax()
         {
-            string licenseNumber = AskLicenseNumber();
+            string licenseNumber = GetLicenseNumber();
             m_Garage.InflatingWheelToMax(licenseNumber);
         }
 
         //Request 5
         public void FillFuelToFuelVehicles()
         {
-            string licenseNumber = AskLicenseNumber();
+            string licenseNumber = GetLicenseNumber();
 
             Console.WriteLine("Enter a Fuel type:\n" +
                               "for Octan98 - press 0\n" +
@@ -306,7 +324,7 @@ namespace Ex03.ConsoleUI
         //Request 6
         public void ChargingElectricVehicle()
         {
-            string licenseNumber = AskLicenseNumber();
+            string licenseNumber = GetLicenseNumber();
 
             Console.WriteLine("Enter How many minutes will you charge");
             string minutesStr = Console.ReadLine();
@@ -332,7 +350,7 @@ namespace Ex03.ConsoleUI
         //Request 7
         public void ShowAllDetails()
         {
-            string licenseNumber = AskLicenseNumber();
+            string licenseNumber = GetLicenseNumber();
 
             try
             {
@@ -357,13 +375,7 @@ namespace Ex03.ConsoleUI
                                   "8. Exit");
         }
 
-        public void SetAdditionalFields()
-        {
-
-
-        }
-
-        public Dictionary<string, int> GetAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
+      public Dictionary<string, int> GetAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
         {
             Dictionary<string, int> additionalFieldsData = new Dictionary<string, int>();
             foreach (KeyValuePair<string, string> field in i_AdditionalFieldsName)
@@ -424,16 +436,8 @@ namespace Ex03.ConsoleUI
 
         }
 
-        public string AskLicenseNumber()
-        {
-            Console.WriteLine("Enter a license number");
-            return Console.ReadLine();
-        }
-
-        public strint ownerName()
-        {
-
-        }
+    
+   
     }
 
 
