@@ -45,23 +45,15 @@ namespace Ex03.GarageLogic
 
         public void InflatingWheel(float i_AirToAdd)
         {
-            if (i_AirToAdd >= 0)
+            if ((i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel) && (i_AirToAdd >= 0))
             {
-                if (i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel)
-                {
-                    m_AirPressureLevel += i_AirToAdd;
-                }
-                else
-                {
-                    throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
-                }
+                m_AirPressureLevel += i_AirToAdd;
             }
             else
             {
-                throw new ArgumentException(k_ErrorNotPositiveNumber);
+                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
             }
         }
-
 
         public string WheelDetails()
         {
