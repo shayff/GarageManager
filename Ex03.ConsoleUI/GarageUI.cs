@@ -7,8 +7,8 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
-        const string k_WellcomeGrage = "Welcome to garage of Shay and Nelly!\n";
-        const string k_CarAlreadyInGrage = "The car is already in the garage ";
+        const string k_WellcomeGarage = "Welcome to garage of Shay and Nelly!\n";
+        const string k_CarAlreadyInGarage = "The car is already in the garage ";
 
 
         private readonly Garage m_Garage = new Garage();
@@ -20,7 +20,7 @@ namespace Ex03.ConsoleUI
             while (flag)
             {
                 Console.Clear(); // Clear the screen
-                Console.WriteLine(k_WellcomeGrage);
+                Console.WriteLine(k_WellcomeGarage);
                 PrintMainMenu();
                 string input = Console.ReadLine();
 
@@ -99,19 +99,20 @@ namespace Ex03.ConsoleUI
 
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
-                    Console.WriteLine(k_CarAlreadyInGrage);                 }
+                    Console.WriteLine(k_CarAlreadyInGarage);
+                }
                 else
-                { 
+                {
                     try
                     {
                         Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)choice, nameOfModel, licenseNumber);
 
                         //*Details wheels*//
-                        RequestDetailsWheels(newVehicle.GetMaxAirPressureLevel(), out string o_NameOfWheelManufacturer, out float o_AirPressureLevel);
-                        newVehicle.AddDetailsWheels(o_NameOfWheelManufacturer, o_AirPressureLevel);
+                        RequestDetailsWheels(newVehicle.GetMaxAirPressureLevel(), out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
+                        newVehicle.AddDetailsWheels(o_NameOfWheelManuFacturer, o_AirPressureLevel);
 
-                        Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.GetListOfAdditionalFields());
-                        newVehicle.SetAdditionalFields(FieldsToSet);
+                        Dictionary<string, int> fieldsToSet = GetAdditionalFieldsData(newVehicle.GetListOfAdditionalFields());
+                        newVehicle.SetAdditionalFields(fieldsToSet);
                         CreateVehicleInGarage(newVehicle);
                     }
                     catch
@@ -290,22 +291,21 @@ namespace Ex03.ConsoleUI
                                   "8. Exit");
         }
 
-        public void SetAdditonalFields()
+        public void SetAdditionalFields()
         {
 
 
         }
 
-        public Dictionary<string, int> GetAdditonalFieldsData(Dictionary<string, string> i_AdditonalFieldsName)
+        public Dictionary<string, int> GetAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
         {
-            int FieldData;
-            Dictionary<string, int> AdditonalFieldsData = new Dictionary<string, int>();
-            foreach (KeyValuePair<string, string> field in i_AdditonalFieldsName)
+            Dictionary<string, int> additionalFieldsData = new Dictionary<string, int>();
+            foreach (KeyValuePair<string, string> field in i_AdditionalFieldsName)
             {
-                FieldData = GetFieldData(field.Value);
-                AdditonalFieldsData.Add(field.Key, FieldData);
+                int fieldData = GetFieldData(field.Value);
+                additionalFieldsData.Add(field.Key, fieldData);
             }
-            return AdditonalFieldsData;
+            return additionalFieldsData;
         }
 
         public int GetFieldData(string i_FieldName) //NT check if the input is ok

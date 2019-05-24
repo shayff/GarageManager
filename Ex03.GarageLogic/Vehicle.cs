@@ -23,7 +23,7 @@ namespace Ex03.GarageLogic
 
         /*
          * object o = 4;
-         *do something<Crustaceans>(o);
+         * do something<Crustaceans>(o);
        /*
 
         //*Properties*/
@@ -54,7 +54,6 @@ namespace Ex03.GarageLogic
 
 
         //*ctor*//
-
         public Vehicle(string i_LicenseNumber)
         {
             string m_LicenseNumber = i_LicenseNumber;
