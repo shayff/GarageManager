@@ -26,6 +26,11 @@ namespace Ex03.GarageLogic
             get { return m_Engine; }
         }
 
+        public float MaxAirPressureLevel
+        {
+            get { return r_MaxAirPressureLevel; }
+        }
+
         public string LicenseNumber
         {
             set { m_LicenseNumber = value; }
@@ -55,17 +60,16 @@ namespace Ex03.GarageLogic
         {
             m_Engine = new Engine(i_EngineType, i_MaxEnergyCapacity);
             r_NumberOfWheels = i_NumOfWheels;
-            i_MaxAirPressureLevel = r_MaxAirPressureLevel;
+            r_MaxAirPressureLevel = i_MaxAirPressureLevel;
         }
         
-        public List<Wheel> InitWheels(float i_AirPressureLevel,string i_NameOfWheelManuFacturer)
+        public void InitWheels(float i_AirPressureLevel,string i_NameOfWheelManuFacturer)
         {
             List<Wheel> wheels = new List<Wheel>();
             for (int i = 0; i < r_NumberOfWheels; i++)
             {
                 wheels.Add(new Wheel(r_MaxAirPressureLevel,i_NameOfWheelManuFacturer,i_AirPressureLevel));
             }
-            return wheels;
         }
         
         public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
@@ -81,6 +85,7 @@ namespace Ex03.GarageLogic
             }
         }
 
+        //NT need that?
         public override int GetHashCode()
         {
             return this.m_LicenseNumber.GetHashCode();
@@ -101,6 +106,8 @@ namespace Ex03.GarageLogic
 
         public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
 
+
+        //NT need that?
         public void AddDetailsWheels(string i_NameOfWheelManufacturer, float i_AirPressureLevel)
         {
             foreach (Wheel wheels in m_Wheels)
@@ -110,11 +117,6 @@ namespace Ex03.GarageLogic
             }
 
         }
-
-        public float GetMaxAirPressureLevel()
-        {
-            return m_Wheels[0].MaxAirPressureLevel;
-        }
-
+        
     }
 }
