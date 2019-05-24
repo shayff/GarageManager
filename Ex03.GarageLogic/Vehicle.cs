@@ -58,12 +58,14 @@ namespace Ex03.GarageLogic
             string m_LicenseNumber = i_LicenseNumber;
         }
 
-        public Vehicle(eFuelType i_EngineType,float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
+        public Vehicle(eFuelType i_EngineType, float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
             m_Engine = new Engine(i_EngineType, i_MaxEnergyCapacity);
-            m_Wheels = CreateWheels(i_NumOfWheels, i_MaxAirPressureLevel);
+            //m_Wheels = CreateWheels(i_NumOfWheels, i_MaxAirPressureLevel);
         }
 
+
+        /*
         public List<Wheel> CreateWheels(int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
             List<Wheel> wheels = new List<Wheel>(i_NumOfWheels);
@@ -73,7 +75,7 @@ namespace Ex03.GarageLogic
             }
             return wheels;
         }
-
+        */
         public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
         {
             m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
@@ -94,7 +96,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-           string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
+            string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
             vehicleDetailsString += m_Engine.EngineDetails();
             foreach (Wheel wheel in m_Wheels)
             {
@@ -105,7 +107,7 @@ namespace Ex03.GarageLogic
 
         public abstract Dictionary<string, string> GetListOfAdditionalFields();
 
-    public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
+        public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
 
         public void AddDetailsWheels(string i_NameOfWheelManufacturer, float i_AirPressureLevel)
         {
@@ -114,6 +116,7 @@ namespace Ex03.GarageLogic
                 wheels.AirPressureLevel = i_AirPressureLevel;
                 wheels.NameOfManufacturer = i_NameOfWheelManufacturer;
             }
+
         }
 
         public float GetMaxAirPressureLevel()

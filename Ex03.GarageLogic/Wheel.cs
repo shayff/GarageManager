@@ -22,7 +22,7 @@ namespace Ex03.GarageLogic
         public float AirPressureLevel
         {
             get { return m_AirPressureLevel; }
-            set { m_AirPressureLevel = value; }
+            set { m_AirPressureLevel = value;   }
         }
 
         public string NameOfManufacturer
@@ -32,9 +32,18 @@ namespace Ex03.GarageLogic
         }
 
         //*ctor*//
-        public Wheel(float i_MaxAirPressureLevel)
+        public Wheel(float i_MaxAirPressureLevel,string i_NameOfManufacturer)
         {
-            r_MaxAirPressureLevel = i_MaxAirPressureLevel;
+            m_NameOfManufacturer = i_NameOfManufacturer;
+
+            if (i_MaxAirPressureLevel >= 0 && i_MaxAirPressureLevel <= r_MaxAirPressureLevel)
+            {
+                m_AirPressureLevel = i_MaxAirPressureLevel;
+            }
+            else
+            {
+                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, "error"); //edit the error message
+            }
         }
 
         //*Methods*//
@@ -45,23 +54,15 @@ namespace Ex03.GarageLogic
 
         public void InflatingWheel(float i_AirToAdd)
         {
-            if (i_AirToAdd >= 0)
+            if ((i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel) && (i_AirToAdd >= 0))
             {
-                if (i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel)
-                {
-                    m_AirPressureLevel += i_AirToAdd;
-                }
-                else
-                {
-                    throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
-                }
+                m_AirPressureLevel += i_AirToAdd;
             }
             else
             {
-                throw new ArgumentException(k_ErrorNotPositiveNumber);
+                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
             }
         }
-
 
         public string WheelDetails()
         {
