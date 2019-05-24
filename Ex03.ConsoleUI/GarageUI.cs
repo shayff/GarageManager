@@ -10,7 +10,7 @@ namespace Ex03.ConsoleUI
 
 
         /// <summary>
-        /// shay hi!
+        /// shay 
         /// </summary>
         const string k_WelcomeGarage = "Welcome to garage of Shay and Nelly!\n";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
