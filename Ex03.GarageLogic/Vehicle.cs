@@ -27,7 +27,6 @@ namespace Ex03.GarageLogic
        /*
 
         //*Properties*/
-
         public Engine EnergySource
         {
             set { m_Engine = value; }

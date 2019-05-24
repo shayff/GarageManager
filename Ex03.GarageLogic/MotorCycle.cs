@@ -17,7 +17,6 @@ namespace Ex03.GarageLogic
         //*ctor*//
         public MotorCycle(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
-
         }
 
         public override Dictionary<string, string> GetListOfAdditionalFields()

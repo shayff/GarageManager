@@ -7,7 +7,7 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
-        const string k_WellcomeGarage = "Welcome to garage of Shay and Nelly!\n";
+        const string k_WelcomeGarage = "Welcome to garage of Shay and Nelly!\n";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
 
 
@@ -20,7 +20,7 @@ namespace Ex03.ConsoleUI
             while (flag)
             {
                 Console.Clear(); // Clear the screen
-                Console.WriteLine(k_WellcomeGarage);
+                Console.WriteLine(k_WelcomeGarage);
                 PrintMainMenu();
                 string input = Console.ReadLine();
 
