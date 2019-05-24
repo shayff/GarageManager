@@ -5,6 +5,7 @@ using System.Text;
 namespace Ex03.GarageLogic
 {
     enum eLicenseType { A, A1, A2, B }
+
     public class MotorCycle : Vehicle
     {
         private const int k_NumberOfWheels = 2;
@@ -19,7 +20,7 @@ namespace Ex03.GarageLogic
 
         }
 
-        public override Dictionary<string, string> GetListOfAdditonalFields()
+        public override Dictionary<string, string> GetListOfAdditionalFields()
         {
             return new Dictionary<string, string> { { "LicenseType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
                 { "EngineCapacity" ,"Engine Capacity Insert in int"} };
@@ -36,10 +37,12 @@ namespace Ex03.GarageLogic
 
             m_EngineCapacity = (int)i_AdditionalFieldsToSet["EngineCapacity"];
         }
-        /*
+        
+
         public override string ToString()
         {
-
-        }*/
+            string data = String.Format("License type:{0}, Engine capacity: {1} ", m_LicenseType, m_EngineCapacity);
+            return base.ToString() + data;
+        }
     }
 }

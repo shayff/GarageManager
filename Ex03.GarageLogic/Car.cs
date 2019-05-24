@@ -46,7 +46,7 @@ namespace Ex03.GarageLogic
 
         }
 
-        public override Dictionary<string, string> GetListOfAdditonalFields()
+        public override Dictionary<string, string> GetListOfAdditionalFields()
         {
             return new Dictionary<string, string>
                   {

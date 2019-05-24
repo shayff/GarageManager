@@ -110,7 +110,7 @@ namespace Ex03.ConsoleUI
                         RequestDetailsWheels(newVehicle.GetMaxAirPressureLevel(), out string o_NameOfWheelManufacturer, out float o_AirPressureLevel);
                         newVehicle.AddDetailsWheels(o_NameOfWheelManufacturer, o_AirPressureLevel);
 
-                        Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.GetListOfAdditonalFields());
+                        Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.GetListOfAdditionalFields());
                         newVehicle.SetAdditionalFields(FieldsToSet);
                         CreateVehicleInGarage(newVehicle);
                     }

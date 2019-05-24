@@ -105,7 +105,7 @@ namespace Ex03.GarageLogic
             return vehicleDetailsString;
         }
 
-        public abstract Dictionary<string, string> GetListOfAdditonalFields();
+        public abstract Dictionary<string, string> GetListOfAdditionalFields();
 
     public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
 

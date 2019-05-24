@@ -30,7 +30,7 @@ namespace Ex03.GarageLogic
         {
         }
 
-        public override Dictionary<string, string> GetListOfAdditonalFields()
+        public override Dictionary<string, string> GetListOfAdditionalFields()
         {
             return new Dictionary<string, string>{ {"IsDriveDangerousCargo", "Is Drive Dangerous Cargo Type, \n 0. YES\n 1. NO" },
                 { "CargoCapacity", "Cargo Capacity Insert in float" } };
@@ -41,12 +41,12 @@ namespace Ex03.GarageLogic
             m_IsDriveDangerousCargo = i_AdditionalFieldsToSet["IsDriveDangerousCargo"] == 0;
             m_CargoCapacity = (float)i_AdditionalFieldsToSet["CargoCapacity"];
         }
-/*
+
         public override string ToString()
         {
-            string data = String.Format("Color:{0},  Number of doors: {1} ", m_CarColor, m_NumOfDoors);
+            string data = String.Format("Is drive dangerous cargo:{0}, Cargo capacity: {1} ", m_IsDriveDangerousCargo, m_CargoCapacity);
             return base.ToString() + data;
         }
-        */
+
     }
 }
