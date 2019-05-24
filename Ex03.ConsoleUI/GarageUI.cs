@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Ex03.GarageLogic;
-using System.Runtime;
 
 namespace Ex03.ConsoleUI
 {
@@ -13,8 +12,8 @@ namespace Ex03.ConsoleUI
         /// </summary>
         const string k_WelcomeGarage = "Welcome to garage of Shay and Nelly!\n";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
-        const string k_ChooseVehicleType = "Insert a car type:" +
-                              "\n 0. Fuel MotorCycle\n" +
+        const string k_ChooseVehicleType = "Insert a car type:\n" +
+                              "0. Fuel MotorCycle\n" +
                               "1. Electric motorcycle\n" +
                               "2. Fuel Car\n" +
                               "3. Electric car\n" +
@@ -102,8 +101,8 @@ namespace Ex03.ConsoleUI
                 Console.Clear();
 
                 string ownerName = GetOwnerName();
-                string ownerPhoneNumber = GetPhoeNumberFromUser(); //check if phone is ok
-                string licenseNumber = GetLicenseNumber(); //check if license is ok
+                string ownerPhoneNumber = GetPhoneNumberFromUser();
+                string licenseNumber = GetLicenseNumber(); 
 
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
@@ -121,7 +120,6 @@ namespace Ex03.ConsoleUI
 
                     //*Details wheels*//
                     InitWheels(newVehicle);
-
                     m_Garage.InsertVehicleToGarage(ownerName, ownerPhoneNumber, newVehicle);
 
                 }
@@ -132,86 +130,7 @@ namespace Ex03.ConsoleUI
                 //error
             }
         }
-        public void InitWheels(Vehicle i_Vehicle)
-        {
-            RequestDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
-            try
-            {
-                i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
-                //i_Vehicle.AddDetailsWheels(o_NameOfWheelManuFacturer, o_AirPressureLevel);
-            }
-            catch (ValueOutOfRangeException ex)
-            {
-                Console.WriteLine("Air Pressure Level was out of Range, please try again:");
-                InitWheels(i_Vehicle);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("bla");
-            }
-        }
-        public string GetPhoeNumberFromUser()
-        {
-            Console.WriteLine("Enter a phone number of owner");
-            string phoneNumber = Console.ReadLine();
-            
-            while (phoneNumber.Length!=10 || !(int.TryParse(phoneNumber,out int result)))
-            {
-                Console.WriteLine("Error, type again");
-                phoneNumber = Console.ReadLine();
-            }
-            return phoneNumber;
-        }
-
-        public string GetOwnerName()
-        {
-            Console.WriteLine("Insert owner name please: ");
-            string ownerName = Console.ReadLine();
-
-          return CheckWhiteSpace(ownerName);
-          
-        }
-        public string GetLicenseNumber()
-        {
-            Console.WriteLine("Enter a license number");
-            string LicenseNumber= Console.ReadLine();
-          
-            return CheckWhiteSpace(LicenseNumber);
-        }
-
-        public string CheckWhiteSpace(string i_toCheck)
-        {
-            while (String.IsNullOrWhiteSpace(i_toCheck))
-            {
-                Console.WriteLine("Error, type again");
-                i_toCheck = Console.ReadLine();
-              
-            }
-            return i_toCheck;
-        }
-
-        public string GetVhicleModelFromUser() //chcek input 
-        {
-            Console.WriteLine("Enter a vehicle model");
-            string nameOfModel = Console.ReadLine();
-            return nameOfModel;
-        }
-
-        public int GetVehicleTypeFromUser()
-        {
-            Console.WriteLine(k_ChooseVehicleType);
-            string typeOfVehicle = Console.ReadLine();
-            if (Int32.TryParse(typeOfVehicle, out int choice))
-            {
-                return choice;
-            }
-            else
-            {
-                return -1; //remove
-                //throw exception
-            }
-        }
-
+        
         //Request 2
         public void ViewListOfVehicleLicenseNumbers()
         {
@@ -262,7 +181,7 @@ namespace Ex03.ConsoleUI
 
             string licenseNumber = GetLicenseNumber();
 
-            if (Int32.TryParse(status, out int result))
+            if (Int32.TryParse(status, out int result) && result>=0 &&result<=2)
             {
                 m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
             }
@@ -290,7 +209,7 @@ namespace Ex03.ConsoleUI
                               "for Octan95 - press 2\n" +
                               "for Soler - press 3");
             string status = Console.ReadLine();
-            if (Int32.TryParse(status, out int result))
+            if (Int32.TryParse(status, out int result)&& result>=0 &&result<=3)
             {
                 Console.WriteLine("Enter How many liters to fill");
                 string liters = Console.ReadLine();
@@ -328,7 +247,7 @@ namespace Ex03.ConsoleUI
 
             Console.WriteLine("Enter How many minutes will you charge");
             string minutesStr = Console.ReadLine();
-
+            minutesStr = CheckWhiteSpace(minutesStr);
             if (float.TryParse(minutesStr, out float minutes))
             {
                 try
@@ -391,9 +310,13 @@ namespace Ex03.ConsoleUI
             Console.Write("Please enter ");
             Console.WriteLine(i_FieldName);
             string fieldData = Console.ReadLine();
+            fieldData = CheckWhiteSpace(fieldData);
+
             Int32.TryParse(fieldData, out int res);
             return res;
+
         }
+
         /*
         public void CreateVehicleInGarage(Vehicle i_NewVehicle)
         {
@@ -415,7 +338,7 @@ namespace Ex03.ConsoleUI
 
         }
         */
-        public void RequestDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel) 
+        public void GetDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel) 
         {
             //NT why airpressure is 0?
             bool inputCorrectly = false;
@@ -427,7 +350,7 @@ namespace Ex03.ConsoleUI
             while (!inputCorrectly)
             {
                 Console.WriteLine("Enter the current air pressure in the wheels " +
-                                  "(The maximum is- "); //i_MaxAirPressureLevel
+                                  "(The maximum is-"+ i_MaxAirPressureLevel+")"); //i_MaxAirPressureLevel
                 string airPressureLevelStr = Console.ReadLine();
 
                 inputCorrectly = float.TryParse(airPressureLevelStr, out float airPressureLevel);
@@ -435,6 +358,84 @@ namespace Ex03.ConsoleUI
             }
 
         }
+
+        public void InitWheels(Vehicle i_Vehicle)
+        {
+            GetDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
+            try
+            {
+                i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
+                //i_Vehicle.AddDetailsWheels(o_NameOfWheelManuFacturer, o_AirPressureLevel);
+            }
+            catch (ValueOutOfRangeException ex)
+            {
+                Console.WriteLine("Air Pressure Level was out of Range, please try again:");
+                InitWheels(i_Vehicle);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("bla");
+            }
+        }
+        public string GetOwnerName()
+        {
+            Console.WriteLine("Insert owner name please: ");
+            string ownerName = Console.ReadLine();
+
+            return CheckWhiteSpace(ownerName);
+          
+        }
+
+        public string GetPhoneNumberFromUser()
+        {
+            Console.WriteLine("Enter a phone number of owner");
+            string phoneNumber = Console.ReadLine();
+            
+            while (phoneNumber.Length!=10 || !(int.TryParse(phoneNumber,out int result)))
+            {
+                Console.WriteLine("Error, type again");
+                phoneNumber = Console.ReadLine();
+            }
+            return phoneNumber;
+        }
+        public string GetLicenseNumber()
+        {
+            Console.WriteLine("Enter a license number");
+            string LicenseNumber= Console.ReadLine();
+          
+            return CheckWhiteSpace(LicenseNumber);
+        }
+        public string GetVhicleModelFromUser()
+        {
+            Console.WriteLine("Enter a vehicle model");
+            string nameOfModel = Console.ReadLine();
+            return CheckWhiteSpace(nameOfModel);
+        }
+        public int GetVehicleTypeFromUser()
+        {
+            Console.WriteLine(k_ChooseVehicleType);
+            string typeOfVehicle = Console.ReadLine();
+            if (Int32.TryParse(typeOfVehicle, out int choice))
+            {
+                return choice;
+            }
+            else
+            {
+                return -1; //remove
+                //throw exception
+            }
+        }
+        public string CheckWhiteSpace(string i_toCheck)
+        {
+            while (i_toCheck=="")
+            {
+                Console.WriteLine("Error, type again");
+                i_toCheck = Console.ReadLine();
+              
+            }
+            return i_toCheck;
+        }
+
 
     
    
