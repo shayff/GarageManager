@@ -27,9 +27,9 @@ namespace Ex03.GarageLogic
             m_Vehicle = i_Vehicle;
         }
 
-        public string VehicleInGarageDetails()
-        {
-            return String.Format("Owner Name:{0}, Owner Phone: {1},Vehicle Status: {2}, {3} ", m_OwnerName, m_PhoneNumber, m_VehicleStatus, m_Vehicle.VehicleDetails());
+        public override string ToString()
+        { 
+            return String.Format("Owner Name:{0}, Owner Phone: {1},Vehicle Status: {2}, {3} ", m_OwnerName, m_PhoneNumber, m_VehicleStatus, m_Vehicle);
         }
     }
 }

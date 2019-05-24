@@ -7,6 +7,10 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
+        const string k_WellcomeGrage = "Welcome to garage of Shay and Nelly!\n";
+        const string k_CarAlreadyInGrage = "The car is already in the garage ";
+
+
         private readonly Garage m_Garage = new Garage();
 
         public void Start()
@@ -16,7 +20,7 @@ namespace Ex03.ConsoleUI
             while (flag)
             {
                 Console.Clear(); // Clear the screen
-                Console.WriteLine("Welcome to garage of Shay and Nelly!\n");
+                Console.WriteLine(k_WellcomeGrage);
                 PrintMainMenu();
                 string input = Console.ReadLine();
 
@@ -95,8 +99,7 @@ namespace Ex03.ConsoleUI
 
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
-                    Console.WriteLine("The car is already in the garage ");
-                }
+                    Console.WriteLine(k_CarAlreadyInGrage);                 }
                 else
                 { 
                     try
@@ -107,7 +110,7 @@ namespace Ex03.ConsoleUI
                         RequestDetailsWheels(newVehicle.GetMaxAirPressureLevel(), out string o_NameOfWheelManufacturer, out float o_AirPressureLevel);
                         newVehicle.AddDetailsWheels(o_NameOfWheelManufacturer, o_AirPressureLevel);
 
-                        Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.AdditionalFields);
+                        Dictionary<string, int> FieldsToSet = GetAdditonalFieldsData(newVehicle.GetListOfAdditonalFields());
                         newVehicle.SetAdditionalFields(FieldsToSet);
                         CreateVehicleInGarage(newVehicle);
                     }

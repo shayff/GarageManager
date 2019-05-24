@@ -7,6 +7,7 @@ namespace Ex03.GarageLogic
     public class Wheel
     {
         const string k_ErrorTooMuchAir = "Too much Air to add";
+        const string k_ErrorNotPositiveNumber = "The number is not positive";
         private string m_NameOfManufacturer;
         private readonly float r_MaxAirPressureLevel;
         private float m_AirPressureLevel;
@@ -44,20 +45,28 @@ namespace Ex03.GarageLogic
 
         public void InflatingWheel(float i_AirToAdd)
         {
-            if (i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel)
+            if (i_AirToAdd >= 0)
             {
-                m_AirPressureLevel += i_AirToAdd;
+                if (i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel)
+                {
+                    m_AirPressureLevel += i_AirToAdd;
+                }
+                else
+                {
+                    throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
+                }
             }
             else
             {
-                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
+                throw new ArgumentException(k_ErrorNotPositiveNumber);
             }
         }
+
 
         public string WheelDetails()
         {
             return String.Format("Manufacturer: {0}, AirPressure Level: {1}", m_NameOfManufacturer, m_AirPressureLevel);
         }
-    
+
     }
 }

@@ -14,11 +14,15 @@ namespace Ex03.GarageLogic
 
 
         //*ctor*//
-        public MotorCycle(eFuelType i_EngineType,float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
+        public MotorCycle(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
-            m_AdditionalFields = new Dictionary<string, string> { { "LicenseType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
-                { "EngineCapacity" ,"Engine Capacity Insert in int"} };
 
+        }
+
+        public override Dictionary<string, string> GetListOfAdditonalFields()
+        {
+            return new Dictionary<string, string> { { "LicenseType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
+                { "EngineCapacity" ,"Engine Capacity Insert in int"} };
 
         }
 
@@ -32,5 +36,10 @@ namespace Ex03.GarageLogic
 
             m_EngineCapacity = (int)i_AdditionalFieldsToSet["EngineCapacity"];
         }
+        /*
+        public override string ToString()
+        {
+
+        }*/
     }
 }

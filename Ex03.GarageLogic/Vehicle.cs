@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         private List<Wheel> m_Wheels;
         private Engine m_Engine;
         // public static string[] m_AdditionalFields;
-        public static Dictionary<string, string> m_AdditionalFields;
+        //public static Dictionary<string, string> m_AdditionalFields;
 
         /*
         public T dosomething<T>(object o)
@@ -27,10 +27,6 @@ namespace Ex03.GarageLogic
        /*
 
         //*Properties*/
-        public Dictionary<string, string> AdditionalFields
-        {
-            get { return m_AdditionalFields; }
-        }
 
         public Engine EnergySource
         {
@@ -98,9 +94,9 @@ namespace Ex03.GarageLogic
             return this.m_LicenseNumber.GetHashCode();
         }
 
-        public virtual string VehicleDetails()
+        public override string ToString()
         {
-            string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
+           string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
             vehicleDetailsString += m_Engine.EngineDetails();
             foreach (Wheel wheel in m_Wheels)
             {
@@ -109,7 +105,9 @@ namespace Ex03.GarageLogic
             return vehicleDetailsString;
         }
 
-        public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
+        public abstract Dictionary<string, string> GetListOfAdditonalFields();
+
+    public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
 
         public void AddDetailsWheels(string i_NameOfWheelManufacturer, float i_AirPressureLevel)
         {

@@ -99,7 +99,7 @@ namespace Ex03.GarageLogic
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                return m_VehiclesInGarage[i_LicenseNumber].VehicleInGarageDetails();
+                return m_VehiclesInGarage[i_LicenseNumber];
             }
             else
             {
