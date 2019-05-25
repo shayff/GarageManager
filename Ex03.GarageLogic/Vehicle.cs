@@ -66,8 +66,7 @@ namespace Ex03.GarageLogic
         }
 
 
-        //Never used
-        private void inflatingWheelsToMax()
+        public void inflatingWheelsToMax()
         {
             foreach (Wheel wheel in m_Wheels)
             {

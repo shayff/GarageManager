@@ -233,6 +233,7 @@ namespace Ex03.ConsoleUI
         private void inflatingWheelToMax()
         {
             string licenseNumber = getLicenseNumber();
+            licenseNumber = checkWhiteSpace(licenseNumber);
             try
             {
                 m_Garage.InflatingWheelToMax(licenseNumber);
@@ -327,7 +328,7 @@ namespace Ex03.ConsoleUI
             else
             {
                 string licenseNumber = getLicenseNumber();
-
+                licenseNumber = checkWhiteSpace(licenseNumber);
                 try
                 {
                     Console.WriteLine(m_Garage.ShowAllDetails(licenseNumber));
