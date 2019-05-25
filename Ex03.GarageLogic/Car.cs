@@ -6,21 +6,9 @@ namespace Ex03.GarageLogic
 {
     public class Car : Vehicle
     {
-        public enum eColor
-        {
-            Red,
-            Blue,
-            Black,
-            Gray
-        }
+        public enum eColor { Red, Blue, Black, Gray }
 
-        public enum eNumDoors
-        {
-            Two,
-            Three,
-            Four,
-            Five
-        }
+        public enum eNumDoors { Two, Three, Four, Five }
 
         private const int k_NumberOfWheels = 4;
         private const float k_MaxAirPressure = 31f;

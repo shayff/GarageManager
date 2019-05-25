@@ -6,14 +6,7 @@ namespace Ex03.GarageLogic
 {
     public static class CreateVehicle
     {
-        public enum eVehicleTypes
-        {
-            FuelMotorCycle,
-            ElectricMotorCycle,
-            FuelCar,
-            ElectricCar,
-            FuelTruck
-        }
+        public enum eVehicleTypes { FuelMotorCycle, ElectricMotorCycle, FuelCar, ElectricCar, FuelTruck }
 
         private const float k_MaxEnergyCapacityFuelMotorCycle = 8f;
         private const float k_MaxEnergyCapacityElectricMotorCycle = 1.4f;
