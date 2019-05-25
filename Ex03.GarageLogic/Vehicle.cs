@@ -8,7 +8,7 @@ namespace Ex03.GarageLogic
     {
         private string m_NameOfModel;
         private string m_LicenseNumber;
-        private float m_EnergyLevel;
+
         private Engine m_Engine;
         private List<Wheel> m_Wheels;
         private int r_NumberOfWheels;
@@ -43,12 +43,9 @@ namespace Ex03.GarageLogic
             get { return m_NameOfModel; }
         }
 
-        public float EnergyLevel
-        {
-            set { m_EnergyLevel = value; }
-            get { return m_EnergyLevel; }
-        }
 
+        public abstract Dictionary<string, string> GetListOfAdditionalFields();
+        public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
 
         //*ctor*//
         public Vehicle(string i_LicenseNumber)
@@ -85,12 +82,6 @@ namespace Ex03.GarageLogic
             }
         }
 
-        //NT need that?
-        public override int GetHashCode()
-        {
-            return this.m_LicenseNumber.GetHashCode();
-        }
-
         public override string ToString()
         {
             string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
@@ -101,10 +92,6 @@ namespace Ex03.GarageLogic
             }
             return vehicleDetailsString;
         }
-
-        public abstract Dictionary<string, string> GetListOfAdditionalFields();
-
-        public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
 
     }
 }

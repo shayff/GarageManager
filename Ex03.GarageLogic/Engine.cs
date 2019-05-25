@@ -12,26 +12,27 @@ namespace Ex03.GarageLogic
         const string k_ErrorWrongTypeOfFuel = "You try to add wrong type of fuel";
 
         private eFuelType m_FuelType;
-        private float m_CurrentFuelCapacity;
-        private readonly float r_MaxFuelCapacity;
+        private float m_CurrentEnergyCapacity;
+        private readonly float r_MaxEnergyCapacity;
 
         public Engine(eFuelType i_EngineType, float i_MaxEnergyCapacity)
         {
+            m_CurrentEnergyCapacity = 0;
             m_FuelType = i_EngineType;
-            r_MaxFuelCapacity = i_MaxEnergyCapacity;
+            r_MaxEnergyCapacity = i_MaxEnergyCapacity;
         }
 
         public void FillEnergy(eFuelType i_FuelTypeToAdd, float i_AmountToAdd)
         {
             if (i_FuelTypeToAdd == m_FuelType)
             {
-                if (i_AmountToAdd + m_CurrentFuelCapacity <= r_MaxFuelCapacity)
+                if (i_AmountToAdd + m_CurrentEnergyCapacity <= r_MaxEnergyCapacity)
                 {
-                    m_CurrentFuelCapacity += i_AmountToAdd;
+                    m_CurrentEnergyCapacity += i_AmountToAdd;
                 }
                 else
                 {
-                    throw new ValueOutOfRangeException(0, r_MaxFuelCapacity, k_ErrorTooMuchFuel);
+                    throw new ValueOutOfRangeException(0, r_MaxEnergyCapacity, k_ErrorTooMuchFuel);
                 }
             }
             else
@@ -40,9 +41,14 @@ namespace Ex03.GarageLogic
             }
         }
 
+        private float fuelInPercent()
+        {
+            return m_CurrentEnergyCapacity/r_MaxEnergyCapacity*100;
+        }
+
         public override string ToString()
         {
-            return String.Format("Fuel type: {0}, Current Fuel Capacity {1}", m_FuelType, m_CurrentFuelCapacity);
+            return String.Format("Fuel type: {0}, Current Fuel Capacity {1}%", m_FuelType, fuelInPercent());
         }
 
     }
