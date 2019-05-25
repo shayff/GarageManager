@@ -244,14 +244,14 @@ namespace Ex03.ConsoleUI
                 //throw exception
             }
         }
-        private void getDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
+        private void getDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel)
         {
-            //NT why airpressure is 0?
+            //NT why airPressure is 0?
             bool inputCorrectly = false;
             o_AirPressureLevel = 0;
 
             Console.WriteLine("EnterThe manufacturer's name of the wheels");
-            o_NameOfWheelManufacturer = Console.ReadLine();
+            o_NameOfWheelManuFacturer = Console.ReadLine();
 
             while (!inputCorrectly)
             {
@@ -457,7 +457,7 @@ namespace Ex03.ConsoleUI
             Console.Write("Please enter ");
             Console.WriteLine(i_FieldName);
             string fieldData = Console.ReadLine();
-
+            fieldData = checkWhiteSpace(fieldData);
             Int32.TryParse(fieldData, out int res);
             return res;
         }
