@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+//NT done
 namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
     {
+        const string k_VehicleDetails = "License Number: {0}, Model Name: {1}";
+
         private string m_NameOfModel;
         private string m_LicenseNumber;
 
@@ -17,13 +19,6 @@ namespace Ex03.GarageLogic
         public int NumberOfWheels
         {
             get { return r_NumberOfWheels; }
-        }
-        
-        //*Properties*/
-        public Engine EnergySource
-        {
-            set { m_Engine = value; }
-            get { return m_Engine; }
         }
 
         public float MaxAirPressureLevel
@@ -43,21 +38,16 @@ namespace Ex03.GarageLogic
             get { return m_NameOfModel; }
         }
 
-
         public abstract Dictionary<string, string> GetListOfAdditionalFields();
         public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
 
         //*ctor*//
-        public Vehicle(string i_LicenseNumber)
-        {
-            string m_LicenseNumber = i_LicenseNumber;
-        }
-
         public Vehicle(eFuelType i_EngineType, float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
             m_Engine = new Engine(i_EngineType, i_MaxEnergyCapacity);
             r_NumberOfWheels = i_NumOfWheels;
             r_MaxAirPressureLevel = i_MaxAirPressureLevel;
+            m_Wheels = null;
         }
         
         public void InitWheels(float i_AirPressureLevel,string i_NameOfWheelManuFacturer)
@@ -69,12 +59,12 @@ namespace Ex03.GarageLogic
             }
         }
         
-        public void FillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
+        private void fillEnergy(eFuelType i_FuelType, float i_FuelToAdd)
         {
             m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
         }
 
-        public void InflatingWheelsToMax()
+        private void inflatingWheelsToMax()
         {
             foreach (Wheel wheel in m_Wheels)
             {
@@ -84,7 +74,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
+            string vehicleDetailsString = string.Format(k_VehicleDetails, m_LicenseNumber, m_NameOfModel);
             vehicleDetailsString += m_Engine;
             foreach (Wheel wheel in m_Wheels)
             {

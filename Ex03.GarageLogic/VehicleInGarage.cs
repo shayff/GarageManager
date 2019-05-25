@@ -15,7 +15,6 @@ namespace Ex03.GarageLogic
         private string m_PhoneNumber;
         private Vehicle m_Vehicle;
 
-        /*Properties*/
         public eVehicleStatus VehicleStatus
         {
             set { m_VehicleStatus = value; }
