@@ -161,9 +161,11 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Enter a phone number of owner (For example 0541234567)");
             string phoneNumber = Console.ReadLine();
+            bool space =phoneNumber.Contains("");
 
-            while (phoneNumber.Length != 10 || !(int.TryParse(phoneNumber, out int result)))
+            while (phoneNumber.Length != 10 || !(int.TryParse(phoneNumber, out int result)) || space)
             {
+                space = phoneNumber.Contains(" ");
                 Console.WriteLine("Error, type again");
                 phoneNumber = Console.ReadLine();
             }
@@ -216,6 +218,26 @@ namespace Ex03.ConsoleUI
                 return -1; //remove
                 //throw exception
             }
+        }
+        private void getDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
+        {
+            //NT why airpressure is 0?
+            bool inputCorrectly = false;
+            o_AirPressureLevel = 0;
+
+            Console.WriteLine("EnterThe manufacturer's name of the wheels");
+            o_NameOfWheelManufacturer = Console.ReadLine();
+
+            while (!inputCorrectly)
+            {
+                Console.WriteLine("Enter the current air pressure in the wheels " +
+                                  "(The maximum is- " + i_MaxAirPressureLevel + ")");
+                string airPressureLevelStr = Console.ReadLine();
+
+                inputCorrectly = float.TryParse(airPressureLevelStr, out float airPressureLevel);
+
+            }
+
         }
 
         //Request 2
@@ -415,26 +437,6 @@ namespace Ex03.ConsoleUI
             return res;
         }
 
-        private void getDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
-        {
-            //NT why airpressure is 0?
-            bool inputCorrectly = false;
-            o_AirPressureLevel = 0;
-
-            Console.WriteLine("EnterThe manufacturer's name of the wheels");
-            o_NameOfWheelManufacturer = Console.ReadLine();
-
-            while (!inputCorrectly)
-            {
-                Console.WriteLine("Enter the current air pressure in the wheels " +
-                                  "(The maximum is- " + i_MaxAirPressureLevel+")");
-                string airPressureLevelStr = Console.ReadLine();
-
-                inputCorrectly = float.TryParse(airPressureLevelStr, out float airPressureLevel);
-
-            }
-
-        }
 
     }
 
