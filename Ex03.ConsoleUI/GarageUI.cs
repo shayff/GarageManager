@@ -4,13 +4,10 @@ using System.Text;
 using Ex03.GarageLogic;
 using System.Runtime;
 
-
-
 namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
-
         private readonly Garage m_Garage = new Garage();
 
         public void automatictest() //NT delete me!!!

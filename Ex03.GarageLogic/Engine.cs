@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    public enum eFuelType { Octan95, Octan96, Octan98, Soler, Electricity };
 
     public class Engine
     {
+        public enum eFuelType { Octan95, Octan96, Octan98, Soler, Electricity };
+
         const string k_ErrorTooMuchFuel = "You try to add to much fuel";
         const string k_ErrorWrongTypeOfFuel = "You try to add wrong type of fuel";
 

@@ -10,14 +10,14 @@
   <Class Name="Ex03.GarageLogic.Vehicle">
     <Position X="3.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAEAAAAIAEAAQAEAEAAFACAQIAgABAEBAAAAAAAAIA=</HashCode>
+      <HashCode>AQAEAAAAIAEAAQAEAEAAFACAQIAiABAEBAAAAAAAAAA=</HashCode>
       <FileName>Vehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Garage">
     <Position X="6.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACKAAAAQAAAAQAAAAQQBAAAgAAAAAAAACAAACAAEAAA=</HashCode>
+      <HashCode>ACKAAAAQAAAAQAAAAYQBAAAgAAAAAAAACAAACAAEAAA=</HashCode>
       <FileName>Garage.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -43,19 +43,26 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAEAAAAggCAAIAAAAAAAAAAAAQAAAA=</HashCode>
+      <HashCode>AAAQBAAAAAAAAQAEAAAAggCAAIAAAAAAAAAAAAQAAAA=</HashCode>
       <FileName>Car.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.MotorCycle">
     <Position X="3.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAoACAAIAAAAAAAAEAAAQAAAA=</HashCode>
+      <HashCode>AAAQBAAAAAAAAAAEAAAAoACAAIAAAAAAAAEAAAQAAAA=</HashCode>
       <FileName>MotorCycle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Engine">
     <Position X="10" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Ex03.GarageLogic.Engine.eFuelType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>gABAAAAQAAAgAgAECAIAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>Engine.cs</FileName>
@@ -71,7 +78,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>ABAAQAAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAgAEAAA=</HashCode>
+      <HashCode>ABAAQAAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAgAEAAI=</HashCode>
       <FileName>CreateVehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -92,7 +99,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAQAAAEQAAAAAAABJACAAAEIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAgAAQACAEQAAAAAAABJACAAAEIAAAAAAAAAA=</HashCode>
       <FileName>VehicleInGarage.cs</FileName>
     </TypeIdentifier>
   </Class>
