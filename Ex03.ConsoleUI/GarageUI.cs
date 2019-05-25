@@ -163,25 +163,7 @@ namespace Ex03.ConsoleUI
                 //error
             }
         }
-        /*
-                public void InitWheels(Vehicle i_Vehicle)
-                {
-                    getDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
-                    try
-                    {
-                        i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
-                    }
-                    catch (ValueOutOfRangeException)
-                    {
-                        Console.WriteLine("Air Pressure Level was out of Range, please try again:");
-                        InitWheels(i_Vehicle);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("bla"); //NT
-                    }
-                }
-                */
+
         private string getPhoneNumberFromUser()
         {
             Console.WriteLine("Enter a phone number of owner (For example 0541234567)");
