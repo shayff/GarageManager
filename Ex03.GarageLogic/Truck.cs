@@ -29,8 +29,7 @@ namespace Ex03.GarageLogic
 
         public override Dictionary<string, string> GetListOfAdditionalFields()
         {
-            return new Dictionary<string, string> { { "IsDriveDangerousCargo", "Is Drive Dangerous Cargo Type, \n 0. YES\n 1. NO" },
-                { "CargoCapacity", "Cargo Capacity Insert in float" } };
+            return new Dictionary<string, string> { { "IsDriveDangerousCargo", "Is Drive Dangerous Cargo Type, \n 0. YES\n 1. NO" }, { "CargoCapacity", "Cargo Capacity Insert in float" } };
         }
 
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
