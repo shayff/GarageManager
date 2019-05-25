@@ -302,12 +302,18 @@ namespace Ex03.ConsoleUI
                         }
                         else
                         {
-                            List<string> listsGarage =
-                                m_Garage.GetVehiclesInGarageByStatus((VehicleInGarage.eVehicleStatus)result);
-
-                            foreach (string licenseNumber in listsGarage)
+                            try
                             {
-                                Console.WriteLine(licenseNumber);
+                                List<string> listsGarage = m_Garage.GetVehiclesInGarageByStatus(result);
+
+                                foreach (string licenseNumber in listsGarage)
+                                {
+                                    Console.WriteLine(licenseNumber);
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Wrong Option");
                             }
                         }
                     }

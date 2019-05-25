@@ -34,17 +34,27 @@ namespace Ex03.GarageLogic
             return new List<string>(m_VehiclesInGarage.Keys);
         }
 
-        public List<string> GetVehiclesInGarageByStatus(VehicleInGarage.eVehicleStatus i_VehicleStatusToCompare)
+        public List<string> GetVehiclesInGarageByStatus(int i_IntVehicleStatusToCompare)
         {
-            List<string> listOfVehiclesByStatus = new List<string>();
-            foreach (KeyValuePair<string, VehicleInGarage> vehicle in m_VehiclesInGarage)
+            if (Enum.IsDefined(typeof(VehicleInGarage.eVehicleStatus), i_IntVehicleStatusToCompare))
             {
-                if (vehicle.Value.VehicleStatus == i_VehicleStatusToCompare)
+                VehicleInGarage.eVehicleStatus vehicleStatusToCompare = (VehicleInGarage.eVehicleStatus)i_IntVehicleStatusToCompare;
+
+                List<string> listOfVehiclesByStatus = new List<string>();
+                foreach (KeyValuePair<string, VehicleInGarage> vehicle in m_VehiclesInGarage)
                 {
-                    listOfVehiclesByStatus.Add(vehicle.Key);
+                    if (vehicle.Value.VehicleStatus == vehicleStatusToCompare)
+                    {
+                        listOfVehiclesByStatus.Add(vehicle.Key);
+                    }
                 }
+                return listOfVehiclesByStatus;
             }
-            return listOfVehiclesByStatus;
+            else
+            {
+                throw new FormatException();
+            }
+
         }
 
         //Request 3
