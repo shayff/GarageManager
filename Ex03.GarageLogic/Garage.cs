@@ -50,7 +50,6 @@ namespace Ex03.GarageLogic
         //Request 3
         public void ChangeVehicleStatus(string i_LicenseNumber, VehicleInGarage.eVehicleStatus i_NewStatus)
         {
-            //NT should i check if the new status can change ?
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
                 m_VehiclesInGarage[i_LicenseNumber].VehicleStatus = i_NewStatus;
