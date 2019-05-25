@@ -38,9 +38,10 @@ namespace Ex03.GarageLogic
                 throw new FormatException("LicenseType");
             }
 
-            if (Int32.TryParse(i_AdditionalFieldsToSet["EngineCapacity"], out int m_EngineCapacity))
+            if (Int32.TryParse(i_AdditionalFieldsToSet["EngineCapacity"], out int EngineCapacity))
             {
-            }
+                m_EngineCapacity = EngineCapacity;
+                }
             else
             {
                 throw new FormatException("EngineCapacity");

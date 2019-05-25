@@ -45,7 +45,7 @@ namespace Ex03.GarageLogic
 
         public void InflatingWheelsToMax()
         {
-            InflatingWheelsToMax();
+            m_Vehicle.inflatingWheelsToMax();
         }
 
         public override string ToString()
