@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
         private bool m_IsDriveDangerousCargo;
         private float m_CargoCapacity;
 
-        //*Properties*//
+
         public bool IsDriveDangerousCargo
         {
             set { m_IsDriveDangerousCargo = value; }
@@ -29,8 +29,6 @@ namespace Ex03.GarageLogic
         public Truck(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
         }
-
-        //*Methods*//
 
         public override Dictionary<string, string> GetListOfAdditionalFields()
         {
@@ -63,7 +61,7 @@ namespace Ex03.GarageLogic
 
             if (float.TryParse(i_AdditionalFieldsToSet["CargoCapacity"], out float CargoCapacity))
             {
-                if (CargoCapacity>0)
+                if (CargoCapacity > 0)
                 {
                     m_CargoCapacity = CargoCapacity;
                 }

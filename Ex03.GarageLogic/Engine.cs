@@ -22,7 +22,6 @@ namespace Ex03.GarageLogic
             r_MaxEnergyCapacity = i_MaxEnergyCapacity;
         }
 
-        //*Properties*//
         public float CurrentEnergyCapacity
         {
             get
@@ -35,8 +34,6 @@ namespace Ex03.GarageLogic
             get { return r_MaxEnergyCapacity; }
         }
 
-
-        //*Methods*//
         public void FillEnergy(int i_FuelTypeToAdd, float i_AmountToAdd)
         {
             if (Enum.IsDefined(typeof(eFuelType), i_FuelTypeToAdd))

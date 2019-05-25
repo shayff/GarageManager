@@ -10,7 +10,7 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
-        
+
         private readonly Garage m_Garage = new Garage();
 
         public void automatictest() //NT delete me!!!
@@ -22,7 +22,7 @@ namespace Ex03.ConsoleUI
             newVehicle.SetAdditionalFields(fieldsToSet);
             newVehicle.InitWheels(23f, "Guy Ronen");
             m_Garage.InsertVehicleToGarage("Nely", "0521234567", newVehicle);
-           
+
             /*Vehicle 111*/
             Vehicle newVehicle2 = CreateVehicle.Create(2, "mazada 2", "111");
 
@@ -113,7 +113,7 @@ namespace Ex03.ConsoleUI
         }
 
 
-        //Request 1
+        // Request 1
         private void insertVehicleToGarage()
         {
             Console.Clear();
@@ -151,7 +151,7 @@ namespace Ex03.ConsoleUI
 
         }
 
-        //Request 2
+        // Request 2
         private void viewListOfVehicleLicenseNumbers()
         {
             if (m_Garage.VehiclesInGarage.Count == 0)
@@ -205,7 +205,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        //Request 3
+        // Request 3
         private void changeVehicleStatus()
         {
             Console.WriteLine(Messages.k_ChooseVehicleStatus);
@@ -229,7 +229,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        //Request 4
+        // Request 4
         private void inflatingWheelToMax()
         {
             string licenseNumber = getLicenseNumber();
@@ -244,7 +244,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        //Request 5
+        // Request 5
         private void fillFuelToFuelVehicles()
         {
             string licenseNumber = getLicenseNumber();
@@ -268,7 +268,7 @@ namespace Ex03.ConsoleUI
                     {
                         Console.WriteLine(Messages.k_TooMuchCapacity);
                     }
-                    catch(ArgumentException argumentException)
+                    catch (ArgumentException argumentException)
                     {
                         Console.WriteLine(argumentException.Message);
                     }
@@ -285,7 +285,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        //Request 6
+        // Request 6
         private void chargingElectricVehicle()
         {
             string licenseNumber = getLicenseNumber();
@@ -318,7 +318,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(String.Format(Messages.k_EnergyDetails, o_CurrentEnergyHours, o_CurrentEnergyMinutes, o__MaxEnergyHours, o__MaxEnergyMinutes));
         }
 
-        //Request 7
+        // Request 7
         private void showAllDetails()
         {
             if (m_Garage.VehiclesInGarage.Count == 0)
@@ -351,7 +351,7 @@ namespace Ex03.ConsoleUI
             catch (FormatException field)
             {
                 Console.WriteLine(Messages.k_ThereWasErrorWith);
-                Console.WriteLine(field.Message); //NT - write it better
+                Console.WriteLine(field.Message);
                 setAdditionalFields(i_newVehicle);
             }
         }
@@ -405,12 +405,12 @@ namespace Ex03.ConsoleUI
             Console.Write(Messages.k_PleaseEnter);
             Console.WriteLine(i_FieldName);
             string fieldData = Console.ReadLine();
-            fieldData = checkWhiteSpace(fieldData); //NT isnullorempty
+            fieldData = checkWhiteSpace(fieldData);
             return fieldData;
         }
 
         private string getVehicleModelFromUser()
-        {          
+        {
             Console.WriteLine(Messages.k_EnterVehicleModel);
             string nameOfModel = Console.ReadLine();
 
@@ -445,7 +445,7 @@ namespace Ex03.ConsoleUI
             {
                 try
                 {
-                    Console.WriteLine(Messages.k_EnterCurrentAirpressure +" (The maximum is- " + i_Vehicle.MaxAirPressureLevel + ")");
+                    Console.WriteLine(Messages.k_EnterCurrentAirpressure + " (The maximum is- " + i_Vehicle.MaxAirPressureLevel + ")");
                     string airPressureLevelStr = Console.ReadLine();
 
                     inputCorrectly = float.TryParse(airPressureLevelStr, out float o_AirPressureLevel);
@@ -460,13 +460,13 @@ namespace Ex03.ConsoleUI
                 }
                 catch (ValueOutOfRangeException)
                 {
-                    
+
                     Console.WriteLine(Messages.k_AirpressureLevelOutOfRange);
                     inputCorrectly = false;
                 }
-                catch
+                catch (Exception)
                 {
-                    Console.WriteLine(Messages.k_IncorrectInput); //NT
+                    Console.WriteLine(Messages.k_IncorrectInput);
                 }
             }
 
