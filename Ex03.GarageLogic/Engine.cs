@@ -22,6 +22,12 @@ namespace Ex03.GarageLogic
             r_MaxEnergyCapacity = i_MaxEnergyCapacity;
         }
 
+        public float CurrentEnergyCapacity
+        {
+            get { return m_CurrentEnergyCapacity;
+            }
+        }
+
         public void FillEnergy(eFuelType i_FuelTypeToAdd, float i_AmountToAdd)
         {
             if (i_FuelTypeToAdd == m_FuelType)
@@ -48,7 +54,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return String.Format("Fuel type: {0}, Current Fuel Capacity {1}%", m_FuelType, fuelInPercent());
+            return String.Format("Fuel type: {0}\nCurrent Fuel Capacity: {1}%\n", m_FuelType, fuelInPercent());
         }
 
     }

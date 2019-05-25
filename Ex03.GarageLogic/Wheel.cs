@@ -10,7 +10,7 @@ namespace Ex03.GarageLogic
         const string k_ErrorTooMuchAir = "Too much Air to add";
         const string k_ErrorNotPositiveNumber = "The number is not positive";
         const string k_ErrorValueOutOfRange = "The values are out of range";
-        const string k_WheelDetails = "Manufacturer: {0}, AirPressure Level: {1}";
+        const string k_WheelDetails = "Manufacturer: {0}, AirPressure Level: {1}\n";
         private readonly float r_MaxAirPressureLevel;
         private string m_NameOfManufacturer;
         private float m_AirPressureLevel;

@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
     {
         public enum eVehicleStatus { InRepair, Repaired, Paid }
 
-        const string k_VehicleInGarageDetails = "Owner Name:{0}, Owner Phone: {1},Vehicle Status: {2}, {3} ";
+        const string k_VehicleInGarageDetails = "Owner Name: {0}\nOwner Phone: {1}\nVehicle Status: {2}\nVehicle: {3}\n ";
         private eVehicleStatus m_VehicleStatus = eVehicleStatus.InRepair;
         private string m_OwnerName;
         private string m_PhoneNumber;

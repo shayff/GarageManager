@@ -45,7 +45,7 @@ namespace Ex03.ConsoleUI
 
             Dictionary<string, string> fieldsToSet = new Dictionary<string, string> { { "CarColor", "1" }, { "NumOfDoors", "1" } };
             newVehicle.SetAdditionalFields(fieldsToSet);
-            newVehicle.InitWheels(23f, "Wheels is real");
+            newVehicle.InitWheels(23f, "Guy Ronen");
             m_Garage.InsertVehicleToGarage("Nely", "0521234567", newVehicle);
 
         }
@@ -166,7 +166,7 @@ namespace Ex03.ConsoleUI
                     try
                     {
                         Vehicle newVehicle = CreateVehicle.Create(vehicleType, nameOfModel, licenseNumber);
-                        setAdditonalFields(newVehicle);
+                        setAdditionalFields(newVehicle);
 
                         //*Details wheels*//
                         getWheelsDetails(newVehicle);
@@ -187,7 +187,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private void setAdditonalFields(Vehicle i_newVehicle)
+        private void setAdditionalFields(Vehicle i_newVehicle)
         {
             Dictionary<string, string> fieldsToSet = getAdditionalFieldsData(i_newVehicle.GetListOfAdditionalFields());
             try
@@ -198,7 +198,7 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("There was error with:");
                 Console.WriteLine(field.Message); //NT - write it better
-                setAdditonalFields(i_newVehicle);
+                setAdditionalFields(i_newVehicle);
             }
         }
 

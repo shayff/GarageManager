@@ -71,7 +71,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            string data = String.Format("Is drive dangerous cargo:{0}, Cargo capacity: {1} ", m_IsDriveDangerousCargo, m_CargoCapacity);
+            string data = String.Format("Is drive dangerous cargo: {0}\nCargo capacity: {1}\n ", m_IsDriveDangerousCargo, m_CargoCapacity);
             return base.ToString() + data;
         }
 

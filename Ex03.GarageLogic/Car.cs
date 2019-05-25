@@ -58,24 +58,24 @@ namespace Ex03.GarageLogic
         //*Methods*//
         public override string ToString()
         {
-            string data = String.Format("Color:{0},  Number of doors: {1} ", m_CarColor, m_NumOfDoors);
+            string data = String.Format("Color: {0}\nNumber of doors: {1}\n", m_CarColor, m_NumOfDoors);
             return base.ToString() + data;
         }
 
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-            if (Int32.TryParse(i_AdditionalFieldsToSet["CarColor"], out int carColorChoosed) && Enum.IsDefined(typeof(eColor), carColorChoosed))
+            if (Int32.TryParse(i_AdditionalFieldsToSet["CarColor"], out int carColorChoice) && Enum.IsDefined(typeof(eColor), carColorChoice))
             {
-                m_CarColor = (eColor)carColorChoosed;
+                m_CarColor = (eColor)carColorChoice;
             }
             else
             {
                 throw new FormatException("Car Color");
             }
 
-            if (Int32.TryParse(i_AdditionalFieldsToSet["NumOfDoors"], out int numOfDoorsChoosed) && Enum.IsDefined(typeof(eNumDoors), numOfDoorsChoosed))
+            if (Int32.TryParse(i_AdditionalFieldsToSet["NumOfDoors"], out int numOfDoorsChoice) && Enum.IsDefined(typeof(eNumDoors), numOfDoorsChoice))
             {
-                m_NumOfDoors = (eNumDoors)numOfDoorsChoosed;
+                m_NumOfDoors = (eNumDoors)numOfDoorsChoice;
             }
             else
             {

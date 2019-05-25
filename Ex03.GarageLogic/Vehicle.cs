@@ -6,7 +6,7 @@ namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
     {
-        const string k_VehicleDetails = "License Number: {0}, Model Name: {1}";
+        const string k_VehicleDetails = "License Number: {0}\nModel Name: {1}\n";
 
         private string m_NameOfModel;
         private string m_LicenseNumber;
@@ -16,6 +16,10 @@ namespace Ex03.GarageLogic
         private int r_NumberOfWheels;
         private readonly float r_MaxAirPressureLevel;
 
+        public Engine Engine
+        {
+            get { return m_Engine; }
+        }
         public int NumberOfWheels
         {
             get { return r_NumberOfWheels; }
@@ -73,11 +77,13 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
+            string[] number = { "Wheels: \n1.", "2.", "3.", "4."};
+            int index = 0;
             string vehicleDetailsString = string.Format(k_VehicleDetails, m_LicenseNumber, m_NameOfModel);
             vehicleDetailsString += m_Engine;
             foreach (Wheel wheel in m_Wheels)
             {
-                vehicleDetailsString += wheel;
+                vehicleDetailsString += number[index++] + wheel;
             }
             return vehicleDetailsString;
         }
