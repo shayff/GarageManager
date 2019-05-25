@@ -60,13 +60,21 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException("IsDriveDangerousCargo");
             }
-            
-            if (float.TryParse(i_AdditionalFieldsToSet["CargoCapacity"], out float m_CargoCapacity))
+
+            if (float.TryParse(i_AdditionalFieldsToSet["CargoCapacity"], out float CargoCapacity))
             {
+                if (CargoCapacity>0)
+                {
+                    m_CargoCapacity = CargoCapacity;
+                }
+                else
+                {
+                    throw new ArgumentException("The value must be at least 0");
+                }
             }
             else
             {
-                throw new FormatException("CargoCapacity");
+                throw new FormatException("CargoCapacity: The value is invalid, please try again");
             }
 
         }

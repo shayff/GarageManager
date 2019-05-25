@@ -10,12 +10,14 @@ namespace Ex03.GarageLogic
 
         public enum eNumDoors { Two, Three, Four, Five }
 
+        const string k_NoSuchAOption = "There isn't such option for ";
+        const string k_InvalidValue = "Invalid value";
+
         private const int k_NumberOfWheels = 4;
         private const float k_MaxAirPressure = 31f;
         private eColor m_CarColor;
         private eNumDoors m_NumOfDoors;
 
-        //*ctor*//
         public Car(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
 
@@ -30,7 +32,6 @@ namespace Ex03.GarageLogic
                  };
         }
 
-        //*Methods*//
         public override string ToString()
         {
             string data = String.Format("Color: {0}\nNumber of doors: {1}\n", m_CarColor, m_NumOfDoors);
@@ -39,22 +40,38 @@ namespace Ex03.GarageLogic
 
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-            if (Int32.TryParse(i_AdditionalFieldsToSet["CarColor"], out int carColorChoice) && Enum.IsDefined(typeof(eColor), carColorChoice))
+            if (Int32.TryParse(i_AdditionalFieldsToSet["CarColor"], out int carColorChoice))
             {
-                m_CarColor = (eColor)carColorChoice;
+                if (Enum.IsDefined(typeof(eColor), carColorChoice))
+                {
+                    m_CarColor = (eColor)carColorChoice;
+                }
+                else
+                {
+                    throw new ArgumentException(k_NoSuchAOption + "color");
+                }
+
             }
             else
             {
-                throw new FormatException("Car Color");
+                throw new FormatException("Car Color Error:" + k_InvalidValue);
             }
 
-            if (Int32.TryParse(i_AdditionalFieldsToSet["NumOfDoors"], out int numOfDoorsChoice) && Enum.IsDefined(typeof(eNumDoors), numOfDoorsChoice))
+            if (Int32.TryParse(i_AdditionalFieldsToSet["NumOfDoors"], out int numOfDoorsChoice))
             {
-                m_NumOfDoors = (eNumDoors)numOfDoorsChoice;
+                if (Enum.IsDefined(typeof(eNumDoors), numOfDoorsChoice))
+                {
+                    m_NumOfDoors = (eNumDoors)numOfDoorsChoice;
+                }
+                else
+                {
+                    throw new ArgumentException(k_NoSuchAOption + "Num Of Doors");
+                }
+
             }
             else
             {
-                throw new FormatException("Num Of Doors");
+                throw new FormatException("Num Of Doors Error:" + k_InvalidValue);
             }
         }
     }

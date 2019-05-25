@@ -38,7 +38,7 @@ namespace Ex03.GarageLogic
 
 
         //*Methods*//
-        public void FillEnergy(eFuelType i_FuelType, float i_EnergyToAdd)
+        public void FillEnergy(int i_FuelType, float i_EnergyToAdd)
         {
             m_Vehicle.FillEnergy(i_FuelType, i_EnergyToAdd);
         }
