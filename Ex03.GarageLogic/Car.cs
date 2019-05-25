@@ -62,11 +62,25 @@ namespace Ex03.GarageLogic
             return base.ToString() + data;
         }
 
-        public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
+        public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-            //NT add check for the input, there is a way to check if can be cast to enum?
-            m_CarColor = (eColor)i_AdditionalFieldsToSet["CarColor"];
-            m_NumOfDoors = (eNumDoors)i_AdditionalFieldsToSet["NumOfDoors"];
+            if (Int32.TryParse(i_AdditionalFieldsToSet["CarColor"], out int carColorChoosed) && Enum.IsDefined(typeof(eColor), carColorChoosed))
+            {
+                m_CarColor = (eColor)carColorChoosed;
+            }
+            else
+            {
+                throw new FormatException("Car Color");
+            }
+
+            if (Int32.TryParse(i_AdditionalFieldsToSet["NumOfDoors"], out int numOfDoorsChoosed) && Enum.IsDefined(typeof(eNumDoors), numOfDoorsChoosed))
+            {
+                m_NumOfDoors = (eNumDoors)numOfDoorsChoosed;
+            }
+            else
+            {
+                throw new FormatException("Num Of Doors");
+            }
         }
     }
 }

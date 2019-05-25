@@ -27,16 +27,26 @@ namespace Ex03.GarageLogic
         }
 
         //*Methods*//
-        public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
+        public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-            if (i_AdditionalFieldsToSet.ContainsKey("LicenseType"))
+            if (Int32.TryParse(i_AdditionalFieldsToSet["LicenseType"], out int licenseTypeChoosed) && Enum.IsDefined(typeof(eLicenseType), licenseTypeChoosed))
             {
-                m_LicenseType = (eLicenseType)i_AdditionalFieldsToSet["LicenseType"];
+                m_LicenseType = (eLicenseType)licenseTypeChoosed;
+            }
+            else
+            {
+                throw new FormatException("LicenseType");
             }
 
-            m_EngineCapacity = (int)i_AdditionalFieldsToSet["EngineCapacity"];
+            if (Int32.TryParse(i_AdditionalFieldsToSet["EngineCapacity"], out int m_EngineCapacity))
+            {
+            }
+            else
+            {
+                throw new FormatException("EngineCapacity");
+            }
         }
-        
+
 
         public override string ToString()
         {

@@ -43,7 +43,7 @@ namespace Ex03.ConsoleUI
             /*Vehicle 123*/
             Vehicle newVehicle = CreateVehicle.Create(3, "mazada 2", "123");
 
-            Dictionary<string, int> fieldsToSet = new Dictionary<string, int> { { "CarColor", 1 }, { "NumOfDoors", 1 } };
+            Dictionary<string, string> fieldsToSet = new Dictionary<string, string> { { "CarColor", "1" }, { "NumOfDoors", "1" } };
             newVehicle.SetAdditionalFields(fieldsToSet);
             newVehicle.InitWheels(23f, "Wheels is real");
             m_Garage.InsertVehicleToGarage("Nely", "0521234567", newVehicle);
@@ -119,6 +119,30 @@ namespace Ex03.ConsoleUI
             }
         }
 
+        private string checkSpace(string i_toCheck)
+        {
+            bool space = i_toCheck.Contains(" ");
+            while (space)
+            {
+                Console.WriteLine("Error, type again");
+                i_toCheck = Console.ReadLine();
+                space = i_toCheck.Contains(" ");
+            }
+
+            return i_toCheck;
+        }
+        private string checkWhiteSpace(string i_toCheck)
+        {
+
+            while (String.IsNullOrEmpty(i_toCheck))
+            {
+                Console.WriteLine("Error, type again");
+                i_toCheck = Console.ReadLine();
+
+            }
+            return i_toCheck;
+        }
+
         //Request 1
         public void InsertVehicleToGarage()
         {
@@ -142,11 +166,10 @@ namespace Ex03.ConsoleUI
                     try
                     {
                         Vehicle newVehicle = CreateVehicle.Create(vehicleType, nameOfModel, licenseNumber);
-                        Dictionary<string, int> fieldsToSet = getAdditionalFieldsData(newVehicle.GetListOfAdditionalFields());
-                        newVehicle.SetAdditionalFields(fieldsToSet);
+                        setAdditonalFields(newVehicle);
 
                         //*Details wheels*//
-                        getDetailsWheels(newVehicle);
+                        getWheelsDetails(newVehicle);
 
                         m_Garage.InsertVehicleToGarage(ownerName, ownerPhoneNumber, newVehicle);
                         Console.WriteLine(k_VehicleHasEnterToGarage);
@@ -161,6 +184,21 @@ namespace Ex03.ConsoleUI
             {
 
                 //error
+            }
+        }
+
+        private void setAdditonalFields(Vehicle i_newVehicle)
+        {
+            Dictionary<string, string> fieldsToSet = getAdditionalFieldsData(i_newVehicle.GetListOfAdditionalFields());
+            try
+            {
+                i_newVehicle.SetAdditionalFields(fieldsToSet);
+            }
+            catch (FormatException field)
+            {
+                Console.WriteLine("There was error with:");
+                Console.WriteLine(field.Message); //NT - write it better
+                setAdditonalFields(i_newVehicle);
             }
         }
 
@@ -193,30 +231,26 @@ namespace Ex03.ConsoleUI
 
             return checkWhiteSpace(licenseNumber);
         }
-
-        private string checkSpace(string i_toCheck)
+        private Dictionary<string, string> getAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
         {
-            bool space = i_toCheck.Contains(" ");
-            while (space)
+            Dictionary<string, string> additionalFieldsData = new Dictionary<string, string>();
+            foreach (KeyValuePair<string, string> field in i_AdditionalFieldsName)
             {
-                Console.WriteLine("Error, type again");
-                i_toCheck = Console.ReadLine();
-                space = i_toCheck.Contains(" ");
+                string fieldData = getFieldData(field.Value);
+                additionalFieldsData.Add(field.Key, fieldData);
             }
-
-            return i_toCheck;
+            return additionalFieldsData;
         }
-        private string checkWhiteSpace(string i_toCheck)
+
+        private string getFieldData(string i_FieldName) //NT check if the input is ok
         {
-
-            while (String.IsNullOrEmpty(i_toCheck))
-            {
-                Console.WriteLine("Error, type again");
-                i_toCheck = Console.ReadLine();
-
-            }
-            return i_toCheck;
+            Console.Write("Please enter ");
+            Console.WriteLine(i_FieldName);
+            string fieldData = Console.ReadLine();
+            fieldData = checkWhiteSpace(fieldData); //NT isnullorempty
+            return fieldData;
         }
+
         private string getVehicleModelFromUser()
         {
             Console.WriteLine("Enter a vehicle model");
@@ -239,7 +273,7 @@ namespace Ex03.ConsoleUI
                 //throw exception
             }
         }
-        private void getDetailsWheels(Vehicle i_Vehicle)
+        private void getWheelsDetails(Vehicle i_Vehicle)
         {
             //NT why airPressure is 0?
             bool inputCorrectly = false;
@@ -469,26 +503,6 @@ namespace Ex03.ConsoleUI
                                   "8. Exit");
         }
 
-        private Dictionary<string, int> getAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
-        {
-            Dictionary<string, int> additionalFieldsData = new Dictionary<string, int>();
-            foreach (KeyValuePair<string, string> field in i_AdditionalFieldsName)
-            {
-                int fieldData = getFieldData(field.Value);
-                additionalFieldsData.Add(field.Key, fieldData);
-            }
-            return additionalFieldsData;
-        }
-
-        private int getFieldData(string i_FieldName) //NT check if the input is ok
-        {
-            Console.Write("Please enter ");
-            Console.WriteLine(i_FieldName);
-            string fieldData = Console.ReadLine();
-            fieldData = checkWhiteSpace(fieldData);
-            Int32.TryParse(fieldData, out int res);
-            return res;
-        }
 
 
     }

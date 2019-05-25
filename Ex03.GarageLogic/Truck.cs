@@ -17,7 +17,7 @@ namespace Ex03.GarageLogic
             set { m_IsDriveDangerousCargo = value; }
             get { return m_IsDriveDangerousCargo; }
         }
-    
+
         public float CargoCapacity
         {
             set { m_CargoCapacity = value; }
@@ -36,23 +36,37 @@ namespace Ex03.GarageLogic
                 { "CargoCapacity", "Cargo Capacity Insert in float" } };
         }
 
-        public override void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet)
+        public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-            if (i_AdditionalFieldsToSet["IsDriveDangerousCargo"] == 0)
+
+            if (Int32.TryParse(i_AdditionalFieldsToSet["IsDriveDangerousCargo"], out int isDriveDangerCargoChoosed))
             {
-                m_IsDriveDangerousCargo = true;
-            }
-            else if (i_AdditionalFieldsToSet["IsDriveDangerousCargo"] == 1)
-            {
-                m_IsDriveDangerousCargo = false;
+                if (isDriveDangerCargoChoosed == 0)
+                {
+                    m_IsDriveDangerousCargo = true;
+                }
+                else if (isDriveDangerCargoChoosed == 1)
+                {
+                    m_IsDriveDangerousCargo = false;
+                }
+                else
+                {
+                    throw new FormatException("IsDriveDangerousCargo");
+                }
             }
             else
             {
                 throw new FormatException("IsDriveDangerousCargo");
             }
-            //NT should be float
+            
+            if (float.TryParse(i_AdditionalFieldsToSet["CargoCapacity"], out float m_CargoCapacity))
+            {
+            }
+            else
+            {
+                throw new FormatException("CargoCapacity");
+            }
 
-            m_CargoCapacity = (float)i_AdditionalFieldsToSet["CargoCapacity"];
         }
 
         public override string ToString()

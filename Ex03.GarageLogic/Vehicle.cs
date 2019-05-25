@@ -39,7 +39,7 @@ namespace Ex03.GarageLogic
         }
 
         public abstract Dictionary<string, string> GetListOfAdditionalFields();
-        public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
+        public abstract void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet);
 
         //*ctor*//
         public Vehicle(eFuelType i_EngineType, float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
