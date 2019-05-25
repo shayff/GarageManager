@@ -16,6 +16,11 @@ namespace Ex03.GarageLogic
             m_VehiclesInGarage = new Dictionary<string, VehicleInGarage>();
         }
 
+        public Dictionary<string, VehicleInGarage> VehiclesInGarage
+        {
+            get { return m_VehiclesInGarage; }
+        }
+
         //Request 1
         public void InsertVehicleToGarage(string ownerName, string phoneNumber, Vehicle newVehicle)
         {
