@@ -15,6 +15,7 @@ namespace Ex03.ConsoleUI
         const string k_IncorrectInput = "Incorrect input";
         const string k_LicenseNumberNotFound = "Couldn't find licenseNumber";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
+        const string k_VehicleHasEnterToGarage = "Vehicle sucssefully enter to garage"; 
         const string k_ChooseVehicleStatus = "Enter a Vehicle Status:\n" +
                               "0. for Repaired\n" +
                               "1. for InRepair\n" +
@@ -148,7 +149,7 @@ namespace Ex03.ConsoleUI
                         InitWheels(newVehicle);
 
                         m_Garage.InsertVehicleToGarage(ownerName, ownerPhoneNumber, newVehicle);
-
+                        Console.WriteLine(k_VehicleHasEnterToGarage);
                     }
                     catch (FormatException)
                     {
@@ -156,7 +157,7 @@ namespace Ex03.ConsoleUI
                     }
                 }
             }
-            catch (Exception temp)
+            catch (Exception)
             {
 
                 //error
@@ -448,12 +449,11 @@ namespace Ex03.ConsoleUI
 
                 try
                 {
-                    string toPrintAllDetails = m_Garage.ShowAllDetails(licenseNumber);
-                    Console.WriteLine(toPrintAllDetails);
+                    Console.WriteLine(m_Garage.ShowAllDetails(licenseNumber));
                 }
-                catch
+                catch(KeyNotFoundException)
                 {
-                    Console.WriteLine("Error");
+                    Console.WriteLine(k_LicenseNumberNotFound);
                 }
             }
         }
