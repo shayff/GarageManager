@@ -40,7 +40,7 @@ namespace Ex03.ConsoleUI
             {
                 Console.Clear(); // Clear the screen
                 Console.WriteLine(k_WelcomeGarage);
-                PrintMainMenu();
+                printMainMenu();
                 string getUserChoose = Console.ReadLine();
 
                 if (Int32.TryParse(getUserChoose, out int result))
@@ -107,9 +107,9 @@ namespace Ex03.ConsoleUI
             {
                 Console.Clear();
 
-                string ownerName = GetOwnerName();
-                string ownerPhoneNumber = GetPhoneNumberFromUser(); //check if phone is ok
-                string licenseNumber = GetLicenseNumber(); //check if license is ok
+                string ownerName = getOwnerName();
+                string ownerPhoneNumber = getPhoneNumberFromUser(); //check if phone is ok
+                string licenseNumber = getLicenseNumber(); //check if license is ok
 
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
@@ -117,12 +117,12 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    int vehicleType = GetVehicleTypeFromUser();
-                    string nameOfModel = GetVehicleModelFromUser();
+                    int vehicleType = getVehicleTypeFromUser();
+                    string nameOfModel = getVehicleModelFromUser();
 
                     Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)vehicleType, nameOfModel, licenseNumber);
 
-                    Dictionary<string, int> fieldsToSet = GetAdditionalFieldsData(newVehicle.GetListOfAdditionalFields());
+                    Dictionary<string, int> fieldsToSet = getAdditionalFieldsData(newVehicle.GetListOfAdditionalFields());
                     newVehicle.SetAdditionalFields(fieldsToSet);
 
                     //*Details wheels*//
@@ -141,7 +141,7 @@ namespace Ex03.ConsoleUI
 
         public void InitWheels(Vehicle i_Vehicle)
         {
-            GetDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
+            getDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
             try
             {
                 i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
@@ -157,7 +157,7 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("bla"); //NT
             }
         }
-        public string GetPhoneNumberFromUser()
+        private string getPhoneNumberFromUser()
         {
             Console.WriteLine("Enter a phone number of owner (For example 0541234567)");
             string phoneNumber = Console.ReadLine();
@@ -169,22 +169,22 @@ namespace Ex03.ConsoleUI
             }
             return phoneNumber;
         }
-        public string GetOwnerName()
+        private string getOwnerName()
         {
             Console.WriteLine("Insert owner name please: ");
             string ownerName = Console.ReadLine();
 
-            return CheckWhiteSpace(ownerName);
+            return checkWhiteSpace(ownerName);
 
         }
-        public string GetLicenseNumber()
+        private string getLicenseNumber()
         {
             Console.WriteLine("Enter a license number");
             string licenseNumber = Console.ReadLine();
 
-            return CheckWhiteSpace(licenseNumber);
+            return checkWhiteSpace(licenseNumber);
         }
-        public string CheckWhiteSpace(string i_toCheck)
+        private string checkWhiteSpace(string i_toCheck)
         {
 
             while (String.IsNullOrEmpty(i_toCheck))
@@ -195,14 +195,14 @@ namespace Ex03.ConsoleUI
             }
             return i_toCheck;
         }
-        public string GetVehicleModelFromUser()
+        private string getVehicleModelFromUser()
         {
             Console.WriteLine("Enter a vehicle model");
             string nameOfModel = Console.ReadLine();
 
-            return CheckWhiteSpace(nameOfModel);
+            return checkWhiteSpace(nameOfModel);
         }
-        public int GetVehicleTypeFromUser()
+        private int getVehicleTypeFromUser()
         {
             Console.WriteLine(k_ChooseVehicleType);
             string typeOfVehicle = Console.ReadLine();
@@ -272,7 +272,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(k_ChooseVehicleStatus);
             string status = Console.ReadLine();
 
-            string licenseNumber = GetLicenseNumber();
+            string licenseNumber = getLicenseNumber();
 
             if (Int32.TryParse(status, out int result))
             {
@@ -287,14 +287,14 @@ namespace Ex03.ConsoleUI
         //Request 4
         public void InflatingWheelToMax()
         {
-            string licenseNumber = GetLicenseNumber();
+            string licenseNumber = getLicenseNumber();
             m_Garage.InflatingWheelToMax(licenseNumber);
         }
 
         //Request 5
         public void FillFuelToFuelVehicles()
         {
-            string licenseNumber = GetLicenseNumber();
+            string licenseNumber = getLicenseNumber();
 
             Console.WriteLine("Enter a Fuel type:\n" +
                               "for Octan98 - press 0\n" +
@@ -336,7 +336,7 @@ namespace Ex03.ConsoleUI
         //Request 6
         public void ChargingElectricVehicle()
         {
-            string licenseNumber = GetLicenseNumber();
+            string licenseNumber = getLicenseNumber();
 
             Console.WriteLine("Enter How many minutes will you charge");
             string minutesStr = Console.ReadLine();
@@ -368,7 +368,7 @@ namespace Ex03.ConsoleUI
             }
             else
             {
-                string licenseNumber = GetLicenseNumber();
+                string licenseNumber = getLicenseNumber();
 
                 try
                 {
@@ -382,7 +382,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        public void PrintMainMenu()
+        private void printMainMenu()
         {
             Console.WriteLine("1. Put a new car into the garage\n" +
                                   "2. View the list of vehicle license numbers in the garage\n" +
@@ -394,27 +394,28 @@ namespace Ex03.ConsoleUI
                                   "8. Exit");
         }
 
-        public Dictionary<string, int> GetAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
+        private Dictionary<string, int> getAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
         {
             Dictionary<string, int> additionalFieldsData = new Dictionary<string, int>();
             foreach (KeyValuePair<string, string> field in i_AdditionalFieldsName)
             {
-                int fieldData = GetFieldData(field.Value);
+                int fieldData = getFieldData(field.Value);
                 additionalFieldsData.Add(field.Key, fieldData);
             }
             return additionalFieldsData;
         }
 
-        public int GetFieldData(string i_FieldName) //NT check if the input is ok
+        private int getFieldData(string i_FieldName) //NT check if the input is ok
         {
             Console.Write("Please enter ");
             Console.WriteLine(i_FieldName);
             string fieldData = Console.ReadLine();
+
             Int32.TryParse(fieldData, out int res);
             return res;
         }
 
-        public void GetDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
+        private void getDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
         {
             //NT why airpressure is 0?
             bool inputCorrectly = false;
@@ -426,7 +427,7 @@ namespace Ex03.ConsoleUI
             while (!inputCorrectly)
             {
                 Console.WriteLine("Enter the current air pressure in the wheels " +
-                                  "(The maximum is- " + i_MaxAirPressureLevel);
+                                  "(The maximum is- " + i_MaxAirPressureLevel+")");
                 string airPressureLevelStr = Console.ReadLine();
 
                 inputCorrectly = float.TryParse(airPressureLevelStr, out float airPressureLevel);
