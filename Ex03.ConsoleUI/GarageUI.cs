@@ -102,7 +102,7 @@ namespace Ex03.ConsoleUI
 
                 string ownerName = GetOwnerName();
                 string ownerPhoneNumber = GetPhoneNumberFromUser();
-                string licenseNumber = GetLicenseNumber(); 
+                string licenseNumber = GetLicenseNumber();
 
                 if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
                 {
@@ -111,7 +111,7 @@ namespace Ex03.ConsoleUI
                 else
                 {
                     int vehicleType = GetVehicleTypeFromUser();
-                    string nameOfModel = GetVhicleModelFromUser();
+                    string nameOfModel = GetVehicleModelFromUser();
 
                     Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)vehicleType, nameOfModel, licenseNumber);
 
@@ -130,7 +130,7 @@ namespace Ex03.ConsoleUI
                 //error
             }
         }
-        
+
         //Request 2
         public void ViewListOfVehicleLicenseNumbers()
         {
@@ -181,7 +181,7 @@ namespace Ex03.ConsoleUI
 
             string licenseNumber = GetLicenseNumber();
 
-            if (Int32.TryParse(status, out int result) && result>=0 &&result<=2)
+            if (Int32.TryParse(status, out int result) && result >= 0 && result <= 2)
             {
                 m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
             }
@@ -209,7 +209,7 @@ namespace Ex03.ConsoleUI
                               "for Octan95 - press 2\n" +
                               "for Soler - press 3");
             string status = Console.ReadLine();
-            if (Int32.TryParse(status, out int result)&& result>=0 &&result<=3)
+            if (Int32.TryParse(status, out int result) && result >= 0 && result <= 3)
             {
                 Console.WriteLine("Enter How many liters to fill");
                 string liters = Console.ReadLine();
@@ -270,7 +270,6 @@ namespace Ex03.ConsoleUI
         public void ShowAllDetails()
         {
             string licenseNumber = GetLicenseNumber();
-
             try
             {
                 string toPrintAllDetails = m_Garage.ShowAllDetails(licenseNumber);
@@ -294,7 +293,7 @@ namespace Ex03.ConsoleUI
                                   "8. Exit");
         }
 
-      public Dictionary<string, int> GetAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
+        public Dictionary<string, int> GetAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
         {
             Dictionary<string, int> additionalFieldsData = new Dictionary<string, int>();
             foreach (KeyValuePair<string, string> field in i_AdditionalFieldsName)
@@ -338,7 +337,7 @@ namespace Ex03.ConsoleUI
 
         }
         */
-        public void GetDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel) 
+        public void GetDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel)
         {
             //NT why airpressure is 0?
             bool inputCorrectly = false;
@@ -350,7 +349,7 @@ namespace Ex03.ConsoleUI
             while (!inputCorrectly)
             {
                 Console.WriteLine("Enter the current air pressure in the wheels " +
-                                  "(The maximum is-"+ i_MaxAirPressureLevel+")"); //i_MaxAirPressureLevel
+                                  "(The maximum is-" + i_MaxAirPressureLevel + ")"); //i_MaxAirPressureLevel
                 string airPressureLevelStr = Console.ReadLine();
 
                 inputCorrectly = float.TryParse(airPressureLevelStr, out float airPressureLevel);
@@ -359,8 +358,10 @@ namespace Ex03.ConsoleUI
 
         }
 
-        public void InitWheels(Vehicle i_Vehicle)
+
+        private void InitWheels(Vehicle i_Vehicle)
         {
+
             GetDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
             try
             {
@@ -377,41 +378,40 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("bla");
             }
         }
-        public string GetOwnerName()
+        private string GetOwnerName()
         {
             Console.WriteLine("Insert owner name please: ");
             string ownerName = Console.ReadLine();
 
             return CheckWhiteSpace(ownerName);
-          
-        }
 
-        public string GetPhoneNumberFromUser()
+        }
+        private string GetPhoneNumberFromUser()
         {
             Console.WriteLine("Enter a phone number of owner");
             string phoneNumber = Console.ReadLine();
-            
-            while (phoneNumber.Length!=10 || !(int.TryParse(phoneNumber,out int result)))
+
+            while (phoneNumber.Length != 10 || !(int.TryParse(phoneNumber, out int result)))
             {
                 Console.WriteLine("Error, type again");
                 phoneNumber = Console.ReadLine();
             }
             return phoneNumber;
         }
-        public string GetLicenseNumber()
+        private string GetLicenseNumber()
         {
             Console.WriteLine("Enter a license number");
-            string LicenseNumber= Console.ReadLine();
-          
+            string LicenseNumber = Console.ReadLine();
+
             return CheckWhiteSpace(LicenseNumber);
         }
-        public string GetVhicleModelFromUser()
+        private string GetVehicleModelFromUser()
         {
             Console.WriteLine("Enter a vehicle model");
             string nameOfModel = Console.ReadLine();
             return CheckWhiteSpace(nameOfModel);
         }
-        public int GetVehicleTypeFromUser()
+        private int GetVehicleTypeFromUser()
         {
             Console.WriteLine(k_ChooseVehicleType);
             string typeOfVehicle = Console.ReadLine();
@@ -425,20 +425,20 @@ namespace Ex03.ConsoleUI
                 //throw exception
             }
         }
-        public string CheckWhiteSpace(string i_toCheck)
+        private string CheckWhiteSpace(string i_toCheck)
         {
-            while (i_toCheck=="")
+            while (i_toCheck == "")
             {
                 Console.WriteLine("Error, type again");
                 i_toCheck = Console.ReadLine();
-              
+
             }
             return i_toCheck;
         }
 
 
-    
-   
+
+
     }
 
 
