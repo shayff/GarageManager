@@ -17,7 +17,7 @@ namespace Ex03.GarageLogic
             set { m_IsDriveDangerousCargo = value; }
             get { return m_IsDriveDangerousCargo; }
         }
-
+    
         public float CargoCapacity
         {
             set { m_CargoCapacity = value; }
@@ -48,7 +48,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new FormatException();
+                throw new FormatException("IsDriveDangerousCargo");
             }
             //NT should be float
 
