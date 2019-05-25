@@ -39,7 +39,7 @@ namespace Ex03.GarageLogic
         }
 
         public abstract Dictionary<string, string> GetListOfAdditionalFields();
-        public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
+        public abstract void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet);
 
         //*ctor*//
         public Vehicle(eFuelType i_EngineType, float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
@@ -47,7 +47,6 @@ namespace Ex03.GarageLogic
             m_Engine = new Engine(i_EngineType, i_MaxEnergyCapacity);
             r_NumberOfWheels = i_NumOfWheels;
             r_MaxAirPressureLevel = i_MaxAirPressureLevel;
-            //m_Wheels = null;
         }
         
         public void InitWheels(float i_AirPressureLevel,string i_NameOfWheelManuFacturer)
