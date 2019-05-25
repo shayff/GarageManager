@@ -12,14 +12,18 @@ namespace Ex03.ConsoleUI
         /// shay 
         /// </summary>
         const string k_WelcomeGarage = "Welcome to garage of Shay and Nelly!\n";
+        const string k_IncorrectInput = "Incorrect input";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
-        const string k_ChooseVehicleType = "Insert a car type:" +
-                              "\n 0. Fuel MotorCycle\n" +
+        const string k_ChooseVehicleStatus = "Enter a Vehicle Status:\n" +
+                              "for Repaired - press 0\n" +
+                              "for InRepair - press 1\n" +
+                              "for Paid - press 2";
+        const string k_ChooseVehicleType = "Insert a car type:\n" +
+                              "0. Fuel MotorCycle\n" +
                               "1. Electric motorcycle\n" +
                               "2. Fuel Car\n" +
                               "3. Electric car\n" +
                               "4. Fuel truck\n";
-
         const string k_ChooseVehicleStatusToSee = "How would you like the list?\n" +
                               "0. only InRepair\n" +
                               "1. only Repaired \n" +
@@ -89,8 +93,10 @@ namespace Ex03.ConsoleUI
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect input");
+                    Console.WriteLine(k_IncorrectInput);
                 }
+                Console.WriteLine("Press Any key to back to main menu");
+                Console.ReadKey();
             }
         }
 
@@ -147,7 +153,7 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine("bla");
+                Console.WriteLine("bla"); //NT
             }
         }
         public string GetPhoeNumberFromUser()
@@ -181,7 +187,8 @@ namespace Ex03.ConsoleUI
 
         public string CheckWhiteSpace(string i_toCheck)
         {
-            while (String.IsNullOrWhiteSpace(i_toCheck))
+            
+            while (String.IsNullOrEmpty(i_toCheck))
             {
                 Console.WriteLine("Error, type again");
                 i_toCheck = Console.ReadLine();
@@ -215,6 +222,7 @@ namespace Ex03.ConsoleUI
         //Request 2
         public void ViewListOfVehicleLicenseNumbers()
         {
+            int i = 0;
             Console.WriteLine(k_ChooseVehicleStatusToSee);
 
             string input = Console.ReadLine();
@@ -227,7 +235,7 @@ namespace Ex03.ConsoleUI
                         List<string> listsGarage = m_Garage.GetVehiclesInGarage();
                         foreach (string licenseNumber in listsGarage)
                         {
-                            Console.WriteLine(licenseNumber);
+                            Console.WriteLine(i++ + "." + licenseNumber);
                         }
                     }
                     else
@@ -254,10 +262,7 @@ namespace Ex03.ConsoleUI
         //Request 3
         public void ChangeVehicleStatus()
         {
-            Console.WriteLine("Enter a Vehicle Status:\n" +
-                              "for Repaired - press 0\n" +
-                              "for InRepair - press 1\n" +
-                              "for Paid - press 2");
+            Console.WriteLine(k_ChooseVehicleStatus);
             string status = Console.ReadLine();
 
             string licenseNumber = GetLicenseNumber();
@@ -394,27 +399,7 @@ namespace Ex03.ConsoleUI
             Int32.TryParse(fieldData, out int res);
             return res;
         }
-        /*
-        public void CreateVehicleInGarage(Vehicle i_NewVehicle)
-        {
 
-            Console.WriteLine("Enter the owner's name");
-            string ownerName = Console.ReadLine();
-
-            Console.WriteLine("Enter the Phone Number");
-            string phoneNumber = Console.ReadLine();
-
-            if (Int32.TryParse(phoneNumber, out int number))
-            {
-                m_Garage.InsertVehicleToGarage(ownerName, phoneNumber, i_NewVehicle);
-            }
-            else
-            {
-                Console.WriteLine("Error");
-            }
-
-        }
-        */
         public void RequestDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManufacturer, out float o_AirPressureLevel) 
         {
             //NT why airpressure is 0?
@@ -427,16 +412,14 @@ namespace Ex03.ConsoleUI
             while (!inputCorrectly)
             {
                 Console.WriteLine("Enter the current air pressure in the wheels " +
-                                  "(The maximum is- "); //i_MaxAirPressureLevel
+                                  "(The maximum is- " + i_MaxAirPressureLevel);
                 string airPressureLevelStr = Console.ReadLine();
 
                 inputCorrectly = float.TryParse(airPressureLevelStr, out float airPressureLevel);
 
             }
 
-        }
-
-    
+        }    
    
     }
 
