@@ -25,7 +25,9 @@ namespace Ex03.GarageLogic
         //*Properties*//
         public float CurrentEnergyCapacity
         {
-            get { return m_CurrentEnergyCapacity;
+            get
+            {
+                return m_CurrentEnergyCapacity;
             }
         }
         public float MaxEnergyCapacity
@@ -35,28 +37,35 @@ namespace Ex03.GarageLogic
 
 
         //*Methods*//
-        public void FillEnergy(eFuelType i_FuelTypeToAdd, float i_AmountToAdd)
+        public void FillEnergy(int i_FuelTypeToAdd, float i_AmountToAdd)
         {
-            if (i_FuelTypeToAdd == m_FuelType)
+            if (Enum.IsDefined(typeof(eFuelType), i_FuelTypeToAdd))
             {
-                if (i_AmountToAdd + m_CurrentEnergyCapacity <= r_MaxEnergyCapacity)
+                if ((eFuelType)i_FuelTypeToAdd == m_FuelType)
                 {
-                    m_CurrentEnergyCapacity += i_AmountToAdd;
+                    if (i_AmountToAdd + m_CurrentEnergyCapacity <= r_MaxEnergyCapacity)
+                    {
+                        m_CurrentEnergyCapacity += i_AmountToAdd;
+                    }
+                    else
+                    {
+                        throw new ValueOutOfRangeException(0, r_MaxEnergyCapacity, k_ErrorTooMuchFuel);
+                    }
                 }
                 else
                 {
-                    throw new ValueOutOfRangeException(0, r_MaxEnergyCapacity, k_ErrorTooMuchFuel);
+                    throw new ArgumentException(k_ErrorWrongTypeOfFuel);
                 }
             }
             else
             {
-                throw new ArgumentException(k_ErrorWrongTypeOfFuel);
+                throw new ArgumentException("No such an option");
             }
         }
 
         private float fuelInPercent()
         {
-            return m_CurrentEnergyCapacity/r_MaxEnergyCapacity*100;
+            return m_CurrentEnergyCapacity / r_MaxEnergyCapacity * 100;
         }
 
         public override string ToString()

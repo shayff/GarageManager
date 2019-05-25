@@ -61,7 +61,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new FormatException();
+                throw new FormatException("There isn't such option of Vehicle");
             }
             return newVehicle;
         }

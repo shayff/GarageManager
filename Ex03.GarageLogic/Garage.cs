@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 
-
 namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        //private static LinkedList<Vehicle> m_Vehicles;
+        const int k_ElectricityEnumNum = 4;
         private Dictionary<string, VehicleInGarage> m_VehiclesInGarage;
 
         public Garage()
@@ -62,7 +61,7 @@ namespace Ex03.GarageLogic
         }
 
         //Request 5
-        public void FillFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
+        public void FillFuelToFuelVehicles(string i_LicenseNumber, int i_FuelType, float i_FuelLiterToAdd)
         {
             m_VehiclesInGarage[i_LicenseNumber].FillEnergy(i_FuelType, i_FuelLiterToAdd);
         }
@@ -72,7 +71,7 @@ namespace Ex03.GarageLogic
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].FillEnergy(eFuelType.Electricity, i_EnergyToAdd);
+                m_VehiclesInGarage[i_LicenseNumber].FillEnergy(k_ElectricityEnumNum, i_EnergyToAdd);
             }
 
             else
