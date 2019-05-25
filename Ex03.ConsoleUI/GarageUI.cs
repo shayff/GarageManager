@@ -8,9 +8,10 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
+        private const int k_PhoneNumberLength = 10;
         private readonly Garage m_Garage = new Garage();
 
-        public void automatictest() //NT delete me!!!
+        public void Automatictest() //NT delete me!!!
         {
             /*Vehicle 123*/
             Vehicle newVehicle = CreateVehicle.Create(3, "mazada 2", "123");
@@ -31,7 +32,7 @@ namespace Ex03.ConsoleUI
 
         public void Start()
         {
-            automatictest();
+            Automatictest(); //NT delete
             bool flag = true;
 
             while (flag)
@@ -52,36 +53,43 @@ namespace Ex03.ConsoleUI
                                 insertVehicleToGarage();
                                 break;
                             }
+
                         case 2:
                             {
                                 viewListOfVehicleLicenseNumbers();
                                 break;
                             }
+
                         case 3:
                             {
                                 changeVehicleStatus();
                                 break;
                             }
+
                         case 4:
                             {
                                 inflatingWheelToMax();
                                 break;
                             }
+
                         case 5:
                             {
                                 fillFuelToFuelVehicles();
                                 break;
                             }
+
                         case 6:
                             {
                                 chargingElectricVehicle();
                                 break;
                             }
+
                         case 7:
                             {
                                 showAllDetails();
                                 break;
                             }
+
                         case 8:
                             {
                                 flag = false;
@@ -93,10 +101,12 @@ namespace Ex03.ConsoleUI
                 {
                     Console.WriteLine(Messages.k_IncorrectInput);
                 }
+
                 Console.WriteLine("Press Any key to back to main menu");
                 Console.ReadKey();
             }
         }
+
         private void printMainMenu()
         {
             Console.WriteLine("1. Put a new car into the garage\n" +
@@ -144,7 +154,6 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine(argumentException.Message);
                 }
             }
-
         }
 
         // Request 2
@@ -212,14 +221,14 @@ namespace Ex03.ConsoleUI
             {
                 if (int.TryParse(status, out int result))
                 {
-                    m_Garage.ChangeVehicleStatus(licenseNumber,result);
+                    m_Garage.ChangeVehicleStatus(licenseNumber, result);
                 }
                 else
                 {
                     Console.WriteLine(Messages.k_IncorrectInput);
                 }
             }
-            catch(ArgumentException)
+            catch (ArgumentException)
             {
                 Console.WriteLine(Messages.k_WrongOption);
             }
@@ -251,14 +260,14 @@ namespace Ex03.ConsoleUI
 
             Console.WriteLine(Messages.k_ChooseFuelType);
             string status = Console.ReadLine();
-            if (Int32.TryParse(status, out int result) && m_Garage.IsLicenseNumberInGarage(licenseNumber))
+            if (int.TryParse(status, out int result) && m_Garage.IsLicenseNumberInGarage(licenseNumber))
             {
                 m_Garage.GetDetailsEnergyCapacity(licenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
-                Console.WriteLine("Enter How many liters to fill (Current fuel quantity- " + o_CurrentEnergyCapacity + "" +
+                Console.WriteLine("Enter How many liters to fill (Current fuel quantity- " + o_CurrentEnergyCapacity + string.Empty +
                                   ", Maximum quantity of fuel-" + o_MaxEnergyCapacity + ")");
 
                 string liters = Console.ReadLine();
-                if (float.TryParse(liters, out float literToAdd) && 0 < literToAdd)
+                if (float.TryParse(liters, out float literToAdd))
                 {
                     try
                     {
@@ -272,7 +281,6 @@ namespace Ex03.ConsoleUI
                     {
                         Console.WriteLine(argumentException.Message);
                     }
-
                 }
                 else
                 {
@@ -315,7 +323,7 @@ namespace Ex03.ConsoleUI
         {
             getTimeInHoursAndMinute(o_CurrentEnergyCapacity, out int o_CurrentEnergyHours, out int o_CurrentEnergyMinutes);
             getTimeInHoursAndMinute(o_MaxEnergyCapacity, out int o__MaxEnergyHours, out int o__MaxEnergyMinutes);
-            Console.WriteLine(String.Format(Messages.k_EnergyDetails, o_CurrentEnergyHours, o_CurrentEnergyMinutes, o__MaxEnergyHours, o__MaxEnergyMinutes));
+            Console.WriteLine(string.Format(Messages.k_EnergyDetails, o_CurrentEnergyHours, o_CurrentEnergyMinutes, o__MaxEnergyHours, o__MaxEnergyMinutes));
         }
 
         // Request 7
@@ -356,13 +364,12 @@ namespace Ex03.ConsoleUI
             }
         }
 
-
         private string getPhoneNumberFromUser()
         {
             Console.WriteLine(Messages.k_EnterPhoneNumber);
             string phoneNumber = Console.ReadLine();
 
-            while (phoneNumber.Length != 10 || !(int.TryParse(phoneNumber, out int result)))
+            while (phoneNumber.Length != k_PhoneNumberLength || !int.TryParse(phoneNumber, out int result))
             {
                 Console.WriteLine(Messages.k_ErrorTypeAgain);
                 phoneNumber = Console.ReadLine();
@@ -377,7 +384,6 @@ namespace Ex03.ConsoleUI
             string ownerName = Console.ReadLine();
 
             return checkWhiteSpace(ownerName);
-
         }
 
         private string getLicenseNumber()
@@ -397,6 +403,7 @@ namespace Ex03.ConsoleUI
                 string fieldData = getFieldData(field.Value);
                 additionalFieldsData.Add(field.Key, fieldData);
             }
+
             return additionalFieldsData;
         }
 
@@ -460,7 +467,6 @@ namespace Ex03.ConsoleUI
                 }
                 catch (ValueOutOfRangeException)
                 {
-
                     Console.WriteLine(Messages.k_AirPressureLevelOutOfRange);
                     inputCorrectly = false;
                 }
@@ -469,7 +475,6 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine(Messages.k_IncorrectInput);
                 }
             }
-
         }
 
         private void getTimeInHoursAndMinute(float i_Number, out int o_Hours, out int o_Minutes)
@@ -494,15 +499,13 @@ namespace Ex03.ConsoleUI
 
         private string checkWhiteSpace(string i_toCheck)
         {
-
-            while (String.IsNullOrEmpty(i_toCheck))
+            while (string.IsNullOrEmpty(i_toCheck))
             {
                 Console.WriteLine(Messages.k_ErrorTypeAgain);
                 i_toCheck = Console.ReadLine();
             }
+
             return i_toCheck;
         }
-
     }
-
 }

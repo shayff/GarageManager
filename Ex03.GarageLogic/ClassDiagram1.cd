@@ -49,6 +49,13 @@
   </Class>
   <Class Name="Ex03.GarageLogic.MotorCycle">
     <Position X="3.75" Y="5.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Ex03.GarageLogic.MotorCycle.eLicenseType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MotorCycle.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAQBAAAAAAAAAAEAAAAoACAAIAAAAAAAAEAAAQAAAA=</HashCode>
       <FileName>MotorCycle.cs</FileName>

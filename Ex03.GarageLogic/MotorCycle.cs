@@ -4,27 +4,32 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    enum eLicenseType { A, A1, A2, B }
-
     public class MotorCycle : Vehicle
     {
-        const string k_NoSuchAOption = "There isn't such option for ";
-        const string k_InvalidValue = "Invalid value";
+        private enum eLicenseType
+        {
+            A, A1, A2, B
+        }
+
+        private const string k_NoSuchAOption = "There isn't such option for ";
+        private const string k_InvalidValue = "Invalid value";
 
         private const int k_NumberOfWheels = 2;
         private const float k_MaxAirPressure = 33f;
         private eLicenseType m_LicenseType;
         private int m_EngineCapacity;
 
-        public MotorCycle(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
+        public MotorCycle(Engine.eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
         }
 
         public override Dictionary<string, string> GetListOfAdditionalFields()
         {
-            return new Dictionary<string, string> { { "LicenseType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
-                { "EngineCapacity" ,"Engine Capacity (Enter an integer)"} };
-
+            return new Dictionary<string, string>
+            {
+                { "LicenseType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
+                { "EngineCapacity" , "Engine Capacity (Enter an integer)" }
+            };
         }
 
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
@@ -38,7 +43,6 @@ namespace Ex03.GarageLogic
                 else
                 {
                     throw new ArgumentException(k_NoSuchAOption + "LicenseType");
-
                 }
             }
             else
@@ -56,7 +60,6 @@ namespace Ex03.GarageLogic
                 {
                     throw new ArgumentException("The value must be at least 0");
                 }
-
             }
             else
             {

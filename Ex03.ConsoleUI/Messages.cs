@@ -31,23 +31,24 @@ namespace Ex03.ConsoleUI
                               "0. for Repaired\n" +
                               "1. for InRepair\n" +
                               "2. for Paid";
+
         public const string k_ChooseVehicleType = "Insert a car type:\n" +
                               "0. Fuel MotorCycle\n" +
                               "1. Electric motorcycle\n" +
                               "2. Fuel Car\n" +
                               "3. Electric car\n" +
                               "4. Fuel truck";
+
         public const string k_ChooseVehicleStatusToSee = "How would you like the list?\n" +
                               "0. only InRepair\n" +
                               "1. only Repaired \n" +
                               "2. only Paid\n" +
                               "3. All Status";
-        public const string k_ChooseFuelType = ("Enter a Fuel type:\n" +
+
+        public const string k_ChooseFuelType = "Enter a Fuel type:\n" +
                                                   "0. for Octan95\n" +
                                                   "1. for Octan96\n" +
                                                   "2. for Octan98\n" +
-                                                  "3. for Soler");
-
-
+                                                  "3. for Soler";
     }
 }

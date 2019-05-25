@@ -6,21 +6,26 @@ namespace Ex03.GarageLogic
 {
     public class Car : Vehicle
     {
-        public enum eColor { Red, Blue, Black, Gray }
+        public enum eColor
+        {
+            Red, Blue, Black, Gray
+        }
 
-        public enum eNumDoors { Two, Three, Four, Five }
+        public enum eNumDoors
+        {
+            Two, Three, Four, Five
+        }
 
-        const string k_NoSuchAOption = "There isn't such option for ";
-        const string k_InvalidValue = "Invalid value";
+        private const string k_NoSuchAOption = "There isn't such option for ";
+        private const string k_InvalidValue = "Invalid value";
 
         private const int k_NumberOfWheels = 4;
         private const float k_MaxAirPressure = 31f;
         private eColor m_CarColor;
         private eNumDoors m_NumOfDoors;
 
-        public Car(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
+        public Car(Engine.eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
-
         }
 
         public override Dictionary<string, string> GetListOfAdditionalFields()
@@ -50,14 +55,13 @@ namespace Ex03.GarageLogic
                 {
                     throw new ArgumentException(k_NoSuchAOption + "color");
                 }
-
             }
             else
             {
                 throw new FormatException("Car Color Error:" + k_InvalidValue);
             }
 
-            if (Int32.TryParse(i_AdditionalFieldsToSet["NumOfDoors"], out int numOfDoorsChoice))
+            if (int.TryParse(i_AdditionalFieldsToSet["NumOfDoors"], out int numOfDoorsChoice))
             {
                 if (Enum.IsDefined(typeof(eNumDoors), numOfDoorsChoice))
                 {
@@ -67,7 +71,6 @@ namespace Ex03.GarageLogic
                 {
                     throw new ArgumentException(k_NoSuchAOption + "Num Of Doors");
                 }
-
             }
             else
             {

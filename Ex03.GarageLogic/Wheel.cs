@@ -6,16 +6,14 @@ namespace Ex03.GarageLogic
 {
     public class Wheel
     {
-        //NT - DONE
-        const string k_ErrorTooMuchAir = "Too much Air to add";
-        const string k_ErrorNotPositiveNumber = "The number is not positive";
-        const string k_ErrorValueOutOfRange = "The values are out of range";
-        const string k_WheelDetails = "Manufacturer: {0}, AirPressure Level: {1}\n";
+        private const string k_ErrorTooMuchAir = "Too much Air to add";
+        private const string k_ErrorNotPositiveNumber = "The number is not positive";
+        private const string k_ErrorValueOutOfRange = "The values are out of range";
+        private const string k_WheelDetails = "Manufacturer: {0}, AirPressure Level: {1}\n";
         private readonly float r_MaxAirPressureLevel;
         private readonly string m_NameOfManufacturer;
         private float m_AirPressureLevel;
 
-        //*Properties*/
         public float MaxAirPressureLevel
         {
             get { return r_MaxAirPressureLevel; }
@@ -26,7 +24,6 @@ namespace Ex03.GarageLogic
             get { return m_AirPressureLevel; }
         }
 
-        //*ctor*//
         public Wheel(float i_MaxAirPressureLevel, string i_NameOfManufacturer, float i_CurrentAirPressureLevel)
         {
             m_NameOfManufacturer = i_NameOfManufacturer;

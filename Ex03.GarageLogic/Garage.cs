@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-
 namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        const int k_ElectricityEnumNum = 4;
+        private const int k_ElectricityEnumNum = 4;
         private Dictionary<string, VehicleInGarage> m_VehiclesInGarage;
 
         public Garage()
@@ -36,7 +35,6 @@ namespace Ex03.GarageLogic
         // Request 3
         public void ChangeVehicleStatus(string i_LicenseNumber, int i_NewStatus)
         {
-
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
                 m_VehiclesInGarage[i_LicenseNumber].SetVehicleStatusFromInt(i_NewStatus);
@@ -45,7 +43,6 @@ namespace Ex03.GarageLogic
             {
                 throw new KeyNotFoundException();
             }
-
         }
 
         // Request 4
@@ -59,7 +56,6 @@ namespace Ex03.GarageLogic
             {
                 throw new KeyNotFoundException();
             }
-
         }
 
         // Request 5
@@ -75,12 +71,10 @@ namespace Ex03.GarageLogic
             {
                 m_VehiclesInGarage[i_LicenseNumber].FillEnergy(k_ElectricityEnumNum, i_EnergyToAdd);
             }
-
             else
             {
                 throw new KeyNotFoundException();
             }
-
         }
 
         // Request 7
@@ -128,8 +122,6 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException();
             }
-
         }
-
     }
 }
