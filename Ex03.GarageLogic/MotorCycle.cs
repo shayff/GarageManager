@@ -8,13 +8,14 @@ namespace Ex03.GarageLogic
 
     public class MotorCycle : Vehicle
     {
+        const string k_NoSuchAOption = "There isn't such option for ";
+        const string k_InvalidValue = "Invalid value";
+
         private const int k_NumberOfWheels = 2;
         private const float k_MaxAirPressure = 33f;
         private eLicenseType m_LicenseType;
-        private int m_EngineCapacity;// not use
+        private int m_EngineCapacity; 
 
-
-        //*ctor*//
         public MotorCycle(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
         }
@@ -29,25 +30,41 @@ namespace Ex03.GarageLogic
         //*Methods*//
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-            if (Int32.TryParse(i_AdditionalFieldsToSet["LicenseType"], out int licenseTypeChoosed) && Enum.IsDefined(typeof(eLicenseType), licenseTypeChoosed))
+
+            if (Int32.TryParse(i_AdditionalFieldsToSet["LicenseType"], out int licenseTypeChoosed))
             {
-                m_LicenseType = (eLicenseType)licenseTypeChoosed;
+                if (Enum.IsDefined(typeof(eLicenseType), licenseTypeChoosed))
+                {
+                    m_LicenseType = (eLicenseType)licenseTypeChoosed;
+                }
+                else
+                {
+                    throw new ArgumentException(k_NoSuchAOption + "LicenseType");
+
+                }
             }
             else
             {
-                throw new FormatException("LicenseType");
+                throw new FormatException("LicenseType Error" + k_InvalidValue);
             }
 
             if (Int32.TryParse(i_AdditionalFieldsToSet["EngineCapacity"], out int EngineCapacity))
             {
-                m_EngineCapacity = EngineCapacity;
+                if(EngineCapacity>=0)
+                {
+                    m_EngineCapacity = EngineCapacity;
                 }
+                else
+                {
+                    throw new ArgumentException("The value must be at least 0");
+                }
+                
+            }
             else
             {
-                throw new FormatException("EngineCapacity");
+                throw new FormatException("LicenseType: The value is invalid, please try again");
             }
         }
-
 
         public override string ToString()
         {
