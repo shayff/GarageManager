@@ -263,6 +263,7 @@ namespace Ex03.ConsoleUI
 
             Console.WriteLine("EnterThe manufacturer's name of the wheels");
             o_NameOfWheelManuFacturer = Console.ReadLine();
+            o_NameOfWheelManuFacturer = checkWhiteSpace(o_NameOfWheelManuFacturer);
 
             while (!inputCorrectly)
             {
