@@ -33,6 +33,7 @@ namespace Ex03.GarageLogic
         {
             return new List<string>(m_VehiclesInGarage.Keys);
         }
+        
 
         public List<string> GetVehiclesInGarageByStatus(int i_IntVehicleStatusToCompare)
         {
@@ -75,11 +76,11 @@ namespace Ex03.GarageLogic
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.InflatingWheelsToMax();
+                m_VehiclesInGarage[i_LicenseNumber].InflatingWheelsToMax();
             }
             else
             {
-                throw new KeyNotFoundException();
+                throw new KeyNotFoundException();                
             }
 
         }
@@ -89,7 +90,7 @@ namespace Ex03.GarageLogic
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy(i_FuelType, i_FuelLiterToAdd);
+                m_VehiclesInGarage[i_LicenseNumber].FillEnergy(i_FuelType, i_FuelLiterToAdd);
             }
 
             else
@@ -103,7 +104,7 @@ namespace Ex03.GarageLogic
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].m_Vehicle.FillEnergy(eFuelType.Electricity, i_EnergyToAdd);
+                m_VehiclesInGarage[i_LicenseNumber].FillEnergy(eFuelType.Electricity, i_EnergyToAdd);
             }
 
             else

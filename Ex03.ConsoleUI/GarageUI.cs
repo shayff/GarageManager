@@ -13,6 +13,7 @@ namespace Ex03.ConsoleUI
         /// </summary>
         const string k_WelcomeGarage = "Welcome to garage of Shay and Nelly!\n";
         const string k_IncorrectInput = "Incorrect input";
+        const string k_LicenseNumberNotFound = "Couldn't find licenseNumber";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
         const string k_ChooseVehicleStatus = "Enter a Vehicle Status:\n" +
                               "0. for Repaired\n" +
@@ -29,7 +30,7 @@ namespace Ex03.ConsoleUI
                               "1. only Repaired \n" +
                               "2. only Paid\n" +
                               "3. All Status";
-        const string k_ChooseFuelType =("Enter a Fuel type:\n" +
+        const string k_ChooseFuelType = ("Enter a Fuel type:\n" +
                                                   "0. for Octan98 \n" +
                                                   "1. for Octan96\n" +
                                                   "2. for Octan95\n" +
@@ -340,14 +341,20 @@ namespace Ex03.ConsoleUI
             string status = Console.ReadLine();
 
             string licenseNumber = getLicenseNumber();
-
-            if (Int32.TryParse(status, out int result) && result >= 0 && result <= 2)
+            try
             {
-                m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
+                if (Int32.TryParse(status, out int result) && result >= 0 && result <= 2)
+                {
+                    m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
             }
-            else
+            catch(KeyNotFoundException)
             {
-                Console.WriteLine("Incorrect input");
+                Console.WriteLine(k_LicenseNumberNotFound);
             }
         }
 
@@ -355,7 +362,13 @@ namespace Ex03.ConsoleUI
         public void InflatingWheelToMax()
         {
             string licenseNumber = getLicenseNumber();
-            m_Garage.InflatingWheelToMax(licenseNumber);
+            try
+            {
+                m_Garage.InflatingWheelToMax(licenseNumber);
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine(k_LicenseNumberNotFound);             }
         }
 
         //Request 5

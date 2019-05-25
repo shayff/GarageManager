@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
         private eVehicleStatus m_VehicleStatus = eVehicleStatus.InRepair;
         private string m_OwnerName;
         private string m_PhoneNumber;
-        public Vehicle m_Vehicle;
+        private Vehicle m_Vehicle;
 
         /*Properties*/
         public eVehicleStatus VehicleStatus
@@ -29,10 +29,21 @@ namespace Ex03.GarageLogic
             m_Vehicle = i_Vehicle;
         }
 
+        public void FillEnergy(eFuelType i_FuelType ,float i_EnergyToAdd)
+        {
+            FillEnergy(i_FuelType, i_EnergyToAdd);
+        }
+
+        public void InflatingWheelsToMax()
+        {
+            InflatingWheelsToMax();
+        }
+
         public override string ToString()
         { 
             return String.Format(k_VehicleInGarageDetails, m_OwnerName, m_PhoneNumber, m_VehicleStatus, m_Vehicle);
         }
+
 
      }
 }
