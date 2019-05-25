@@ -37,7 +37,7 @@ namespace Ex03.ConsoleUI
             /*Vehicle 123*/
             Vehicle newVehicle = CreateVehicle.Create(3, "mazada 2", "123");
 
-            Dictionary<string, int> fieldsToSet = new Dictionary<string, int> {{ "CarColor", 1 },{ "NumOfDoors", 1 }};
+            Dictionary<string, int> fieldsToSet = new Dictionary<string, int> { { "CarColor", 1 }, { "NumOfDoors", 1 } };
             newVehicle.SetAdditionalFields(fieldsToSet);
             newVehicle.InitWheels(23f, "Wheels is real");
             m_Garage.InsertVehicleToGarage("Nely", "0521234567", newVehicle);
@@ -134,8 +134,8 @@ namespace Ex03.ConsoleUI
                     string nameOfModel = getVehicleModelFromUser();
 
                     try
-                    { 
-                    Vehicle newVehicle = CreateVehicle.Create(vehicleType, nameOfModel, licenseNumber);
+                    {
+                        Vehicle newVehicle = CreateVehicle.Create(vehicleType, nameOfModel, licenseNumber);
                         Dictionary<string, int> fieldsToSet = getAdditionalFieldsData(newVehicle.GetListOfAdditionalFields());
                         newVehicle.SetAdditionalFields(fieldsToSet);
 
@@ -148,7 +148,7 @@ namespace Ex03.ConsoleUI
                     catch (FormatException)
                     {
                         Console.WriteLine("You choose wrong VehicleType");
-                    }                    
+                    }
                 }
             }
             catch (Exception temp)
@@ -265,7 +265,11 @@ namespace Ex03.ConsoleUI
                                   "(The maximum is- " + i_MaxAirPressureLevel + ")");
                 string airPressureLevelStr = Console.ReadLine();
 
-                inputCorrectly = float.TryParse(airPressureLevelStr, out float airPressureLevel);
+                inputCorrectly = float.TryParse(airPressureLevelStr, out o_AirPressureLevel);
+                if (!inputCorrectly)
+                {
+                    Console.WriteLine("Out of range!");
+                }
 
             }
 

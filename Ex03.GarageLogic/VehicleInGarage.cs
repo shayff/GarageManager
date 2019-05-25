@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
+    //NT DONE
     public class VehicleInGarage
     {
         public enum eVehicleStatus { InRepair, Repaired, Paid }
