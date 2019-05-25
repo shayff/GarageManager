@@ -29,9 +29,9 @@ namespace Ex03.ConsoleUI
                               "2. only Paid\n" +
                               "3. All Status";
         const string k_ChooseFuelType = ("Enter a Fuel type:\n" +
-                                                  "0. for Octan98 \n" +
+                                                  "0. for Octan95\n" +
                                                   "1. for Octan96\n" +
-                                                  "2. for Octan95\n" +
+                                                  "2. for Octan98\n" +
                                                   "3. for Soler");
         private readonly Garage m_Garage = new Garage();
 
@@ -370,6 +370,7 @@ namespace Ex03.ConsoleUI
                 setAdditionalFields(i_newVehicle);
             }
         }
+
         private string getPhoneNumberFromUser()
         {
             Console.WriteLine("Enter a phone number of owner (For example 0541234567)");
@@ -383,6 +384,7 @@ namespace Ex03.ConsoleUI
 
             return checkSpace(phoneNumber);
         }
+
         private string getOwnerName()
         {
             Console.WriteLine("Insert owner name please: ");
@@ -391,6 +393,7 @@ namespace Ex03.ConsoleUI
             return checkWhiteSpace(ownerName);
 
         }
+
         private string getLicenseNumber()
         {
             Console.WriteLine("Enter a license number");
@@ -399,6 +402,7 @@ namespace Ex03.ConsoleUI
 
             return checkWhiteSpace(licenseNumber);
         }
+
         private Dictionary<string, string> getAdditionalFieldsData(Dictionary<string, string> i_AdditionalFieldsName)
         {
             Dictionary<string, string> additionalFieldsData = new Dictionary<string, string>();
@@ -409,6 +413,7 @@ namespace Ex03.ConsoleUI
             }
             return additionalFieldsData;
         }
+
         private string getFieldData(string i_FieldName)
         {
             Console.Write("Please enter ");
@@ -417,6 +422,7 @@ namespace Ex03.ConsoleUI
             fieldData = checkWhiteSpace(fieldData); //NT isnullorempty
             return fieldData;
         }
+
         private string getVehicleModelFromUser()
         {
             Console.WriteLine("Enter a vehicle model");
@@ -424,6 +430,7 @@ namespace Ex03.ConsoleUI
 
             return checkWhiteSpace(nameOfModel);
         }
+
         private int getVehicleTypeFromUser()
         {
             Console.WriteLine(k_ChooseVehicleType);
@@ -439,6 +446,7 @@ namespace Ex03.ConsoleUI
                 //throw exception
             }
         }
+
         private void getWheelsDetails(Vehicle i_Vehicle)
         {
             //NT why airPressure is 0?
