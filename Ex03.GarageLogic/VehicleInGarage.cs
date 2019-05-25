@@ -29,9 +29,9 @@ namespace Ex03.GarageLogic
             m_Vehicle = i_Vehicle;
         }
 
-        public void FillEnergy(eFuelType i_FuelType ,float i_EnergyToAdd)
+        public void FillEnergy(eFuelType i_FuelType, float i_EnergyToAdd)
         {
-            FillEnergy(i_FuelType, i_EnergyToAdd);
+            m_Vehicle.EnergySource.FillEnergy(i_FuelType, i_EnergyToAdd);
         }
 
         public void InflatingWheelsToMax()
