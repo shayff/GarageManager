@@ -47,12 +47,12 @@ namespace Ex03.GarageLogic
             m_Engine = new Engine(i_EngineType, i_MaxEnergyCapacity);
             r_NumberOfWheels = i_NumOfWheels;
             r_MaxAirPressureLevel = i_MaxAirPressureLevel;
-            m_Wheels = null;
+            //m_Wheels = null;
         }
         
         public void InitWheels(float i_AirPressureLevel,string i_NameOfWheelManuFacturer)
         {
-            List<Wheel> m_Wheels = new List<Wheel>();
+            m_Wheels = new List<Wheel>();
             for (int i = 0; i < r_NumberOfWheels; i++)
             {
                 m_Wheels.Add(new Wheel(r_MaxAirPressureLevel,i_NameOfWheelManuFacturer,i_AirPressureLevel));
