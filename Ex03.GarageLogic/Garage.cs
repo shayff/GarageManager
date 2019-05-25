@@ -24,38 +24,14 @@ namespace Ex03.GarageLogic
         //Request 1
         public void InsertVehicleToGarage(string ownerName, string phoneNumber, Vehicle newVehicle)
         {
-            VehicleInGarage newVehicleInGarage=new VehicleInGarage( ownerName,  phoneNumber, newVehicle);
-            m_VehiclesInGarage.Add(newVehicle.LicenseNumber,newVehicleInGarage);
+            VehicleInGarage newVehicleInGarage = new VehicleInGarage(ownerName, phoneNumber, newVehicle);
+            m_VehiclesInGarage.Add(newVehicle.LicenseNumber, newVehicleInGarage);
         }
 
         //Request 2 
         public List<string> GetVehiclesInGarage()
         {
             return new List<string>(m_VehiclesInGarage.Keys);
-        }
-        
-
-        public List<string> GetVehiclesInGarageByStatus(int i_IntVehicleStatusToCompare)
-        {
-            if (Enum.IsDefined(typeof(VehicleInGarage.eVehicleStatus), i_IntVehicleStatusToCompare))
-            {
-                VehicleInGarage.eVehicleStatus vehicleStatusToCompare = (VehicleInGarage.eVehicleStatus)i_IntVehicleStatusToCompare;
-
-                List<string> listOfVehiclesByStatus = new List<string>();
-                foreach (KeyValuePair<string, VehicleInGarage> vehicle in m_VehiclesInGarage)
-                {
-                    if (vehicle.Value.VehicleStatus == vehicleStatusToCompare)
-                    {
-                        listOfVehiclesByStatus.Add(vehicle.Key);
-                    }
-                }
-                return listOfVehiclesByStatus;
-            }
-            else
-            {
-                throw new FormatException();
-            }
-
         }
 
         //Request 3
@@ -80,7 +56,7 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new KeyNotFoundException();                
+                throw new KeyNotFoundException();
             }
 
         }
@@ -88,9 +64,7 @@ namespace Ex03.GarageLogic
         //Request 5
         public void FillFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
         {
-            
-                m_VehiclesInGarage[i_LicenseNumber].FillEnergy(i_FuelType, i_FuelLiterToAdd);
-            
+            m_VehiclesInGarage[i_LicenseNumber].FillEnergy(i_FuelType, i_FuelLiterToAdd);
         }
 
         //Request 6
@@ -128,10 +102,32 @@ namespace Ex03.GarageLogic
 
         public void GetDetailsEnergyCapacity(string i_LicenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity)
         {
-            o_CurrentEnergyCapacity=m_VehiclesInGarage[i_LicenseNumber].Vehicle.Engine.CurrentEnergyCapacity;
-            o_MaxEnergyCapacity=m_VehiclesInGarage[i_LicenseNumber].Vehicle.Engine.MaxEnergyCapacity;
+            o_CurrentEnergyCapacity = m_VehiclesInGarage[i_LicenseNumber].Vehicle.Engine.CurrentEnergyCapacity;
+            o_MaxEnergyCapacity = m_VehiclesInGarage[i_LicenseNumber].Vehicle.Engine.MaxEnergyCapacity;
+        }
+
+        public List<string> GetVehiclesInGarageByStatus(int i_IntVehicleStatusToCompare)
+        {
+            if (Enum.IsDefined(typeof(VehicleInGarage.eVehicleStatus), i_IntVehicleStatusToCompare))
+            {
+                VehicleInGarage.eVehicleStatus vehicleStatusToCompare = (VehicleInGarage.eVehicleStatus)i_IntVehicleStatusToCompare;
+
+                List<string> listOfVehiclesByStatus = new List<string>();
+                foreach (KeyValuePair<string, VehicleInGarage> vehicle in m_VehiclesInGarage)
+                {
+                    if (vehicle.Value.VehicleStatus == vehicleStatusToCompare)
+                    {
+                        listOfVehiclesByStatus.Add(vehicle.Key);
+                    }
+                }
+                return listOfVehiclesByStatus;
+            }
+            else
+            {
+                throw new FormatException();
+            }
 
         }
 
-}
+    }
 }

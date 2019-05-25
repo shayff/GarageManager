@@ -8,9 +8,6 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
-        /// <summary>
-        /// shay 
-        /// </summary>
         const string k_WelcomeGarage = "Welcome to garage of Shay and Nelly!\n";
         const string k_IncorrectInput = "Incorrect input";
         const string k_LicenseNumberNotFound = "Couldn't find licenseNumber";
@@ -95,7 +92,7 @@ namespace Ex03.ConsoleUI
                             }
                         case 6:
                             {
-                               chargingElectricVehicle();
+                                chargingElectricVehicle();
                                 break;
                             }
                         case 7:
@@ -130,7 +127,7 @@ namespace Ex03.ConsoleUI
                               "8. Exit");
         }
 
-       
+
         //Request 1
         private void insertVehicleToGarage()
         {
@@ -276,9 +273,9 @@ namespace Ex03.ConsoleUI
             string status = Console.ReadLine();
             if (Int32.TryParse(status, out int result) && m_Garage.IsLicenseNumberInGarage(licenseNumber))
             {
-             m_Garage.GetDetailsEnergyCapacity(licenseNumber,out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
-                Console.WriteLine("Enter How many liters to fill (Current fuel quantity- " + o_CurrentEnergyCapacity+"" +
-                                  ", Maximum quantity of fuel-" + o_MaxEnergyCapacity+")");
+                m_Garage.GetDetailsEnergyCapacity(licenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
+                Console.WriteLine("Enter How many liters to fill (Current fuel quantity- " + o_CurrentEnergyCapacity + "" +
+                                  ", Maximum quantity of fuel-" + o_MaxEnergyCapacity + ")");
 
                 string liters = Console.ReadLine();
                 if (float.TryParse(liters, out float literToAdd) && 0 < literToAdd)
@@ -313,9 +310,9 @@ namespace Ex03.ConsoleUI
         {
             string licenseNumber = getLicenseNumber();
             m_Garage.GetDetailsEnergyCapacity(licenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
-            Console.WriteLine("Enter How many minutes will you charge (Battery time remaining in hours " + o_CurrentEnergyCapacity/60 + "" +
-                              ", Maximum battery time in hours-" + o_MaxEnergyCapacity/60 + ")");
-           
+            Console.WriteLine("Enter How many minutes will you charge (Battery time remaining in hours " + o_CurrentEnergyCapacity / 60 + "" +
+                              ", Maximum battery time in hours-" + o_MaxEnergyCapacity / 60 + ")");
+
             string minutesStr = Console.ReadLine();
 
             if (float.TryParse(minutesStr, out float minutes))
@@ -474,7 +471,7 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("Air Pressure Level was out of Range, please try again:");
                     inputCorrectly = false;
                 }
-                catch 
+                catch
                 {
                     Console.WriteLine("Incorrect input"); //NT
                 }

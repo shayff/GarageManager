@@ -11,9 +11,9 @@ namespace Ex03.GarageLogic
         private string m_NameOfModel;
         private string m_LicenseNumber;
 
-        private Engine m_Engine;
+        private readonly Engine m_Engine;
         private List<Wheel> m_Wheels;
-        private int r_NumberOfWheels;
+        private readonly int r_NumberOfWheels;
         private readonly float r_MaxAirPressureLevel;
 
         //*Properties*//
@@ -51,12 +51,12 @@ namespace Ex03.GarageLogic
         }
 
         //*Methods*//
-        public void InitWheels(float i_AirPressureLevel,string i_NameOfWheelManuFacturer)
+        public void InitWheels(float i_AirPressureLevel,string i_NameOfWheelManufacturer)
         {
             m_Wheels = new List<Wheel>();
             for (int i = 0; i < r_NumberOfWheels; i++)
             {
-                m_Wheels.Add(new Wheel(r_MaxAirPressureLevel,i_NameOfWheelManuFacturer,i_AirPressureLevel));
+                m_Wheels.Add(new Wheel(r_MaxAirPressureLevel, i_NameOfWheelManufacturer, i_AirPressureLevel));
             }
         }
         
@@ -65,6 +65,8 @@ namespace Ex03.GarageLogic
             m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
         }
 
+
+        //Never used
         private void inflatingWheelsToMax()
         {
             foreach (Wheel wheel in m_Wheels)
