@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
@@ -108,14 +107,7 @@ namespace Ex03.ConsoleUI
 
         private void printMainMenu()
         {
-            Console.WriteLine("1. Put a new car into the garage\n" +
-                              "2. View the list of vehicle license numbers in the garage\n" +
-                              "3. Change the condition of a car in the garage\n" +
-                              "4. Inflate the air in the wheels of a vehicle to the maximum\n" +
-                              "5. Fuel a vehicle powered by fuel\n" +
-                              "6. To charge an electric vehicle\n" +
-                              "7. View full data of a vehicle by license number\n" +
-                              "8. Exit");
+            Console.WriteLine(k_MainMenu);
         }
 
         // Request 1
@@ -479,7 +471,7 @@ namespace Ex03.ConsoleUI
         private void getTimeInHoursAndMinute(float i_Number, out int o_Hours, out int o_Minutes)
         {
             o_Hours = (int)Math.Floor(i_Number);
-            o_Minutes = (int)(i_Number * 60 - o_Hours * 60);
+            o_Minutes = (int)((i_Number * 60) - (o_Hours * 60));
         }
 
         // *checkInput* //

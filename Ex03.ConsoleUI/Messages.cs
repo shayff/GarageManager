@@ -4,8 +4,16 @@ using System.Text;
 
 namespace Ex03.ConsoleUI
 {
-    public class Messages
+    public static class Messages
     {
+        public const string k_MainMenu = "1. Put a new car into the garage\n" +
+                              "2. View the list of vehicle license numbers in the garage\n" +
+                              "3. Change the condition of a car in the garage\n" +
+                              "4. Inflate the air in the wheels of a vehicle to the maximum\n" +
+                              "5. T0 Fuel a fuel vehicle\n" +
+                              "6. To charge an electric vehicle\n" +
+                              "7. View full data of a vehicle by license number\n" +
+                              "8. Exit";
         public const string k_NotANumber = "Please type a number";
         public const string k_TooMuchCapacity = "You tried to fill to much capacity";
         public const string k_EnergyDetails = "Enter How many minutes will you charge (Battery time remaining in {0} Hours {1} Minutes /n Maximum battery time in: {2} Hours {3} Minutes";
