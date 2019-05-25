@@ -35,7 +35,7 @@ namespace Ex03.ConsoleUI
         public void automatictest() //NT delete me!!!
         {
             /*Vehicle 123*/
-            Vehicle newVehicle = CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricCar, "mazada 2", "123");
+            Vehicle newVehicle = CreateVehicle.Create(3, "mazada 2", "123");
 
             Dictionary<string, int> fieldsToSet = new Dictionary<string, int> {{ "CarColor", 1 },{ "NumOfDoors", 1 }};
             newVehicle.SetAdditionalFields(fieldsToSet);
@@ -133,16 +133,22 @@ namespace Ex03.ConsoleUI
                     int vehicleType = getVehicleTypeFromUser();
                     string nameOfModel = getVehicleModelFromUser();
 
-                    Vehicle newVehicle = CreateVehicle.Create((CreateVehicle.eVehicleTypes)vehicleType, nameOfModel, licenseNumber);
+                    try
+                    { 
+                    Vehicle newVehicle = CreateVehicle.Create(vehicleType, nameOfModel, licenseNumber);
+                        Dictionary<string, int> fieldsToSet = getAdditionalFieldsData(newVehicle.GetListOfAdditionalFields());
+                        newVehicle.SetAdditionalFields(fieldsToSet);
 
-                    Dictionary<string, int> fieldsToSet = getAdditionalFieldsData(newVehicle.GetListOfAdditionalFields());
-                    newVehicle.SetAdditionalFields(fieldsToSet);
+                        //*Details wheels*//
+                        InitWheels(newVehicle);
 
-                    //*Details wheels*//
-                    InitWheels(newVehicle);
+                        m_Garage.InsertVehicleToGarage(ownerName, ownerPhoneNumber, newVehicle);
 
-                    m_Garage.InsertVehicleToGarage(ownerName, ownerPhoneNumber, newVehicle);
-
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("You choose wrong VehicleType");
+                    }                    
                 }
             }
             catch (Exception temp)
