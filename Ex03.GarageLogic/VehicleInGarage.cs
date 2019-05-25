@@ -8,6 +8,7 @@ namespace Ex03.GarageLogic
     {
         public enum eVehicleStatus { InRepair, Repaired, Paid }
 
+        const string k_VehicleInGarageDetails = "Owner Name:{0}, Owner Phone: {1},Vehicle Status: {2}, {3} ";
         private eVehicleStatus m_VehicleStatus = eVehicleStatus.InRepair;
         private string m_OwnerName;
         private string m_PhoneNumber;
@@ -20,7 +21,6 @@ namespace Ex03.GarageLogic
             get { return m_VehicleStatus; }
         }
         
-
         public VehicleInGarage(string i_OwnerName, string i_PhoneNumber, Vehicle i_Vehicle)
         {
             m_OwnerName = i_OwnerName;
@@ -30,7 +30,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         { 
-            return String.Format("Owner Name:{0}, Owner Phone: {1},Vehicle Status: {2}, {3} ", m_OwnerName, m_PhoneNumber, m_VehicleStatus, m_Vehicle);
+            return String.Format(k_VehicleInGarageDetails, m_OwnerName, m_PhoneNumber, m_VehicleStatus, m_Vehicle);
         }
 
      }

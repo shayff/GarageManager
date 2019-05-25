@@ -97,7 +97,7 @@ namespace Ex03.GarageLogic
             vehicleDetailsString += m_Engine;
             foreach (Wheel wheel in m_Wheels)
             {
-                vehicleDetailsString += wheel.WheelDetails();
+                vehicleDetailsString += wheel;
             }
             return vehicleDetailsString;
         }
@@ -106,17 +106,5 @@ namespace Ex03.GarageLogic
 
         public abstract void SetAdditionalFields(Dictionary<string, int> i_AdditionalFieldsToSet);
 
-
-        //NT need that?
-        public void AddDetailsWheels(string i_NameOfWheelManufacturer, float i_AirPressureLevel)
-        {
-            foreach (Wheel wheels in m_Wheels)
-            {
-                wheels.AirPressureLevel = i_AirPressureLevel;
-                wheels.NameOfManufacturer = i_NameOfWheelManufacturer;
-            }
-
-        }
-        
     }
 }

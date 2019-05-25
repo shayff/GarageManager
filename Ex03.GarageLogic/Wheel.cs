@@ -6,12 +6,14 @@ namespace Ex03.GarageLogic
 {
     public class Wheel
     {
+        //NT - DONE
         const string k_ErrorTooMuchAir = "Too much Air to add";
         const string k_ErrorNotPositiveNumber = "The number is not positive";
-        private string m_NameOfManufacturer;
+        const string k_ErrorValueOutOfRange = "The values are out of range";
+        const string k_WheelDetails = "Manufacturer: {0}, AirPressure Level: {1}";
         private readonly float r_MaxAirPressureLevel;
+        private string m_NameOfManufacturer;
         private float m_AirPressureLevel;
-
 
         //*Properties*/
         public float MaxAirPressureLevel
@@ -22,16 +24,13 @@ namespace Ex03.GarageLogic
         public float AirPressureLevel
         {
             get { return m_AirPressureLevel; }
-            set { m_AirPressureLevel = value; }
         }
 
         public string NameOfManufacturer
         {
             get { return m_NameOfManufacturer; }
-            set { m_NameOfManufacturer = value; }
         }
 
-        //*ctor*//
         public Wheel(float i_MaxAirPressureLevel, string i_NameOfManufacturer, float i_CurrentAirPressureLevel)
         {
             m_NameOfManufacturer = i_NameOfManufacturer;
@@ -42,10 +41,9 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, "error"); //NT error message
+                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, "k_ErrorValueOutOfRange");
             }
         }
-
 
         //*Methods*//
         public void InflatingWheelToMax()
@@ -61,14 +59,13 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorTooMuchAir);
+                throw new ValueOutOfRangeException(0, r_MaxAirPressureLevel, k_ErrorValueOutOfRange);
             }
         }
 
-        public string WheelDetails()
+        public override string ToString()
         {
-            return String.Format("Manufacturer: {0}, AirPressure Level: {1}", m_NameOfManufacturer, m_AirPressureLevel);
+            return String.Format(k_WheelDetails, m_NameOfManufacturer, m_AirPressureLevel);
         }
-
     }
 }
