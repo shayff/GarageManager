@@ -4,16 +4,19 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    public enum eFuelType { Octan95, Octan96, Octan98, Soler, Electricity };
-
     public class Engine
     {
-        const string k_ErrorTooMuchFuel = "You try to add to much fuel";
-        const string k_ErrorWrongTypeOfFuel = "You try to add wrong type of fuel";
+        public enum eFuelType
+        {
+            Octan95, Octan96, Octan98, Soler, Electricity
+        }
 
+        private const string k_ErrorTooMuchFuel = "You try to add to much fuel";
+
+        private const string k_ErrorWrongTypeOfFuel = "You try to add wrong type of fuel";
+        private readonly float r_MaxEnergyCapacity;
         private eFuelType m_FuelType;
         private float m_CurrentEnergyCapacity;
-        private readonly float r_MaxEnergyCapacity;
 
         public Engine(eFuelType i_EngineType, float i_MaxEnergyCapacity)
         {
@@ -29,6 +32,7 @@ namespace Ex03.GarageLogic
                 return m_CurrentEnergyCapacity;
             }
         }
+
         public float MaxEnergyCapacity
         {
             get { return r_MaxEnergyCapacity; }
@@ -69,6 +73,5 @@ namespace Ex03.GarageLogic
         {
             return string.Format("Fuel type: {0}\nCurrent Fuel Capacity: {1}%\n", m_FuelType, fuelInPercent());
         }
-
     }
 }

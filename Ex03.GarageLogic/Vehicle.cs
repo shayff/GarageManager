@@ -6,15 +6,14 @@ namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
     {
-        const string k_VehicleDetails = "License Number: {0}\nModel Name: {1}\n";
-
+        private const string k_VehicleDetails = "License Number: {0}\nModel Name: {1}\n";
+        private readonly int r_NumberOfWheels;
+        private readonly float r_MaxAirPressureLevel;
+        private readonly Engine m_Engine;
         private string m_NameOfModel;
         private string m_LicenseNumber;
 
-        private readonly Engine m_Engine;
         private List<Wheel> m_Wheels;
-        private readonly int r_NumberOfWheels;
-        private readonly float r_MaxAirPressureLevel;
 
         public Engine Engine
         {
@@ -28,21 +27,21 @@ namespace Ex03.GarageLogic
 
         public string LicenseNumber
         {
-            set { m_LicenseNumber = value; }
             get { return m_LicenseNumber; }
+            set { m_LicenseNumber = value; }
         }
 
         public string NameOfModel
         {
-            set { m_NameOfModel = value; }
             get { return m_NameOfModel; }
+            set { m_NameOfModel = value; }
         }
 
         public abstract Dictionary<string, string> GetListOfAdditionalFields();
+
         public abstract void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet);
 
-        //*ctor*//
-        public Vehicle(eFuelType i_EngineType, float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
+        public Vehicle(Engine.eFuelType i_EngineType, float i_MaxEnergyCapacity, int i_NumOfWheels, float i_MaxAirPressureLevel)
         {
             m_Engine = new Engine(i_EngineType, i_MaxEnergyCapacity);
             r_NumberOfWheels = i_NumOfWheels;
@@ -62,7 +61,6 @@ namespace Ex03.GarageLogic
         {
             m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
         }
-
 
         public void InflatingWheelsToMax()
         {
@@ -86,6 +84,5 @@ namespace Ex03.GarageLogic
 
             return vehicleDetailsString;
         }
-
     }
 }

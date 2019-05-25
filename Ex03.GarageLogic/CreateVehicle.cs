@@ -6,7 +6,10 @@ namespace Ex03.GarageLogic
 {
     public static class CreateVehicle
     {
-        public enum eVehicleTypes { FuelMotorCycle, ElectricMotorCycle, FuelCar, ElectricCar, FuelTruck }
+        public enum eVehicleTypes
+        {
+            FuelMotorCycle, ElectricMotorCycle, FuelCar, ElectricCar, FuelTruck
+        }
 
         private const float k_MaxEnergyCapacityFuelMotorCycle = 8f;
         private const float k_MaxEnergyCapacityElectricMotorCycle = 1.4f;
@@ -26,27 +29,31 @@ namespace Ex03.GarageLogic
                 {
                     case eVehicleTypes.FuelMotorCycle:
                         {
-                            newVehicle = new MotorCycle(eFuelType.Octan95, k_MaxEnergyCapacityFuelMotorCycle);
+                            newVehicle = new MotorCycle(Engine.eFuelType.Octan95, k_MaxEnergyCapacityFuelMotorCycle);
                             break;
                         }
+
                     case eVehicleTypes.ElectricMotorCycle:
                         {
-                            newVehicle = new MotorCycle(eFuelType.Electricity, k_MaxEnergyCapacityElectricMotorCycle);
+                               newVehicle = new MotorCycle(Engine.eFuelType.Electricity, k_MaxEnergyCapacityElectricMotorCycle);
                             break;
                         }
+
                     case eVehicleTypes.FuelCar:
                         {
-                            newVehicle = new Car(eFuelType.Octan96, k_MaxEnergyCapacityFuelCar);
+                            newVehicle = new Car(Engine.eFuelType.Octan96, k_MaxEnergyCapacityFuelCar);
                             break;
                         }
+
                     case eVehicleTypes.ElectricCar:
                         {
-                            newVehicle = new Car(eFuelType.Electricity, k_MaxEnergyCapacityElectricCar);
+                            newVehicle = new Car(Engine.eFuelType.Electricity, k_MaxEnergyCapacityElectricCar);
                             break;
                         }
+
                     case eVehicleTypes.FuelTruck:
                         {
-                            newVehicle = new Truck(eFuelType.Soler, k_MaxEnergyCapacityFuelTruck);
+                            newVehicle = new Truck(Engine.eFuelType.Soler, k_MaxEnergyCapacityFuelTruck);
                             break;
                         }
                 }
@@ -58,8 +65,8 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException(k_NoSuchAnOption);
             }
+
             return newVehicle;
         }
-
     }
 }
