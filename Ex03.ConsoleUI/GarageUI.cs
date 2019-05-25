@@ -29,7 +29,11 @@ namespace Ex03.ConsoleUI
                               "1. only Repaired \n" +
                               "2. only Paid\n" +
                               "3. All Status";
-
+        const string k_ChooseFuelType =("Enter a Fuel type:\n" +
+                                                  "0. for Octan98 \n" +
+                                                  "1. for Octan96\n" +
+                                                  "2. for Octan95\n" +
+                                                  "3. for Soler");
         private readonly Garage m_Garage = new Garage();
 
         public void automatictest() //NT delete me!!!
@@ -353,11 +357,7 @@ namespace Ex03.ConsoleUI
         {
             string licenseNumber = getLicenseNumber();
 
-            Console.WriteLine("Enter a Fuel type:\n" +
-                              "for Octan98 - press 0\n" +
-                              "for Octan96 - press 1\n" +
-                              "for Octan95 - press 2\n" +
-                              "for Soler - press 3");
+            Console.WriteLine(k_ChooseFuelType);
             string status = Console.ReadLine();
             if (Int32.TryParse(status, out int result))
             {
@@ -375,7 +375,7 @@ namespace Ex03.ConsoleUI
                     }
                     catch
                     {
-                        Console.WriteLine("Error");
+                        Console.WriteLine("Error -  Fuel type not matched");
                     }
 
                 }
