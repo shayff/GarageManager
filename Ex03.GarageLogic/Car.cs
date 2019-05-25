@@ -6,21 +6,9 @@ namespace Ex03.GarageLogic
 {
     public class Car : Vehicle
     {
-        public enum eColor
-        {
-            Red,
-            Blue,
-            Black,
-            Gray
-        }
+        public enum eColor { Red, Blue, Black, Gray }
 
-        public enum eNumDoors
-        {
-            Two,
-            Three,
-            Four,
-            Five
-        }
+        public enum eNumDoors { Two, Three, Four, Five }
 
         const string k_NoSuchAOption = "There isn't such option for ";
         const string k_InvalidValue = "Invalid value";
