@@ -161,13 +161,14 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Enter a phone number of owner (For example 0541234567)");
             string phoneNumber = Console.ReadLine();
-            bool space =phoneNumber.Contains("");
+            bool space =phoneNumber.Contains(" ");
 
             while (phoneNumber.Length != 10 || !(int.TryParse(phoneNumber, out int result)) || space)
             {
-                space = phoneNumber.Contains(" ");
+                
                 Console.WriteLine("Error, type again");
                 phoneNumber = Console.ReadLine();
+                space = phoneNumber.Contains(" ");
             }
             return phoneNumber;
         }
