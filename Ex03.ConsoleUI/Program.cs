@@ -11,9 +11,6 @@ namespace Ex03.ConsoleUI
         {
             GarageUI garageUI = new GarageUI();
             garageUI.Start();
-
-
-            
-         }
+        }
     }
 }

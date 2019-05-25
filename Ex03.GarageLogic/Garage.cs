@@ -20,33 +20,35 @@ namespace Ex03.GarageLogic
             get { return m_VehiclesInGarage; }
         }
 
-        //Request 1
+        // Request 1
         public void InsertVehicleToGarage(string ownerName, string phoneNumber, Vehicle newVehicle)
         {
             VehicleInGarage newVehicleInGarage = new VehicleInGarage(ownerName, phoneNumber, newVehicle);
             m_VehiclesInGarage.Add(newVehicle.LicenseNumber, newVehicleInGarage);
         }
 
-        //Request 2 
+        // Request 2 
         public List<string> GetVehiclesInGarage()
         {
             return new List<string>(m_VehiclesInGarage.Keys);
         }
 
-        //Request 3
-        public void ChangeVehicleStatus(string i_LicenseNumber, VehicleInGarage.eVehicleStatus i_NewStatus)
+        // Request 3
+        public void ChangeVehicleStatus(string i_LicenseNumber, int i_NewStatus)
         {
+
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].VehicleStatus = i_NewStatus;
+                m_VehiclesInGarage[i_LicenseNumber].SetVehicleStatusFromInt(i_NewStatus);
             }
             else
             {
                 throw new KeyNotFoundException();
             }
+
         }
 
-        //Request 4
+        // Request 4
         public void InflatingWheelToMax(string i_LicenseNumber)
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
@@ -60,13 +62,13 @@ namespace Ex03.GarageLogic
 
         }
 
-        //Request 5
+        // Request 5
         public void FillFuelToFuelVehicles(string i_LicenseNumber, int i_FuelType, float i_FuelLiterToAdd)
         {
             m_VehiclesInGarage[i_LicenseNumber].FillEnergy(i_FuelType, i_FuelLiterToAdd);
         }
 
-        //Request 6
+        // Request 6
         public void ChargingElectricVehicle(string i_LicenseNumber, float i_EnergyToAdd)
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
@@ -81,12 +83,12 @@ namespace Ex03.GarageLogic
 
         }
 
-        //Request 7
+        // Request 7
         public string ShowAllDetails(string i_LicenseNumber)
         {
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                return m_VehiclesInGarage[i_LicenseNumber].ToString();//TODO
+                return m_VehiclesInGarage[i_LicenseNumber].ToString();
             }
             else
             {
@@ -119,6 +121,7 @@ namespace Ex03.GarageLogic
                         listOfVehiclesByStatus.Add(vehicle.Key);
                     }
                 }
+
                 return listOfVehiclesByStatus;
             }
             else

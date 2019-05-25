@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-//NT done
+
 namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
@@ -16,12 +16,11 @@ namespace Ex03.GarageLogic
         private readonly int r_NumberOfWheels;
         private readonly float r_MaxAirPressureLevel;
 
-        //*Properties*//
         public Engine Engine
         {
             get { return m_Engine; }
         }
-       
+
         public float MaxAirPressureLevel
         {
             get { return r_MaxAirPressureLevel; }
@@ -50,8 +49,7 @@ namespace Ex03.GarageLogic
             r_MaxAirPressureLevel = i_MaxAirPressureLevel;
         }
 
-        //*Methods*//
-        public void InitWheels(float i_AirPressureLevel,string i_NameOfWheelManufacturer)
+        public void InitWheels(float i_AirPressureLevel, string i_NameOfWheelManufacturer)
         {
             m_Wheels = new List<Wheel>();
             for (int i = 0; i < r_NumberOfWheels; i++)
@@ -59,7 +57,7 @@ namespace Ex03.GarageLogic
                 m_Wheels.Add(new Wheel(r_MaxAirPressureLevel, i_NameOfWheelManufacturer, i_AirPressureLevel));
             }
         }
-        
+
         public void FillEnergy(int i_FuelType, float i_FuelToAdd)
         {
             m_Engine.FillEnergy(i_FuelType, i_FuelToAdd);
@@ -76,15 +74,16 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            int number =1;
-        
+            int number = 1;
+
             string vehicleDetailsString = string.Format(k_VehicleDetails, m_LicenseNumber, m_NameOfModel);
             vehicleDetailsString += m_Engine;
             foreach (Wheel wheel in m_Wheels)
             {
-                vehicleDetailsString += number.ToString()+". " + wheel;
+                vehicleDetailsString += number.ToString() + ". " + wheel;
                 number++;
             }
+
             return vehicleDetailsString;
         }
 

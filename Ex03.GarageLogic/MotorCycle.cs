@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
         private const int k_NumberOfWheels = 2;
         private const float k_MaxAirPressure = 33f;
         private eLicenseType m_LicenseType;
-        private int m_EngineCapacity; 
+        private int m_EngineCapacity;
 
         public MotorCycle(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
@@ -27,11 +27,9 @@ namespace Ex03.GarageLogic
 
         }
 
-        //*Methods*//
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-
-            if (Int32.TryParse(i_AdditionalFieldsToSet["LicenseType"], out int licenseTypeChoosed))
+            if (int.TryParse(i_AdditionalFieldsToSet["LicenseType"], out int licenseTypeChoosed))
             {
                 if (Enum.IsDefined(typeof(eLicenseType), licenseTypeChoosed))
                 {
@@ -48,9 +46,9 @@ namespace Ex03.GarageLogic
                 throw new FormatException("LicenseType Error" + k_InvalidValue);
             }
 
-            if (Int32.TryParse(i_AdditionalFieldsToSet["EngineCapacity"], out int EngineCapacity))
+            if (int.TryParse(i_AdditionalFieldsToSet["EngineCapacity"], out int EngineCapacity))
             {
-                if(EngineCapacity>=0)
+                if (EngineCapacity >= 0)
                 {
                     m_EngineCapacity = EngineCapacity;
                 }
@@ -58,7 +56,7 @@ namespace Ex03.GarageLogic
                 {
                     throw new ArgumentException("The value must be at least 0");
                 }
-                
+
             }
             else
             {
@@ -68,7 +66,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            string data = String.Format("License type: {0}\nEngine capacity: {1}\n ", m_LicenseType, m_EngineCapacity);
+            string data = string.Format("License type: {0}\nEngine capacity: {1}\n ", m_LicenseType, m_EngineCapacity);
             return base.ToString() + data;
         }
     }

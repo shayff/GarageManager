@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
         private bool m_IsDriveDangerousCargo;
         private float m_CargoCapacity;
 
-        //*Properties*//
+
         public bool IsDriveDangerousCargo
         {
             set { m_IsDriveDangerousCargo = value; }
@@ -24,13 +24,9 @@ namespace Ex03.GarageLogic
             get { return m_CargoCapacity; }
         }
 
-        //*ctor**/
-        // bool i_IsDriveDangerousCargo, float i_CargoCapacity
         public Truck(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {
         }
-
-        //*Methods*//
 
         public override Dictionary<string, string> GetListOfAdditionalFields()
         {
@@ -41,7 +37,7 @@ namespace Ex03.GarageLogic
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
 
-            if (Int32.TryParse(i_AdditionalFieldsToSet["IsDriveDangerousCargo"], out int isDriveDangerCargo))
+            if (int.TryParse(i_AdditionalFieldsToSet["IsDriveDangerousCargo"], out int isDriveDangerCargo))
             {
                 if (isDriveDangerCargo == 0)
                 {
@@ -63,7 +59,7 @@ namespace Ex03.GarageLogic
 
             if (float.TryParse(i_AdditionalFieldsToSet["CargoCapacity"], out float CargoCapacity))
             {
-                if (CargoCapacity>0)
+                if (CargoCapacity > 0)
                 {
                     m_CargoCapacity = CargoCapacity;
                 }
@@ -81,7 +77,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            string data = String.Format("Is drive dangerous cargo: {0}\nCargo capacity: {1}\n ", m_IsDriveDangerousCargo, m_CargoCapacity);
+            string data = string.Format("Is drive dangerous cargo: {0}\nCargo capacity: {1}\n ", m_IsDriveDangerousCargo, m_CargoCapacity);
             return base.ToString() + data;
         }
 

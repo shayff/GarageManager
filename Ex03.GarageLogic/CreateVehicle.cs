@@ -14,6 +14,8 @@ namespace Ex03.GarageLogic
         private const float k_MaxEnergyCapacityElectricCar = 1.8f;
         private const float k_MaxEnergyCapacityFuelTruck = 110f;
 
+        private const string k_NoSuchAnOption = "There isn't such option of Vehicle";
+
         public static Vehicle Create(int i_IntVehicleType, string i_NameOfModel, string i_LicenseNumber)
         {
             Vehicle newVehicle = null;
@@ -48,13 +50,13 @@ namespace Ex03.GarageLogic
                             break;
                         }
                 }
-                //NT 2
+
                 newVehicle.LicenseNumber = i_LicenseNumber;
                 newVehicle.NameOfModel = i_NameOfModel;
             }
             else
             {
-                throw new FormatException("There isn't such option of Vehicle");
+                throw new FormatException(k_NoSuchAnOption);
             }
             return newVehicle;
         }
