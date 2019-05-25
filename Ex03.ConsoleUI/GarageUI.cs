@@ -15,9 +15,9 @@ namespace Ex03.ConsoleUI
         const string k_IncorrectInput = "Incorrect input";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
         const string k_ChooseVehicleStatus = "Enter a Vehicle Status:\n" +
-                              "for Repaired - press 0\n" +
-                              "for InRepair - press 1\n" +
-                              "for Paid - press 2";
+                              "0. for Repaired\n" +
+                              "1. for InRepair\n" +
+                              "2. for Paid";
         const string k_ChooseVehicleType = "Insert a car type:\n" +
                               "0. Fuel MotorCycle\n" +
                               "1. Electric motorcycle\n" +
@@ -37,11 +37,7 @@ namespace Ex03.ConsoleUI
             /*Vehicle 123*/
             Vehicle newVehicle = CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricCar, "mazada 2", "123");
 
-            Dictionary<string, int> fieldsToSet = new Dictionary<string, int>
-                  {
-            { "CarColor", 1 },
-            { "NumOfDoors", 1 }
-                 };
+            Dictionary<string, int> fieldsToSet = new Dictionary<string, int> {{ "CarColor", 1 },{ "NumOfDoors", 1 }};
             newVehicle.SetAdditionalFields(fieldsToSet);
             newVehicle.InitWheels(23f, "Wheels is real");
             m_Garage.InsertVehicleToGarage("Nely", "0521234567", newVehicle);
@@ -162,7 +158,7 @@ namespace Ex03.ConsoleUI
             try
             {
                 i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
-             }
+            }
             catch (ValueOutOfRangeException)
             {
                 Console.WriteLine("Air Pressure Level was out of Range, please try again:");
@@ -297,7 +293,7 @@ namespace Ex03.ConsoleUI
                         else
                         {
                             List<string> listsGarage =
-                                m_Garage.GetVehiclesInGarageByStatus((VehicleInGarage.eVehicleStatus) result);
+                                m_Garage.GetVehiclesInGarageByStatus((VehicleInGarage.eVehicleStatus)result);
 
                             foreach (string licenseNumber in listsGarage)
                             {
@@ -325,7 +321,7 @@ namespace Ex03.ConsoleUI
 
             string licenseNumber = getLicenseNumber();
 
-            if (Int32.TryParse(status, out int result))
+            if (Int32.TryParse(status, out int result) && result >= 0 && result <= 2)
             {
                 m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
             }
@@ -409,7 +405,7 @@ namespace Ex03.ConsoleUI
                 }
             }
         }
-        
+
         //Request 7
         public void ShowAllDetails()
         {

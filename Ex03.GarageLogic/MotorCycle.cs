@@ -22,7 +22,7 @@ namespace Ex03.GarageLogic
         public override Dictionary<string, string> GetListOfAdditionalFields()
         {
             return new Dictionary<string, string> { { "LicenseType", "license Type, \n 0. A\n 1. A1\n 2. A2\n 3. B" },
-                { "EngineCapacity" ,"Engine Capacity"} };
+                { "EngineCapacity" ,"Engine Capacity (Enter an integer)"} };
 
         }
 
