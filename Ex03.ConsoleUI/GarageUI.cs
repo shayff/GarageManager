@@ -70,37 +70,37 @@ namespace Ex03.ConsoleUI
                     {
                         case 1:
                             {
-                                InsertVehicleToGarage();
+                                insertVehicleToGarage();
                                 break;
                             }
                         case 2:
                             {
-                                ViewListOfVehicleLicenseNumbers();
+                                viewListOfVehicleLicenseNumbers();
                                 break;
                             }
                         case 3:
                             {
-                                ChangeVehicleStatus();
+                                changeVehicleStatus();
                                 break;
                             }
                         case 4:
                             {
-                                InflatingWheelToMax();
+                                inflatingWheelToMax();
                                 break;
                             }
                         case 5:
                             {
-                                FillFuelToFuelVehicles();
+                                fillFuelToFuelVehicles();
                                 break;
                             }
                         case 6:
                             {
-                                ChargingElectricVehicle();
+                               chargingElectricVehicle();
                                 break;
                             }
                         case 7:
                             {
-                                ShowAllDetails();
+                                showAllDetails();
                                 break;
                             }
                         case 8:
@@ -118,33 +118,21 @@ namespace Ex03.ConsoleUI
                 Console.ReadKey();
             }
         }
-
-        private string checkSpace(string i_toCheck)
+        private void printMainMenu()
         {
-            bool space = i_toCheck.Contains(" ");
-            while (space)
-            {
-                Console.WriteLine("Error, type again");
-                i_toCheck = Console.ReadLine();
-                space = i_toCheck.Contains(" ");
-            }
-
-            return i_toCheck;
-        }
-        private string checkWhiteSpace(string i_toCheck)
-        {
-
-            while (String.IsNullOrEmpty(i_toCheck))
-            {
-                Console.WriteLine("Error, type again");
-                i_toCheck = Console.ReadLine();
-
-            }
-            return i_toCheck;
+            Console.WriteLine("1. Put a new car into the garage\n" +
+                              "2. View the list of vehicle license numbers in the garage\n" +
+                              "3. Change the condition of a car in the garage\n" +
+                              "4. Inflate the air in the wheels of a vehicle to the maximum\n" +
+                              "5. Fuel a vehicle powered by fuel\n" +
+                              "6. To charge an electric vehicle\n" +
+                              "7. View full data of a vehicle by license number\n" +
+                              "8. Exit");
         }
 
+       
         //Request 1
-        public void InsertVehicleToGarage()
+        private void insertVehicleToGarage()
         {
             try
             {
@@ -187,6 +175,190 @@ namespace Ex03.ConsoleUI
             }
         }
 
+        //Request 2
+        private void viewListOfVehicleLicenseNumbers()
+        {
+            if (m_Garage.VehiclesInGarage.Count == 0)
+            {
+                Console.WriteLine("There are no vehicles in the garage");
+            }
+            else
+            {
+                int i = 0;
+                Console.WriteLine(k_ChooseVehicleStatusToSee);
+
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int result))
+                {
+                    try
+                    {
+                        if (result == 3)
+                        {
+                            List<string> listsGarage = m_Garage.GetVehiclesInGarage();
+                            foreach (string licenseNumber in listsGarage)
+                            {
+                                Console.WriteLine(i++ + "." + licenseNumber);
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                List<string> listsGarage = m_Garage.GetVehiclesInGarageByStatus(result);
+
+                                foreach (string licenseNumber in listsGarage)
+                                {
+                                    Console.WriteLine(licenseNumber);
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Wrong Option");
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+            }
+        }
+
+        //Request 3
+        private void changeVehicleStatus()
+        {
+            Console.WriteLine(k_ChooseVehicleStatus);
+            string status = Console.ReadLine();
+
+            string licenseNumber = getLicenseNumber();
+            try
+            {
+                if (Int32.TryParse(status, out int result) && result >= 0 && result <= 2)
+                {
+                    m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine(k_LicenseNumberNotFound);
+            }
+        }
+
+        //Request 4
+        private void inflatingWheelToMax()
+        {
+            string licenseNumber = getLicenseNumber();
+            try
+            {
+                m_Garage.InflatingWheelToMax(licenseNumber);
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine(k_LicenseNumberNotFound);
+            }
+        }
+
+        //Request 5
+        private void fillFuelToFuelVehicles()
+        {
+            string licenseNumber = getLicenseNumber();
+
+            Console.WriteLine(k_ChooseFuelType);
+            string status = Console.ReadLine();
+            if (Int32.TryParse(status, out int result) && m_Garage.IsLicenseNumberInGarage(licenseNumber))
+            {
+             m_Garage.GetDetailsEnergyCapacity(licenseNumber,out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
+                Console.WriteLine("Enter How many liters to fill (Current fuel quantity- " + o_CurrentEnergyCapacity+"" +
+                                  ", Maximum quantity of fuel-" + o_MaxEnergyCapacity+")");
+
+                string liters = Console.ReadLine();
+                if (float.TryParse(liters, out float literToAdd) && 0 < literToAdd)
+                {
+                    try
+                    {
+                        m_Garage.FillFuelToFuelVehicles(licenseNumber, (eFuelType)result, literToAdd);
+                    }
+                    catch (ValueOutOfRangeException)
+                    {
+                        Console.WriteLine("You tried to fill more capacity");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error -  Fuel type not matched");
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input");
+            }
+        }
+
+        //Request 6
+        private void chargingElectricVehicle()
+        {
+            string licenseNumber = getLicenseNumber();
+            m_Garage.GetDetailsEnergyCapacity(licenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
+            Console.WriteLine("Enter How many minutes will you charge (Battery time remaining in hours " + o_CurrentEnergyCapacity/60 + "" +
+                              ", Maximum battery time in hours-" + o_MaxEnergyCapacity/60 + ")");
+           
+            string minutesStr = Console.ReadLine();
+
+            if (float.TryParse(minutesStr, out float minutes))
+            {
+                try
+                {
+                    float hours = minutes / 60;
+                    m_Garage.ChargingElectricVehicle(licenseNumber, hours);
+                }
+                catch (ValueOutOfRangeException)
+                {
+                    Console.WriteLine("You tried to fill more capacity");
+                }
+                catch
+                {
+                    Console.WriteLine("Error");
+                }
+            }
+        }
+
+        //Request 7
+        private void showAllDetails()
+        {
+            if (m_Garage.VehiclesInGarage.Count == 0)
+            {
+                Console.WriteLine("There are no vehicles in the garage");
+            }
+            else
+            {
+                string licenseNumber = getLicenseNumber();
+
+                try
+                {
+                    Console.WriteLine(m_Garage.ShowAllDetails(licenseNumber));
+                }
+                catch (KeyNotFoundException)
+                {
+                    Console.WriteLine(k_LicenseNumberNotFound);
+                }
+            }
+        }
+
+        //*Getting *//
         private void setAdditionalFields(Vehicle i_newVehicle)
         {
             Dictionary<string, string> fieldsToSet = getAdditionalFieldsData(i_newVehicle.GetListOfAdditionalFields());
@@ -201,7 +373,6 @@ namespace Ex03.ConsoleUI
                 setAdditionalFields(i_newVehicle);
             }
         }
-
         private string getPhoneNumberFromUser()
         {
             Console.WriteLine("Enter a phone number of owner (For example 0541234567)");
@@ -241,8 +412,7 @@ namespace Ex03.ConsoleUI
             }
             return additionalFieldsData;
         }
-
-        private string getFieldData(string i_FieldName) //NT check if the input is ok
+        private string getFieldData(string i_FieldName)
         {
             Console.Write("Please enter ");
             Console.WriteLine(i_FieldName);
@@ -250,7 +420,6 @@ namespace Ex03.ConsoleUI
             fieldData = checkWhiteSpace(fieldData); //NT isnullorempty
             return fieldData;
         }
-
         private string getVehicleModelFromUser()
         {
             Console.WriteLine("Enter a vehicle model");
@@ -313,197 +482,30 @@ namespace Ex03.ConsoleUI
 
         }
 
-        //Request 2
-        public void ViewListOfVehicleLicenseNumbers()
+        //*checkInput*//
+        private string checkSpace(string i_toCheck)
         {
-            if (m_Garage.VehiclesInGarage.Count == 0)
+            bool space = i_toCheck.Contains(" ");
+            while (space)
             {
-                Console.WriteLine("There are no vehicles in the garage");
+                Console.WriteLine("Error, type again");
+                i_toCheck = Console.ReadLine();
+                space = i_toCheck.Contains(" ");
             }
-            else
-            {
-                int i = 0;
-                Console.WriteLine(k_ChooseVehicleStatusToSee);
 
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out int result))
-                {
-                    try
-                    {
-                        if (result == 3)
-                        {
-                            List<string> listsGarage = m_Garage.GetVehiclesInGarage();
-                            foreach (string licenseNumber in listsGarage)
-                            {
-                                Console.WriteLine(i++ + "." + licenseNumber);
-                            }
-                        }
-                        else
-                        {
-                            try
-                            {
-                                List<string> listsGarage = m_Garage.GetVehiclesInGarageByStatus(result);
-
-                                foreach (string licenseNumber in listsGarage)
-                                {
-                                    Console.WriteLine(licenseNumber);
-                                }
-                            }
-                            catch (FormatException)
-                            {
-                                Console.WriteLine("Wrong Option");
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Error");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Incorrect input");
-                }
-            }
+            return i_toCheck;
         }
-
-        //Request 3
-        public void ChangeVehicleStatus()
+        private string checkWhiteSpace(string i_toCheck)
         {
-            Console.WriteLine(k_ChooseVehicleStatus);
-            string status = Console.ReadLine();
 
-            string licenseNumber = getLicenseNumber();
-            try
+            while (String.IsNullOrEmpty(i_toCheck))
             {
-                if (Int32.TryParse(status, out int result) && result >= 0 && result <= 2)
-                {
-                    m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
-                }
-                else
-                {
-                    Console.WriteLine("Incorrect input");
-                }
+                Console.WriteLine("Error, type again");
+                i_toCheck = Console.ReadLine();
+
             }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine(k_LicenseNumberNotFound);
-            }
+            return i_toCheck;
         }
-
-        //Request 4
-        public void InflatingWheelToMax()
-        {
-            string licenseNumber = getLicenseNumber();
-            try
-            {
-                m_Garage.InflatingWheelToMax(licenseNumber);
-            }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine(k_LicenseNumberNotFound);
-            }
-        }
-
-        //Request 5
-        public void FillFuelToFuelVehicles()
-        {
-            string licenseNumber = getLicenseNumber();
-
-            Console.WriteLine(k_ChooseFuelType);
-            string status = Console.ReadLine();
-            if (Int32.TryParse(status, out int result))
-            {
-                Console.WriteLine("Enter How many liters to fill");
-                string liters = Console.ReadLine();
-                if (float.TryParse(liters, out float literToAdd) && 0 < literToAdd)
-                {
-                    try
-                    {
-                        m_Garage.FillFuelToFuelVehicles(licenseNumber, (eFuelType)result, literToAdd);
-                    }
-                    catch (ValueOutOfRangeException)
-                    {
-                        Console.WriteLine("You tried to fill more capacity");
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Error -  Fuel type not matched");
-                    }
-
-                }
-                else
-                {
-                    Console.WriteLine("Incorrect input");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Incorrect input");
-            }
-        }
-
-        //Request 6
-        public void ChargingElectricVehicle()
-        {
-            string licenseNumber = getLicenseNumber();
-
-            Console.WriteLine("Enter How many minutes will you charge");
-            string minutesStr = Console.ReadLine();
-
-            if (float.TryParse(minutesStr, out float minutes))
-            {
-                try
-                {
-                    float hours = minutes / 60;
-                    m_Garage.ChargingElectricVehicle(licenseNumber, hours);
-                }
-                catch (ValueOutOfRangeException)
-                {
-                    Console.WriteLine("You tried to fill more capacity");
-                }
-                catch
-                {
-                    Console.WriteLine("Error");
-                }
-            }
-        }
-
-        //Request 7
-        public void ShowAllDetails()
-        {
-            if (m_Garage.VehiclesInGarage.Count == 0)
-            {
-                Console.WriteLine("There are no vehicles in the garage");
-            }
-            else
-            {
-                string licenseNumber = getLicenseNumber();
-
-                try
-                {
-                    Console.WriteLine(m_Garage.ShowAllDetails(licenseNumber));
-                }
-                catch (KeyNotFoundException)
-                {
-                    Console.WriteLine(k_LicenseNumberNotFound);
-                }
-            }
-        }
-
-        private void printMainMenu()
-        {
-            Console.WriteLine("1. Put a new car into the garage\n" +
-                                  "2. View the list of vehicle license numbers in the garage\n" +
-                                  "3. Change the condition of a car in the garage\n" +
-                                  "4. Inflate the air in the wheels of a vehicle to the maximum\n" +
-                                  "5. Fuel a vehicle powered by fuel\n" +
-                                  "6. To charge an electric vehicle\n" +
-                                  "7. View full data of a vehicle by license number\n" +
-                                  "8. Exit");
-        }
-
-
 
     }
 

@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
     {
         public enum eVehicleStatus { InRepair, Repaired, Paid }
 
-        const string k_VehicleInGarageDetails = "Owner Name: {0}\nOwner Phone: {1}\nVehicle Status: {2}\nVehicle: {3}\n ";
+        const string k_VehicleInGarageDetails = "Owner Name: {0}\nOwner Phone: {1}\nVehicle Status: {2}\n{3}\n";
         private eVehicleStatus m_VehicleStatus = eVehicleStatus.InRepair;
         private string m_OwnerName;
         private string m_PhoneNumber;
@@ -20,7 +20,13 @@ namespace Ex03.GarageLogic
             set { m_VehicleStatus = value; }
             get { return m_VehicleStatus; }
         }
-        
+
+        public Vehicle Vehicle
+        {
+            get { return m_Vehicle; }
+        }
+
+
         public VehicleInGarage(string i_OwnerName, string i_PhoneNumber, Vehicle i_Vehicle)
         {
             m_OwnerName = i_OwnerName;

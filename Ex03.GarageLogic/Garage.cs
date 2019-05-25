@@ -88,15 +88,9 @@ namespace Ex03.GarageLogic
         //Request 5
         public void FillFuelToFuelVehicles(string i_LicenseNumber, eFuelType i_FuelType, float i_FuelLiterToAdd)
         {
-            if (IsLicenseNumberInGarage(i_LicenseNumber))
-            {
+            
                 m_VehiclesInGarage[i_LicenseNumber].FillEnergy(i_FuelType, i_FuelLiterToAdd);
-            }
-
-            else
-            {
-                throw new KeyNotFoundException();
-            }
+            
         }
 
         //Request 6
@@ -132,5 +126,12 @@ namespace Ex03.GarageLogic
             return m_VehiclesInGarage.ContainsKey(i_LicenseNumberToCheck);
         }
 
-    }
+        public void GetDetailsEnergyCapacity(string i_LicenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity)
+        {
+            o_CurrentEnergyCapacity=m_VehiclesInGarage[i_LicenseNumber].Vehicle.Engine.CurrentEnergyCapacity;
+            o_MaxEnergyCapacity=m_VehiclesInGarage[i_LicenseNumber].Vehicle.Engine.MaxEnergyCapacity;
+
+        }
+
+}
 }

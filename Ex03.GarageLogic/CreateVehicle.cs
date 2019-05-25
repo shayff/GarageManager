@@ -15,11 +15,11 @@ namespace Ex03.GarageLogic
             FuelTruck
         }
 
-        private const float k_MaxEnergyCapacityFuelMotorCycle = 1.8f;
-        private const float k_MaxEnergyCapacityElectricMotorCycle = 6f;
-        private const float k_MaxEnergyCapacityFuelCar = 3.2f;
-        private const float k_MaxEnergyCapacityElectricCar = 45f;
-        private const float k_MaxEnergyCapacityFuelTruck = 115f;
+        private const float k_MaxEnergyCapacityFuelMotorCycle = 8f;
+        private const float k_MaxEnergyCapacityElectricMotorCycle = 1.4f;
+        private const float k_MaxEnergyCapacityFuelCar = 55f;
+        private const float k_MaxEnergyCapacityElectricCar = 1.8f;
+        private const float k_MaxEnergyCapacityFuelTruck = 110f;
 
         public static Vehicle Create(int i_IntVehicleType, string i_NameOfModel, string i_LicenseNumber)
         {

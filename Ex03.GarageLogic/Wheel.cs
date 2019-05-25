@@ -30,7 +30,8 @@ namespace Ex03.GarageLogic
         {
             get { return m_NameOfManufacturer; }
         }
-
+        
+        //*ctor*//
         public Wheel(float i_MaxAirPressureLevel, string i_NameOfManufacturer, float i_CurrentAirPressureLevel)
         {
             m_NameOfManufacturer = i_NameOfManufacturer;

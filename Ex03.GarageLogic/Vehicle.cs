@@ -77,13 +77,14 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            string[] number = { "Wheels: \n1.", "2.", "3.", "4."};
-            int index = 0;
+            int number =1;
+        
             string vehicleDetailsString = string.Format(k_VehicleDetails, m_LicenseNumber, m_NameOfModel);
             vehicleDetailsString += m_Engine;
             foreach (Wheel wheel in m_Wheels)
             {
-                vehicleDetailsString += number[index++] + wheel;
+                vehicleDetailsString += number.ToString()+". " + wheel;
+                number++;
             }
             return vehicleDetailsString;
         }

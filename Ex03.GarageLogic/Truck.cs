@@ -39,13 +39,13 @@ namespace Ex03.GarageLogic
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
 
-            if (Int32.TryParse(i_AdditionalFieldsToSet["IsDriveDangerousCargo"], out int isDriveDangerCargoChoosed))
+            if (Int32.TryParse(i_AdditionalFieldsToSet["IsDriveDangerousCargo"], out int isDriveDangerCargo))
             {
-                if (isDriveDangerCargoChoosed == 0)
+                if (isDriveDangerCargo == 0)
                 {
                     m_IsDriveDangerousCargo = true;
                 }
-                else if (isDriveDangerCargoChoosed == 1)
+                else if (isDriveDangerCargo == 1)
                 {
                     m_IsDriveDangerousCargo = false;
                 }

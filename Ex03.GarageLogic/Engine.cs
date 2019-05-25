@@ -28,6 +28,11 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public float MaxEnergyCapacity
+        {
+            get { return r_MaxEnergyCapacity; }
+        }
+
         public void FillEnergy(eFuelType i_FuelTypeToAdd, float i_AmountToAdd)
         {
             if (i_FuelTypeToAdd == m_FuelType)
