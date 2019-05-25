@@ -15,6 +15,8 @@ namespace Ex03.GarageLogic
         private string m_PhoneNumber;
         private Vehicle m_Vehicle;
 
+        //*Properties*//
+
         public eVehicleStatus VehicleStatus
         {
             set { m_VehicleStatus = value; }
@@ -26,7 +28,7 @@ namespace Ex03.GarageLogic
             get { return m_Vehicle; }
         }
 
-
+        //*ctor*//
         public VehicleInGarage(string i_OwnerName, string i_PhoneNumber, Vehicle i_Vehicle)
         {
             m_OwnerName = i_OwnerName;
@@ -34,6 +36,8 @@ namespace Ex03.GarageLogic
             m_Vehicle = i_Vehicle;
         }
 
+
+        //*Methods*//
         public void FillEnergy(eFuelType i_FuelType, float i_EnergyToAdd)
         {
             m_Vehicle.FillEnergy(i_FuelType, i_EnergyToAdd);

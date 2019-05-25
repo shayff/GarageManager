@@ -16,15 +16,12 @@ namespace Ex03.GarageLogic
         private int r_NumberOfWheels;
         private readonly float r_MaxAirPressureLevel;
 
+        //*Properties*//
         public Engine Engine
         {
             get { return m_Engine; }
         }
-        public int NumberOfWheels
-        {
-            get { return r_NumberOfWheels; }
-        }
-
+       
         public float MaxAirPressureLevel
         {
             get { return r_MaxAirPressureLevel; }
@@ -52,7 +49,8 @@ namespace Ex03.GarageLogic
             r_NumberOfWheels = i_NumOfWheels;
             r_MaxAirPressureLevel = i_MaxAirPressureLevel;
         }
-        
+
+        //*Methods*//
         public void InitWheels(float i_AirPressureLevel,string i_NameOfWheelManuFacturer)
         {
             m_Wheels = new List<Wheel>();

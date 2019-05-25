@@ -10,6 +10,7 @@ namespace Ex03.GarageLogic
         float m_MinValue;
         float m_MaxValue;
 
+        //*Properties*//
         public float MinValue
         {
             get { return m_MinValue; }
@@ -21,7 +22,9 @@ namespace Ex03.GarageLogic
             get { return m_MaxValue; }
             set { m_MaxValue = value; }
         }
-        
+
+        //*Methods*//
+
         public ValueOutOfRangeException(float i_MinValue, float i_MaxValue, string i_ErrorMessage):base(i_ErrorMessage)
         {
             m_MinValue = i_MinValue;

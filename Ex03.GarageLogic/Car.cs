@@ -27,19 +27,6 @@ namespace Ex03.GarageLogic
         private eColor m_CarColor;
         private eNumDoors m_NumOfDoors;
 
-        /*Properties*/
-        public eColor CarColor
-        {
-            get
-            {
-                return m_CarColor;
-            }
-        }
-        public eNumDoors NumOfDoors
-        {
-            get { return m_NumOfDoors; }
-        }
-
         //*ctor*//
         public Car(eFuelType i_EngineType, float i_MaxEnergyCapacity) : base(i_EngineType, i_MaxEnergyCapacity, k_NumberOfWheels, k_MaxAirPressure)
         {

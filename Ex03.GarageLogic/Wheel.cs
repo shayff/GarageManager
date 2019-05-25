@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         const string k_ErrorValueOutOfRange = "The values are out of range";
         const string k_WheelDetails = "Manufacturer: {0}, AirPressure Level: {1}\n";
         private readonly float r_MaxAirPressureLevel;
-        private string m_NameOfManufacturer;
+        private readonly string m_NameOfManufacturer;
         private float m_AirPressureLevel;
 
         //*Properties*/
@@ -26,11 +26,6 @@ namespace Ex03.GarageLogic
             get { return m_AirPressureLevel; }
         }
 
-        public string NameOfManufacturer
-        {
-            get { return m_NameOfManufacturer; }
-        }
-        
         //*ctor*//
         public Wheel(float i_MaxAirPressureLevel, string i_NameOfManufacturer, float i_CurrentAirPressureLevel)
         {

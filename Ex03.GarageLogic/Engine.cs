@@ -22,17 +22,19 @@ namespace Ex03.GarageLogic
             r_MaxEnergyCapacity = i_MaxEnergyCapacity;
         }
 
+        //*Properties*//
         public float CurrentEnergyCapacity
         {
             get { return m_CurrentEnergyCapacity;
             }
         }
-
         public float MaxEnergyCapacity
         {
             get { return r_MaxEnergyCapacity; }
         }
 
+
+        //*Methods*//
         public void FillEnergy(eFuelType i_FuelTypeToAdd, float i_AmountToAdd)
         {
             if (i_FuelTypeToAdd == m_FuelType)

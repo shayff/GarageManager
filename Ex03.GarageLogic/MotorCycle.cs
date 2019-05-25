@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
         private const int k_NumberOfWheels = 2;
         private const float k_MaxAirPressure = 33f;
         private eLicenseType m_LicenseType;
-        private int m_EngineCapacity;
+        private int m_EngineCapacity;// not use
 
 
         //*ctor*//

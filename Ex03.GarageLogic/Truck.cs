@@ -30,6 +30,8 @@ namespace Ex03.GarageLogic
         {
         }
 
+        //*Methods*//
+
         public override Dictionary<string, string> GetListOfAdditionalFields()
         {
             return new Dictionary<string, string>{ {"IsDriveDangerousCargo", "Is Drive Dangerous Cargo Type, \n 0. YES\n 1. NO" },

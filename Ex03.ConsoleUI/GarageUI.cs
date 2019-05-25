@@ -474,7 +474,7 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("Air Pressure Level was out of Range, please try again:");
                     inputCorrectly = false;
                 }
-                catch (Exception ex)
+                catch 
                 {
                     Console.WriteLine("Incorrect input"); //NT
                 }
