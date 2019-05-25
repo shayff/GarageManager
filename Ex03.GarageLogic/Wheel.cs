@@ -41,7 +41,6 @@ namespace Ex03.GarageLogic
             }
         }
 
-        //*Methods*//
         public void InflatingWheelToMax()
         {
             m_AirPressureLevel = r_MaxAirPressureLevel;
@@ -61,7 +60,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return String.Format(k_WheelDetails, m_NameOfManufacturer, m_AirPressureLevel);
+            return string.Format(k_WheelDetails, m_NameOfManufacturer, m_AirPressureLevel);
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Ex03.ConsoleUI
 {
     public class Messages
     {
+        public const string k_NotANumber = "Please type a number";
         public const string k_TooMuchCapacity = "You tried to fill to much capacity";
         public const string k_EnergyDetails = "Enter How many minutes will you charge (Battery time remaining in {0} Hours {1} Minutes /n Maximum battery time in: {2} Hours {3} Minutes";
         public const string k_ThereWasErrorWith = "There was error with:";

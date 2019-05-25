@@ -34,13 +34,13 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            string data = String.Format("Color: {0}\nNumber of doors: {1}\n", m_CarColor, m_NumOfDoors);
+            string data = string.Format("Color: {0}\nNumber of doors: {1}\n", m_CarColor, m_NumOfDoors);
             return base.ToString() + data;
         }
 
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-            if (Int32.TryParse(i_AdditionalFieldsToSet["CarColor"], out int carColorChoice))
+            if (int.TryParse(i_AdditionalFieldsToSet["CarColor"], out int carColorChoice))
             {
                 if (Enum.IsDefined(typeof(eColor), carColorChoice))
                 {

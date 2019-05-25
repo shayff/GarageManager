@@ -34,16 +34,18 @@ namespace Ex03.GarageLogic
         }
 
         // Request 3
-        public void ChangeVehicleStatus(string i_LicenseNumber, VehicleInGarage.eVehicleStatus i_NewStatus)
+        public void ChangeVehicleStatus(string i_LicenseNumber, int i_NewStatus)
         {
+
             if (IsLicenseNumberInGarage(i_LicenseNumber))
             {
-                m_VehiclesInGarage[i_LicenseNumber].VehicleStatus = i_NewStatus;
+                m_VehiclesInGarage[i_LicenseNumber].SetVehicleStatusFromInt(i_NewStatus);
             }
             else
             {
                 throw new KeyNotFoundException();
             }
+
         }
 
         // Request 4

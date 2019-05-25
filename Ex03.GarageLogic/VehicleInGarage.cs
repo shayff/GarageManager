@@ -4,7 +4,6 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    //NT DONE
     public class VehicleInGarage
     {
         public enum eVehicleStatus { InRepair, Repaired, Paid }
@@ -15,7 +14,6 @@ namespace Ex03.GarageLogic
         private string m_PhoneNumber;
         private Vehicle m_Vehicle;
 
-        //*Properties*//
 
         public eVehicleStatus VehicleStatus
         {
@@ -47,9 +45,19 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return String.Format(k_VehicleInGarageDetails, m_OwnerName, m_PhoneNumber, m_VehicleStatus, m_Vehicle);
+            return string.Format(k_VehicleInGarageDetails, m_OwnerName, m_PhoneNumber, m_VehicleStatus, m_Vehicle);
         }
 
-
+        public void SetVehicleStatusFromInt(int i_NewStatus)
+        {
+            if (Enum.IsDefined(typeof(eVehicleStatus), i_NewStatus))
+            {
+                m_VehicleStatus = (eVehicleStatus)i_NewStatus;
+            }
+            else
+            {
+                throw new ArgumentException("No Such An Option");
+            }
+        }
     }
 }

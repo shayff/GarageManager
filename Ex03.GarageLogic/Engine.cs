@@ -67,7 +67,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return String.Format("Fuel type: {0}\nCurrent Fuel Capacity: {1}%\n", m_FuelType, fuelInPercent());
+            return string.Format("Fuel type: {0}\nCurrent Fuel Capacity: {1}%\n", m_FuelType, fuelInPercent());
         }
 
     }

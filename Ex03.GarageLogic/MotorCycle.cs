@@ -29,7 +29,7 @@ namespace Ex03.GarageLogic
 
         public override void SetAdditionalFields(Dictionary<string, string> i_AdditionalFieldsToSet)
         {
-            if (Int32.TryParse(i_AdditionalFieldsToSet["LicenseType"], out int licenseTypeChoosed))
+            if (int.TryParse(i_AdditionalFieldsToSet["LicenseType"], out int licenseTypeChoosed))
             {
                 if (Enum.IsDefined(typeof(eLicenseType), licenseTypeChoosed))
                 {
@@ -46,7 +46,7 @@ namespace Ex03.GarageLogic
                 throw new FormatException("LicenseType Error" + k_InvalidValue);
             }
 
-            if (Int32.TryParse(i_AdditionalFieldsToSet["EngineCapacity"], out int EngineCapacity))
+            if (int.TryParse(i_AdditionalFieldsToSet["EngineCapacity"], out int EngineCapacity))
             {
                 if (EngineCapacity >= 0)
                 {
@@ -66,7 +66,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            string data = String.Format("License type: {0}\nEngine capacity: {1}\n ", m_LicenseType, m_EngineCapacity);
+            string data = string.Format("License type: {0}\nEngine capacity: {1}\n ", m_LicenseType, m_EngineCapacity);
             return base.ToString() + data;
         }
     }

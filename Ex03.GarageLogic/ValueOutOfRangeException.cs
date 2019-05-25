@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-//NT done
 namespace Ex03.GarageLogic
 {
     public class ValueOutOfRangeException : Exception
@@ -10,7 +9,6 @@ namespace Ex03.GarageLogic
         float m_MinValue;
         float m_MaxValue;
 
-        //*Properties*//
         public float MinValue
         {
             get { return m_MinValue; }
@@ -30,5 +28,3 @@ namespace Ex03.GarageLogic
         }
     }
 }
-
-

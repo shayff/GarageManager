@@ -44,7 +44,7 @@ namespace Ex03.ConsoleUI
                 printMainMenu();
                 string getUserChoose = Console.ReadLine();
 
-                if (Int32.TryParse(getUserChoose, out int result))
+                if (int.TryParse(getUserChoose, out int result))
                 {
                     Console.Clear();
 
@@ -111,7 +111,6 @@ namespace Ex03.ConsoleUI
                               "7. View full data of a vehicle by license number\n" +
                               "8. Exit");
         }
-
 
         // Request 1
         private void insertVehicleToGarage()
@@ -214,14 +213,18 @@ namespace Ex03.ConsoleUI
             string licenseNumber = getLicenseNumber();
             try
             {
-                if (Int32.TryParse(status, out int result) && result >= 0 && result <= 2)
+                if (int.TryParse(status, out int result))
                 {
-                    m_Garage.ChangeVehicleStatus(licenseNumber, (VehicleInGarage.eVehicleStatus)result);
+                    m_Garage.ChangeVehicleStatus(licenseNumber,result);
                 }
                 else
                 {
                     Console.WriteLine(Messages.k_IncorrectInput);
                 }
+            }
+            catch(ArgumentException)
+            {
+                Console.WriteLine(Messages.k_WrongOption);
             }
             catch (KeyNotFoundException)
             {
@@ -340,7 +343,7 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        //*Getting *//
+        // *Getting *//
         private void setAdditionalFields(Vehicle i_newVehicle)
         {
             Dictionary<string, string> fieldsToSet = getAdditionalFieldsData(i_newVehicle.GetListOfAdditionalFields());
@@ -373,7 +376,7 @@ namespace Ex03.ConsoleUI
 
         private string getOwnerName()
         {
-            Console.WriteLine(Messages.k_EnterLiecenseNumber);
+            Console.WriteLine(Messages.k_EnterLicenseNumber);
             string ownerName = Console.ReadLine();
 
             return checkWhiteSpace(ownerName);
@@ -422,14 +425,14 @@ namespace Ex03.ConsoleUI
             Console.WriteLine(Messages.k_ChooseVehicleType);
             string typeOfVehicle = Console.ReadLine();
 
-            if (Int32.TryParse(typeOfVehicle, out int choice) && choice <= 4 && choice >= 0)
+            if (int.TryParse(typeOfVehicle, out int choice))
             {
                 return choice;
             }
             else
             {
-                return -1; //remove
-                //throw exception
+                Console.WriteLine(Messages.k_NotANumber);
+                return getVehicleTypeFromUser();
             }
         }
 
@@ -445,7 +448,7 @@ namespace Ex03.ConsoleUI
             {
                 try
                 {
-                    Console.WriteLine(Messages.k_EnterCurrentAirpressure + " (The maximum is- " + i_Vehicle.MaxAirPressureLevel + ")");
+                    Console.WriteLine(Messages.k_EnterCurrentAirPressure + " (The maximum is- " + i_Vehicle.MaxAirPressureLevel + ")");
                     string airPressureLevelStr = Console.ReadLine();
 
                     inputCorrectly = float.TryParse(airPressureLevelStr, out float o_AirPressureLevel);
@@ -461,7 +464,7 @@ namespace Ex03.ConsoleUI
                 catch (ValueOutOfRangeException)
                 {
 
-                    Console.WriteLine(Messages.k_AirpressureLevelOutOfRange);
+                    Console.WriteLine(Messages.k_AirPressureLevelOutOfRange);
                     inputCorrectly = false;
                 }
                 catch (Exception)
@@ -478,7 +481,7 @@ namespace Ex03.ConsoleUI
             o_Minutes = (int)(i_Number * 60 - o_Hours * 60);
         }
 
-        //*checkInput*//
+        // *checkInput* //
         private string checkSpace(string i_toCheck)
         {
             bool space = i_toCheck.Contains(" ");
@@ -499,12 +502,10 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine(Messages.k_ErrorTypeAgain);
                 i_toCheck = Console.ReadLine();
-
             }
             return i_toCheck;
         }
 
     }
-
 
 }
