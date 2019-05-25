@@ -373,7 +373,7 @@ namespace Ex03.ConsoleUI
 
         private string getOwnerName()
         {
-            Console.WriteLine(Messages.k_EnterLiecenseNumber);
+            Console.WriteLine(Messages.k_EnterLicenseNumber);
             string ownerName = Console.ReadLine();
 
             return checkWhiteSpace(ownerName);
@@ -445,7 +445,7 @@ namespace Ex03.ConsoleUI
             {
                 try
                 {
-                    Console.WriteLine(Messages.k_EnterCurrentAirpressure +" (The maximum is- " + i_Vehicle.MaxAirPressureLevel + ")");
+                    Console.WriteLine(Messages.k_EnterCurrentAirPressure +" (The maximum is- " + i_Vehicle.MaxAirPressureLevel + ")");
                     string airPressureLevelStr = Console.ReadLine();
 
                     inputCorrectly = float.TryParse(airPressureLevelStr, out float o_AirPressureLevel);
@@ -461,7 +461,7 @@ namespace Ex03.ConsoleUI
                 catch (ValueOutOfRangeException)
                 {
                     
-                    Console.WriteLine(Messages.k_AirpressureLevelOutOfRange);
+                    Console.WriteLine(Messages.k_AirPressureLevelOutOfRange);
                     inputCorrectly = false;
                 }
                 catch
