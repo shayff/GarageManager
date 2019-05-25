@@ -94,7 +94,7 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             string vehicleDetailsString = string.Format("License Number: {0}, Model Name: {1}", m_LicenseNumber, m_NameOfModel);
-            vehicleDetailsString += m_Engine.EngineDetails();
+            vehicleDetailsString += m_Engine;
             foreach (Wheel wheel in m_Wheels)
             {
                 vehicleDetailsString += wheel.WheelDetails();

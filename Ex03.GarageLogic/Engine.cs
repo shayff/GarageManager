@@ -4,7 +4,6 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    //public enum eEnergyType { Fuel, Electricity };
     public enum eFuelType { Octan95, Octan96, Octan98, Soler, Electricity };
 
     public class Engine
@@ -37,13 +36,14 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new Exception(k_ErrorWrongTypeOfFuel);
+                throw new ArgumentException(k_ErrorWrongTypeOfFuel);
             }
         }
 
-        public string EngineDetails()
+        public override string ToString()
         {
             return String.Format("Fuel type: {0}, Current Fuel Capacity {1}", m_FuelType, m_CurrentFuelCapacity);
         }
+
     }
 }

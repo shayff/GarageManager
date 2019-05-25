@@ -32,8 +32,25 @@ namespace Ex03.ConsoleUI
 
         private readonly Garage m_Garage = new Garage();
 
+        public void automatictest() //NT delete me!!!
+        {
+            /*Vehicle 123*/
+            Vehicle newVehicle = CreateVehicle.Create(CreateVehicle.eVehicleTypes.ElectricCar, "mazada 2", "123");
+
+            Dictionary<string, int> fieldsToSet = new Dictionary<string, int>
+                  {
+            { "CarColor", 1 },
+            { "NumOfDoors", 1 }
+                 };
+            newVehicle.SetAdditionalFields(fieldsToSet);
+            newVehicle.InitWheels(23f, "Wheels is real");
+            m_Garage.InsertVehicleToGarage("Nely", "0521234567", newVehicle);
+
+        }
+
         public void Start()
         {
+            automatictest();
             bool flag = true;
 
             while (flag)
@@ -145,9 +162,8 @@ namespace Ex03.ConsoleUI
             try
             {
                 i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
-                //i_Vehicle.AddDetailsWheels(o_NameOfWheelManuFacturer, o_AirPressureLevel);
-            }
-            catch (ValueOutOfRangeException ex)
+             }
+            catch (ValueOutOfRangeException)
             {
                 Console.WriteLine("Air Pressure Level was out of Range, please try again:");
                 InitWheels(i_Vehicle);
