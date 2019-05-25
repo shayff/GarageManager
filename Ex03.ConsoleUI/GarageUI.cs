@@ -15,7 +15,7 @@ namespace Ex03.ConsoleUI
         const string k_IncorrectInput = "Incorrect input";
         const string k_LicenseNumberNotFound = "Couldn't find licenseNumber";
         const string k_CarAlreadyInGarage = "The car is already in the garage ";
-        const string k_VehicleHasEnterToGarage = "Vehicle sucssefully enter to garage"; 
+        const string k_VehicleHasEnterToGarage = "Vehicle sucssefully enter to garage";
         const string k_ChooseVehicleStatus = "Enter a Vehicle Status:\n" +
                               "0. for Repaired\n" +
                               "1. for InRepair\n" +
@@ -146,7 +146,7 @@ namespace Ex03.ConsoleUI
                         newVehicle.SetAdditionalFields(fieldsToSet);
 
                         //*Details wheels*//
-                        InitWheels(newVehicle);
+                        getDetailsWheels(newVehicle);
 
                         m_Garage.InsertVehicleToGarage(ownerName, ownerPhoneNumber, newVehicle);
                         Console.WriteLine(k_VehicleHasEnterToGarage);
@@ -163,24 +163,25 @@ namespace Ex03.ConsoleUI
                 //error
             }
         }
-
-        public void InitWheels(Vehicle i_Vehicle)
-        {
-            getDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
-            try
-            {
-                i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
-            }
-            catch (ValueOutOfRangeException)
-            {
-                Console.WriteLine("Air Pressure Level was out of Range, please try again:");
-                InitWheels(i_Vehicle);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("bla"); //NT
-            }
-        }
+        /*
+                public void InitWheels(Vehicle i_Vehicle)
+                {
+                    getDetailsWheels(i_Vehicle.MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel);
+                    try
+                    {
+                        i_Vehicle.InitWheels(o_AirPressureLevel, o_NameOfWheelManuFacturer);
+                    }
+                    catch (ValueOutOfRangeException)
+                    {
+                        Console.WriteLine("Air Pressure Level was out of Range, please try again:");
+                        InitWheels(i_Vehicle);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("bla"); //NT
+                    }
+                }
+                */
         private string getPhoneNumberFromUser()
         {
             Console.WriteLine("Enter a phone number of owner (For example 0541234567)");
@@ -256,28 +257,42 @@ namespace Ex03.ConsoleUI
                 //throw exception
             }
         }
-        private void getDetailsWheels(float i_MaxAirPressureLevel, out string o_NameOfWheelManuFacturer, out float o_AirPressureLevel)
+        private void getDetailsWheels(Vehicle i_Vehicle)
         {
             //NT why airPressure is 0?
             bool inputCorrectly = false;
-            o_AirPressureLevel = 0;
 
             Console.WriteLine("EnterThe manufacturer's name of the wheels");
-            o_NameOfWheelManuFacturer = Console.ReadLine();
-            o_NameOfWheelManuFacturer = checkWhiteSpace(o_NameOfWheelManuFacturer);
+            string nameOfWheelManufacturer = Console.ReadLine();
+            nameOfWheelManufacturer = checkWhiteSpace(nameOfWheelManufacturer);
 
             while (!inputCorrectly)
             {
-                Console.WriteLine("Enter the current air pressure in the wheels " +
-                                  "(The maximum is- " + i_MaxAirPressureLevel + ")");
-                string airPressureLevelStr = Console.ReadLine();
-
-                inputCorrectly = float.TryParse(airPressureLevelStr, out o_AirPressureLevel);
-                if (!inputCorrectly)
+                try
                 {
-                    Console.WriteLine("Out of range!");
-                }
+                    Console.WriteLine("Enter the current air pressure in the wheels " +
+                                      "(The maximum is- " + i_Vehicle.MaxAirPressureLevel + ")");
+                    string airPressureLevelStr = Console.ReadLine();
 
+                    inputCorrectly = float.TryParse(airPressureLevelStr, out float o_AirPressureLevel);
+                    if (!inputCorrectly)
+                    {
+                        Console.WriteLine("Incorrect input");
+                    }
+                    else
+                    {
+                        i_Vehicle.InitWheels(o_AirPressureLevel, nameOfWheelManufacturer);
+                    }
+                }
+                catch (ValueOutOfRangeException)
+                {
+                    Console.WriteLine("Air Pressure Level was out of Range, please try again:");
+                    inputCorrectly = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Incorrect input"); //NT
+                }
             }
 
         }
@@ -354,7 +369,7 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("Incorrect input");
                 }
             }
-            catch(KeyNotFoundException)
+            catch (KeyNotFoundException)
             {
                 Console.WriteLine(k_LicenseNumberNotFound);
             }
@@ -370,7 +385,8 @@ namespace Ex03.ConsoleUI
             }
             catch (KeyNotFoundException)
             {
-                Console.WriteLine(k_LicenseNumberNotFound);             }
+                Console.WriteLine(k_LicenseNumberNotFound);
+            }
         }
 
         //Request 5
@@ -452,7 +468,7 @@ namespace Ex03.ConsoleUI
                 {
                     Console.WriteLine(m_Garage.ShowAllDetails(licenseNumber));
                 }
-                catch(KeyNotFoundException)
+                catch (KeyNotFoundException)
                 {
                     Console.WriteLine(k_LicenseNumberNotFound);
                 }
