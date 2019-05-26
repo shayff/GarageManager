@@ -435,6 +435,15 @@ namespace Ex03.ConsoleUI
 
             Console.WriteLine(Messages.k_GetWheelManufactureName);
             string nameOfWheelManufacturer = Console.ReadLine();
+            bool iscIsContainNumber = IsContainNumber(nameOfWheelManufacturer);
+
+            while (iscIsContainNumber)
+            {
+                Console.WriteLine(Messages.k_ErrorTypeAgain);
+                nameOfWheelManufacturer = Console.ReadLine();
+                iscIsContainNumber = IsContainNumber(nameOfWheelManufacturer);
+            }
+
             nameOfWheelManufacturer = checkWhiteSpace(nameOfWheelManufacturer);
 
             while (inputCorrectly)
