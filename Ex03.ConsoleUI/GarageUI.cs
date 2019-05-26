@@ -360,21 +360,6 @@ namespace Ex03.ConsoleUI
             return checkSpace(phoneNumber);
         }
 
-        public bool IsContainNumber(string i_String)
-        {
-            bool result = true;
-
-            foreach (char ch in i_String)
-            {
-                if (char.IsDigit(ch))
-                {
-                    result = false;
-                }
-            }
-
-            return !result;
-        }
-
         private string getOwnerName()
         {
             Console.WriteLine(Messages.k_EnterLicenseNumber);
@@ -512,5 +497,21 @@ namespace Ex03.ConsoleUI
 
             return i_toCheck;
         }
+
+        public bool IsContainNumber(string i_String)
+        {
+            bool result = true;
+
+            foreach (char ch in i_String)
+            {
+                if (char.IsDigit(ch))
+                {
+                    result = false;
+                }
+            }
+
+            return !result;
+        }
+
     }
 }
