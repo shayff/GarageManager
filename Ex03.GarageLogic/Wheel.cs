@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
         private const string k_ErrorValueOutOfRange = "The values are out of range";
         private const string k_WheelDetails = "Manufacturer: {0}, AirPressure Level: {1}\n";
         private readonly float r_MaxAirPressureLevel;
-        private readonly string m_NameOfManufacturer;
+        private readonly string r_NameOfManufacturer;
         private float m_AirPressureLevel;
 
         public float MaxAirPressureLevel
@@ -26,9 +26,10 @@ namespace Ex03.GarageLogic
 
         public Wheel(float i_MaxAirPressureLevel, string i_NameOfManufacturer, float i_CurrentAirPressureLevel)
         {
-            m_NameOfManufacturer = i_NameOfManufacturer;
+            r_NameOfManufacturer = i_NameOfManufacturer;
             r_MaxAirPressureLevel = i_MaxAirPressureLevel;
-            if (i_CurrentAirPressureLevel >= 0 && i_CurrentAirPressureLevel <= r_MaxAirPressureLevel)
+            bool validAirPressure = i_CurrentAirPressureLevel >= 0 && i_CurrentAirPressureLevel <= r_MaxAirPressureLevel;
+            if (validAirPressure)
             {
                 m_AirPressureLevel = i_CurrentAirPressureLevel;
             }
@@ -45,7 +46,8 @@ namespace Ex03.GarageLogic
 
         public void InflatingWheel(float i_AirToAdd)
         {
-            if ((i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel) && (i_AirToAdd >= 0))
+            bool validAirToAdd = i_AirToAdd + m_AirPressureLevel <= r_MaxAirPressureLevel;
+            if (validAirToAdd)
             {
                 m_AirPressureLevel += i_AirToAdd;
             }
@@ -57,7 +59,7 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            return string.Format(k_WheelDetails, m_NameOfManufacturer, m_AirPressureLevel);
+            return string.Format(k_WheelDetails, r_NameOfManufacturer, m_AirPressureLevel);
         }
     }
 }

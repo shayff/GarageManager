@@ -14,9 +14,11 @@ namespace Ex03.ConsoleUI
                               "6. To charge an electric vehicle\n" +
                               "7. View full data of a vehicle by license number\n" +
                               "8. Exit";
+
         public const string k_NotANumber = "Please type a number";
         public const string k_TooMuchCapacity = "You tried to fill to much capacity";
-        public const string k_EnergyDetails = "Enter How many minutes will you charge (Battery time remaining in {0} Hours {1} Minutes /n Maximum battery time in: {2} Hours {3} Minutes";
+        public const string k_EnergyDetails = "Enter How many minutes will you charge (Battery time remaining in: {0} Hours {1} Minutes,\nMaximum battery time in: {2} Hours {3} Minutes)";
+        public const string k_FuelToAdd = "Enter How many liters to fill (Current fuel quantity: {0},\nMaximum quantity of fuel: {1})";
         public const string k_ThereWasErrorWith = "There was error with:";
         public const string k_EnterLicenseNumber = "Insert owner name please: ";
         public const string k_InsertOwnerName = "Enter a license number";

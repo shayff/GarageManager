@@ -6,45 +6,26 @@ namespace Ex03.ConsoleUI
 {
     public class GarageUI
     {
+        private const int k_MinutesInOneHour = 60;
         private const int k_PhoneNumberLength = 10;
-        private readonly Garage m_Garage = new Garage();
-
-        public void Automatictest() //NT delete me!!!
-        {
-            /*Vehicle 123*/
-            Vehicle newVehicle = CreateVehicle.Create(3, "mazada 2", "123");
-
-            Dictionary<string, string> fieldsToSet = new Dictionary<string, string> { { "CarColor", "1" }, { "NumOfDoors", "1" } };
-            newVehicle.SetAdditionalFields(fieldsToSet);
-            newVehicle.InitWheels(23f, "Guy Ronen");
-            m_Garage.InsertVehicleToGarage("Nely", "0521234567", newVehicle);
-
-            /*Vehicle 111*/
-            Vehicle newVehicle2 = CreateVehicle.Create(2, "mazada 2", "111");
-
-            Dictionary<string, string> fieldsToSet2 = new Dictionary<string, string> { { "CarColor", "2" }, { "NumOfDoors", "2" } };
-            newVehicle2.SetAdditionalFields(fieldsToSet2);
-            newVehicle2.InitWheels(23f, "Hopa Wheels");
-            m_Garage.InsertVehicleToGarage("Shay", "0521234567", newVehicle2);
-        }
+        private readonly Garage r_Garage = new Garage();
 
         public void Start()
         {
-            Automatictest(); //NT delete
-            bool flag = true;
+            bool run = true;
 
-            while (flag)
+            while (run)
             {
                 Console.Clear(); // Clear the screen
                 Console.WriteLine(Messages.k_WelcomeGarage);
                 printMainMenu();
                 string getUserChoose = Console.ReadLine();
 
-                if (int.TryParse(getUserChoose, out int result))
+                if (int.TryParse(getUserChoose, out int o_result))
                 {
                     Console.Clear();
 
-                    switch (result)
+                    switch (o_result)
                     {
                         case 1:
                             {
@@ -90,7 +71,7 @@ namespace Ex03.ConsoleUI
 
                         case 8:
                             {
-                                flag = false;
+                                run = false;
                                 break;
                             }
                     }
@@ -107,7 +88,7 @@ namespace Ex03.ConsoleUI
 
         private void printMainMenu()
         {
-            Console.WriteLine(k_MainMenu);
+            Console.WriteLine(Messages.k_MainMenu);
         }
 
         // Request 1
@@ -119,7 +100,7 @@ namespace Ex03.ConsoleUI
             string ownerPhoneNumber = getPhoneNumberFromUser();
             string licenseNumber = getLicenseNumber();
 
-            if (m_Garage.IsLicenseNumberInGarage(licenseNumber))
+            if (r_Garage.IsLicenseNumberInGarage(licenseNumber))
             {
                 Console.WriteLine(Messages.k_CarAlreadyInGarage);
             }
@@ -133,7 +114,7 @@ namespace Ex03.ConsoleUI
                     Vehicle newVehicle = CreateVehicle.Create(vehicleType, nameOfModel, licenseNumber);
                     setAdditionalFields(newVehicle);
                     getWheelsDetails(newVehicle);
-                    m_Garage.InsertVehicleToGarage(ownerName, ownerPhoneNumber, newVehicle);
+                    r_Garage.InsertVehicleToGarage(ownerName, ownerPhoneNumber, newVehicle);
                     Console.WriteLine(Messages.k_VehicleHasEnterToGarage);
                 }
                 catch (FormatException formatException)
@@ -150,7 +131,9 @@ namespace Ex03.ConsoleUI
         // Request 2
         private void viewListOfVehicleLicenseNumbers()
         {
-            if (m_Garage.VehiclesInGarage.Count == 0)
+            bool isVehiclesInGarageEmpty = r_Garage.VehiclesInGarage.Count == 0;
+
+            if (isVehiclesInGarageEmpty)
             {
                 Console.WriteLine(Messages.k_ThereAreNoVehicleInGarage);
             }
@@ -166,7 +149,7 @@ namespace Ex03.ConsoleUI
                     {
                         if (result == 3)
                         {
-                            List<string> listsGarage = m_Garage.GetVehiclesInGarage();
+                            List<string> listsGarage = r_Garage.GetVehiclesInGarage();
                             foreach (string licenseNumber in listsGarage)
                             {
                                 Console.WriteLine(i++ + "." + licenseNumber);
@@ -176,7 +159,7 @@ namespace Ex03.ConsoleUI
                         {
                             try
                             {
-                                List<string> listsGarage = m_Garage.GetVehiclesInGarageByStatus(result);
+                                List<string> listsGarage = r_Garage.GetVehiclesInGarageByStatus(result);
 
                                 foreach (string licenseNumber in listsGarage)
                                 {
@@ -212,7 +195,7 @@ namespace Ex03.ConsoleUI
             {
                 if (int.TryParse(status, out int result))
                 {
-                    m_Garage.ChangeVehicleStatus(licenseNumber, result);
+                    r_Garage.ChangeVehicleStatus(licenseNumber, result);
                 }
                 else
                 {
@@ -236,7 +219,7 @@ namespace Ex03.ConsoleUI
             licenseNumber = checkWhiteSpace(licenseNumber);
             try
             {
-                m_Garage.InflatingWheelToMax(licenseNumber);
+                r_Garage.InflatingWheelToMax(licenseNumber);
             }
             catch (KeyNotFoundException)
             {
@@ -251,18 +234,17 @@ namespace Ex03.ConsoleUI
 
             Console.WriteLine(Messages.k_ChooseFuelType);
             string status = Console.ReadLine();
-            if (int.TryParse(status, out int result) && m_Garage.IsLicenseNumberInGarage(licenseNumber))
+            if (int.TryParse(status, out int result) && r_Garage.IsLicenseNumberInGarage(licenseNumber))
             {
-                m_Garage.GetDetailsEnergyCapacity(licenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
-                Console.WriteLine("Enter How many liters to fill (Current fuel quantity- " + o_CurrentEnergyCapacity + string.Empty +
-                                  ", Maximum quantity of fuel-" + o_MaxEnergyCapacity + ")");
+                r_Garage.GetDetailsEnergyCapacity(licenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
+                Console.WriteLine(string.Format(Messages.k_FuelToAdd, o_CurrentEnergyCapacity, o_MaxEnergyCapacity));
 
                 string liters = Console.ReadLine();
                 if (float.TryParse(liters, out float literToAdd))
                 {
                     try
                     {
-                        m_Garage.FillFuelToFuelVehicles(licenseNumber, result, literToAdd);
+                        r_Garage.FillFuelToFuelVehicles(licenseNumber, result, literToAdd);
                     }
                     catch (ValueOutOfRangeException)
                     {
@@ -288,25 +270,32 @@ namespace Ex03.ConsoleUI
         private void chargingElectricVehicle()
         {
             string licenseNumber = getLicenseNumber();
-            m_Garage.GetDetailsEnergyCapacity(licenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
-            printEnergyDetails(o_CurrentEnergyCapacity, o_MaxEnergyCapacity);
-            string minutesStr = Console.ReadLine();
-
-            if (float.TryParse(minutesStr, out float minutes))
+            if (r_Garage.IsLicenseNumberInGarage(licenseNumber))
             {
-                try
+                r_Garage.GetDetailsEnergyCapacity(licenseNumber, out float o_CurrentEnergyCapacity, out float o_MaxEnergyCapacity);
+                printEnergyDetails(o_CurrentEnergyCapacity, o_MaxEnergyCapacity);
+                string minutesStr = Console.ReadLine();
+
+                if (float.TryParse(minutesStr, out float minutes))
                 {
-                    float hours = minutes / 60;
-                    m_Garage.ChargingElectricVehicle(licenseNumber, hours);
+                    try
+                    {
+                        float hours = minutes / k_MinutesInOneHour;
+                        r_Garage.ChargingElectricVehicle(licenseNumber, hours);
+                    }
+                    catch (ValueOutOfRangeException)
+                    {
+                        Console.WriteLine(Messages.k_TooMuchCapacity);
+                    }
+                    catch
+                    {
+                        Console.WriteLine(Messages.k_Error);
+                    }
                 }
-                catch (ValueOutOfRangeException)
-                {
-                    Console.WriteLine(Messages.k_TooMuchCapacity);
-                }
-                catch
-                {
-                    Console.WriteLine(Messages.k_Error);
-                }
+            }
+            else
+            {
+                Console.WriteLine(Messages.k_LicenseNumberNotFound);
             }
         }
 
@@ -320,7 +309,9 @@ namespace Ex03.ConsoleUI
         // Request 7
         private void showAllDetails()
         {
-            if (m_Garage.VehiclesInGarage.Count == 0)
+            bool isVehiclesInGarageEmpty = r_Garage.VehiclesInGarage.Count == 0;
+
+            if (isVehiclesInGarageEmpty)
             {
                 Console.WriteLine(Messages.k_ThereAreNoVehicleInGarage);
             }
@@ -330,7 +321,7 @@ namespace Ex03.ConsoleUI
                 licenseNumber = checkWhiteSpace(licenseNumber);
                 try
                 {
-                    Console.WriteLine(m_Garage.ShowAllDetails(licenseNumber));
+                    Console.WriteLine(r_Garage.ShowAllDetails(licenseNumber));
                 }
                 catch (KeyNotFoundException)
                 {
@@ -340,18 +331,18 @@ namespace Ex03.ConsoleUI
         }
 
         // *Getting *//
-        private void setAdditionalFields(Vehicle i_newVehicle)
+        private void setAdditionalFields(Vehicle i_NewVehicle)
         {
-            Dictionary<string, string> fieldsToSet = getAdditionalFieldsData(i_newVehicle.GetListOfAdditionalFields());
+            Dictionary<string, string> fieldsToSet = getAdditionalFieldsData(i_NewVehicle.GetListOfAdditionalFields());
             try
             {
-                i_newVehicle.SetAdditionalFields(fieldsToSet);
+                i_NewVehicle.SetAdditionalFields(fieldsToSet);
             }
             catch (FormatException field)
             {
                 Console.WriteLine(Messages.k_ThereWasErrorWith);
                 Console.WriteLine(field.Message);
-                setAdditionalFields(i_newVehicle);
+                setAdditionalFields(i_NewVehicle);
             }
         }
 
@@ -369,10 +360,32 @@ namespace Ex03.ConsoleUI
             return checkSpace(phoneNumber);
         }
 
+        public bool IsContainNumber(string i_String)
+        {
+            bool result = true;
+
+            foreach (char ch in i_String)
+            {
+                if (char.IsDigit(ch))
+                {
+                    result = false;
+                }
+            }
+
+            return !result;
+        }
+
         private string getOwnerName()
         {
             Console.WriteLine(Messages.k_EnterLicenseNumber);
             string ownerName = Console.ReadLine();
+            bool isDigitPresent = IsContainNumber(ownerName);
+            while (ownerName.Length == 0 || isDigitPresent)
+            {
+                Console.WriteLine(Messages.k_ErrorTypeAgain);
+                ownerName = Console.ReadLine();
+                isDigitPresent = IsContainNumber(ownerName);
+            }
 
             return checkWhiteSpace(ownerName);
         }
@@ -433,13 +446,13 @@ namespace Ex03.ConsoleUI
 
         private void getWheelsDetails(Vehicle i_Vehicle)
         {
-            bool inputCorrectly = false;
+            bool inputCorrectly = true;
 
             Console.WriteLine(Messages.k_GetWheelManufactureName);
             string nameOfWheelManufacturer = Console.ReadLine();
             nameOfWheelManufacturer = checkWhiteSpace(nameOfWheelManufacturer);
 
-            while (!inputCorrectly)
+            while (inputCorrectly)
             {
                 try
                 {
@@ -454,12 +467,13 @@ namespace Ex03.ConsoleUI
                     else
                     {
                         i_Vehicle.InitWheels(o_AirPressureLevel, nameOfWheelManufacturer);
+                        inputCorrectly = false;
                     }
                 }
                 catch (ValueOutOfRangeException)
                 {
                     Console.WriteLine(Messages.k_AirPressureLevelOutOfRange);
-                    inputCorrectly = false;
+                    inputCorrectly = true;
                 }
                 catch (Exception)
                 {
@@ -471,7 +485,7 @@ namespace Ex03.ConsoleUI
         private void getTimeInHoursAndMinute(float i_Number, out int o_Hours, out int o_Minutes)
         {
             o_Hours = (int)Math.Floor(i_Number);
-            o_Minutes = (int)((i_Number * 60) - (o_Hours * 60));
+            o_Minutes = (int)((i_Number * k_MinutesInOneHour) - (o_Hours * k_MinutesInOneHour));
         }
 
         // *checkInput* //
